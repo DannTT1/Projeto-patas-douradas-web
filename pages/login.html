@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - PetShop Patas Douradas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2>Seja Bem-Vindo ao PetShop Patas Douradas</h2>
+
+  <div class="login-container">
+    <p>Faça o login aqui</p>
+
+    <div class="tipo-usuario">
+      <label>
+        <input type="radio" name="opcaoLogin" value="cliente" id="cliente" checked>
+        Cliente
+      </label>
+
+      <label>
+        <input type="radio" name="opcaoLogin" value="vendedor" id="vendedor">
+        Vendedor
+      </label>
+    </div>
+
+    <form id="formLogin">
+      <input type="email" name="email" id="email" placeholder="Insira o seu E-mail" required>
+      <input type="password" name="senha" id="senha" placeholder="Insira sua Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p class="cadastro-link">Não possui conta? <a href="cadastro.html">Cadastre-se</a></p>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
+</html>
