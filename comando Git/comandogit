@@ -39,3 +39,40 @@ Copiar
 Editar
 git branch
 A branch atual estará com um * do lado.
+
+
+✅ Passo a passo para enviar um novo arquivo para o Git:
+1. Verifique o status do Git:
+bash
+Copiar
+Editar
+git status
+Você verá seu arquivo listado como "Untracked" (ainda não está sendo rastreado pelo Git).
+
+2. Adicione o arquivo ao Git (prepara para o commit):
+bash
+Copiar
+Editar
+git add nome-do-arquivo
+Ou, para adicionar todos os arquivos novos/modificados:
+
+bash
+Copiar
+Editar
+git add .
+3. Crie um commit (descreve a alteração):
+bash
+Copiar
+Editar
+git commit -m "Adiciona novo arquivo X"
+4. Envie para o repositório remoto (ex: GitHub):
+bash
+Copiar
+Editar
+git push origin nome-da-branch
+Por exemplo, se você estiver na branch main, use:
+
+bash
+Copiar
+Editar
+git push origin main
