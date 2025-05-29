@@ -8,10 +8,9 @@ petshop-ecommerce/
 ├── 📁 assets/                 # Arquivos estáticos (imagens, fontes, etc.)
 │   ├── 📁 img/                # Imagens de produtos, pets, banners, etc.
 │   └── 📁 fonts/              # Fontes personalizadas (opcional)
-│
-├── 📁 css/                   # Arquivos de estilo
-│   ├── style.css             # Estilo global
-│   └── components.css        # Estilos específicos de componentes
+│         
+│---- style.css                 # estilo global
+│        
 │
 ├── 📁 js/                    # Scripts JavaScript
 │   ├── main.js               # Funções principais (ex: navegação, eventos)
@@ -31,10 +30,9 @@ petshop-ecommerce/
 │   ├── produtos.json         # Lista de produtos
 │   └── usuarios.json         # Usuários cadastrados (se necessário)
 │
-├── 📁 components/            # Componentes HTML reutilizáveis
-│   ├── header.html           # Cabeçalho com menu
-│   └── footer.html           # Rodapé
-│
+├── 
+│   
+│   
 └── README.md                 # Instruções do projeto (útil para o grupo)
 
 

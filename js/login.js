@@ -12,9 +12,9 @@ document.getElementById("formLogin").addEventListener("submit", function (e) {
         alert('Login realizado com sucesso!!');
 
         if(tipoUsuario === 'cliente') {
-            window.location.href = 'loja.html';
+            window.location.href = "../cliente/home.html";
         } else {
-            window.location.href = 'painel-vendedor.html';
+            window.location.href = "../vendedor/painel-vendedor.html";
         }
     } else {
         alert("Usuário ou senha estão incorretos!.");
