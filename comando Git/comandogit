@@ -1,0 +1,41 @@
+Para criar uma branch (ramo) no Git, você pode usar o seguinte comando no terminal:
+
+✅ Comando para criar uma nova branch:
+bash
+Copiar
+Editar
+git branch nome-da-branch
+✅ E para mudar para essa branch (ou seja, "entrar" nela):
+bash
+Copiar
+Editar
+git checkout nome-da-branch
+Ou, de forma mais prática, você pode fazer as duas coisas ao mesmo tempo com:
+
+✅ Criar e mudar para a nova branch em um único comando:
+bash
+Copiar
+Editar
+git checkout -b nome-da-branch
+Exemplo:
+Você quer criar uma branch chamada feature-login:
+
+bash
+Copiar
+Editar
+git checkout -b feature-login
+Agora você está na branch feature-login e pode começar a fazer suas alterações.
+
+Se estiver usando Git moderno (versões mais recentes):
+Você também pode usar o novo comando switch:
+
+bash
+Copiar
+Editar
+git switch -c nome-da-branch
+Verificar em qual branch você está:
+bash
+Copiar
+Editar
+git branch
+A branch atual estará com um * do lado.

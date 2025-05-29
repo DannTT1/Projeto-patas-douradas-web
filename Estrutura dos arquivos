@@ -57,3 +57,4 @@ products.js: Busca e exibe os produtos da produtos.json.
 auth.js: Validação de login, controle de sessão (se implementado).
 
 components/: Para reutilizar o header e footer em todas as páginas via JS.
+
