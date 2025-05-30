@@ -1,0 +1,37 @@
+// Lista de produtos disponíveis
+const produtosDisponiveis = [
+  { id: 1, nome: 'ração 1', descricao: 'ração boa', preco: 99.99, imagemUrl: '' },
+  { id: 2, nome: 'ração 2', descricao: 'ração ruim', preco: 99.00, imagemUrl: '' },
+  { id: 3, nome: 'ração 3', descricao: 'ração mais ou menos', preco: 99.00, imagemUrl: '' }
+];
+
+// Salvar no localStorage apenas se ainda não estiver salvo
+if (!localStorage.getItem('produtos')) {
+  localStorage.setItem('produtos', JSON.stringify(produtosDisponiveis));
+}
+
+// Função para criar os cards de produto
+function cardsProdutos() {
+  const catalogoProdutos = document.getElementById('catalogo-produtos');
+  catalogoProdutos.innerHTML = '';
+
+  const produtos = JSON.parse(localStorage.getItem('produtos'));
+
+  produtos.forEach(produto => {
+    const card = document.createElement('div');
+    card.className = 'card-produto';
+
+    card.innerHTML = `
+      <img src="${produto.imagemUrl || 'https://via.placeholder.com/200x140?text=Imagem'}" alt="${produto.nome}" class="product-image" />
+      <h3 class="product-title">${produto.nome}</h3>
+      <p class="product-description">${produto.descricao}</p>
+      <p class="product-price">R$ ${produto.preco.toFixed(2)}</p>
+      <button class="buy-button">Comprar</button>
+    `;
+
+    catalogoProdutos.appendChild(card);
+  });
+}
+
+// Chamada da função ao carregar a página
+cardsProdutos();

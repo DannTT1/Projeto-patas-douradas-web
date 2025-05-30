@@ -7,11 +7,53 @@ body {
   padding: 0;
 }
 
+/* Cabeçalho fixo */
+.cabecalho {
+  background-color: #ff9f1c;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Menu de navegação */
+.menu a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #ffeeba;
+}
+
+/* Imagens dos produtos */
+.produto-imagem {
+  max-width: 30%;
+  width: 230px;
+  height: 285px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 /* Título principal */
 h2 {
   text-align: center;
   margin-top: 40px;
   color: #222;
+  color: #ff9f1c;
 }
 
 /* Container do login */
