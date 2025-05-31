@@ -61,12 +61,13 @@ function finalizarPedido() {
 
   const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
 
-  const novoPedido = {
-    id: Date.now(),
-    data: new Date().toLocaleString(),
-    itens: carrinho,
-    total: carrinho.reduce((acc, item) => acc + item.preco, 0)
-  };
+ const novoPedido = {
+  id: Date.now(),
+  data: Date.now(), // ✔ Armazena como timestamp correto
+  itens: carrinho,
+  total: carrinho.reduce((acc, item) => acc + item.preco, 0)
+};
+
 
   pedidos.push(novoPedido);
   localStorage.setItem("pedidos", JSON.stringify(pedidos));

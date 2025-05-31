@@ -1,20 +1,20 @@
 document.getElementById("formLogin").addEventListener("submit", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
-    const tipoUsuario = document.querySelector("input[name='opcaoLogin']:checked").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const tipoUsuario = document.querySelector("input[name='opcaoLogin']:checked").value;
 
-    const logou = login(email, senha, tipoUsuario);
+  const logou = login(email, senha, tipoUsuario);
 
-    if (logou) {
-        alert('Login realizado com sucesso!!');
-        if (tipoUsuario === 'cliente') {
-            window.location.href = "../pages/cliente/home.html";
-        } else {
-            window.location.href = "../pages/vendedor/painel-vendedor.html";
-        }
+  if (logou) {
+    alert('Login realizado com sucesso!!');
+    if (tipoUsuario === 'cliente') {
+      window.location.href = "../cliente/home.html"; // Corrigido
     } else {
-        alert("Usuário ou senha estão incorretos!.");
+      window.location.href = "../vendedor/painel-vendedor.html"; // Corrigido
     }
+  } else {
+    alert("Usuário ou senha estão incorretos!.");
+  }
 });

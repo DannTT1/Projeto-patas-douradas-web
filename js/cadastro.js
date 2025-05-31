@@ -20,6 +20,7 @@ document.getElementById("formularioCadastro").addEventListener("submit", functio
 // aqui estamos salvando no localStorage
     cadastrarUsuario(novoUsuario)
 
-    alert('cadastro realizado com sucesso! faça o login agora.');
-    window.location.href = "login.html";
+   alert('cadastro realizado com sucesso! faça o login agora.');
+window.location.href = "login.html";
+
 });

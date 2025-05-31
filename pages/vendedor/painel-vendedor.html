@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Vendedor</title>
- <link rel="stylesheet" href="/css/style.css">
+  <title>Painel do Vendedor</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
-
 <body>
 
-<header class="cabecalho">
-  <div class="logo">🐾 PatasDouradas.com</div>
-  <nav class="menu">
-    <a href="../vendedor/painel-vendedor.html">Dashboard</a>
-    <a href="../vendedor/pedidos.html">Pedidos</a>
-    <a href="../vendedor/produtos-vendedor.html">Gerenciar Produtos</a>
-    <a href="../login.html" onclick="logout(); window.location.href='login.html'">Sair</a>
-  </nav>
-</header>
+  <header class="cabecalho">
+    <div class="logo">🐾 PatasDouradas.com</div>
+   <nav class="menu">
+  <a href="painel-vendedor.html">Dashboard</a>
+  <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
+  <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
+  <a href="produtos-adicionar.html">Adicionar Produto</a>
+  <a href="/pages/cadastro/login.html" onclick="logout(); window.location.href='/pages/cadastro/login.html'">Sair</a>
+</nav>
 
+  </header>
+
+  <main>
+    <h1>📊 Painel do Vendedor</h1>
+
+    <div class="cards-dashboard">
+      <div class="card">📦 Total de Pedidos: <span id="totalPedidos">0</span></div>
+      <div class="card">💰 Vendas Totais: R$ <span id="totalVendas">0.00</span></div>
+      <div class="card">📦 Itens em Estoque: <span id="totalEstoque">0</span></div>
+    </div>
+  </main>
+
+  <script src="/js/dashboard-vendedor.js"></script>
 </body>
-
 </html>

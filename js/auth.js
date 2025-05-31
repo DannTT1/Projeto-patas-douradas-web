@@ -27,13 +27,14 @@ function logout() {
     localStorage.removeItem(USUARIO_LOGADO);
 }
 
-// Redireciona se não estiver logado
 function protegerLogin() {
     if (!usuarioLogado()) {
         alert("Você precisa estar logado");
-        window.location.href = 'login.html';
+        window.location.href = '../../cadastro/login.html';
     }
 }
+
+
 
 // Cadastra um novo usuário
 function cadastrarUsuario(novoUsuario) {

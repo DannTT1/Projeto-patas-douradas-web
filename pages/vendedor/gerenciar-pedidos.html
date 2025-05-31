@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciar Pedidos</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="logo">🐾 PatasDouradas.com</div>
+    <nav class="menu">
+      <a href="painel-vendedor.html">Dashboard</a>
+      <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
+      <a href="produtos-adicionar.html">Adicionar Produto</a>
+      <a href="/pages/cadastro/login.html" onclick="logout(); window.location.href='/pages/cadastro/login.html'">Sair</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>📦 Pedidos Finalizados</h1>
+    <div id="lista-pedidos" class="painel-pedidos"></div>
+  </main>
+
+  <script src="/js/gerenciar-pedidos.js"></script>
+</body>
+</html>
