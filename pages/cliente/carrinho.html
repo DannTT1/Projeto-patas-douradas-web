@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Seu Carrinho</title>
-  <link rel="stylesheet" href="../../css/style.css" />
-</head>
-<body>
-  <header class="cabecalho">
-    <div class="logo">🐾 PatasDouradas.com</div>
-    <nav class="menu">
-      <a href="home.html">Home</a>
-      <a href="produtos-lista.html">Produtos</a>
-      <a href="carrinho.html">Carrinho</a>
-      <a href="pedidos-cliente.html">Pedidos</a>
-      <a href="../cadastro/login.html" onclick="logout(); window.location.href='../cadastro/login.html'">Sair</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Seu Carrinho</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="logo">🐾 PatasDouradas.com</div>
+      <nav class="menu">
+        <a href="home.html">Home</a>
+        <a href="produtos-lista.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="pedidos-cliente.html">Pedidos</a>
+        <a
+          href="../cadastro/login.html"
+          onclick="logout(); window.location.href='../cadastro/login.html'"
+          >Sair</a
+        >
+      </nav>
+    </header>
 
-  <main class="carrinho-container">
-    <h1>🛒 Seu Carrinho</h1>
-    <button onclick="voltar()" class="btn-voltar">← Voltar para Produtos</button>
-    <div id="itens-carrinho"></div>
-    <p id="total" style="font-weight: bold; margin-top: 20px;"></p>
+    <main class="carrinho-container">
+      <h1>🛒 Seu Carrinho</h1>
+      <button onclick="voltar()" class="btn-voltar">
+        ← Voltar para Produtos
+      </button>
+      <div id="itens-carrinho"></div>
+      <p id="total" style="font-weight: bold; margin-top: 20px"></p>
 
-    <button onclick="finalizarPedido()" class="btn-finalizar">Finalizar Pedido</button>
-  </main>
+      <button onclick="finalizarPedido()" class="btn-finalizar">
+        Finalizar Pedido
+      </button>
+    </main>
 
-  <script src="../../js/carrinho.js"></script>
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>📞 Contato</h3>
-      <p>Email: suporte@patasdouradas.com</p>
-      <p>Telefone: (11) 99999-9999</p>
-      <p>Endereço: Rua dos Bichos, 123 - São Paulo</p>
-    </div>
+    <script src="../../js/carrinho.js"></script>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>📞 Contato</h3>
+          <p>Email: suporte@patasdouradas.com</p>
+          <p>Telefone: (11) 5682-7300</p>
+          <p>
+            Endereço: Av. Eng. Eusébio Stevaux, 823 - Santo Amaro, São Paulo
+          </p>
+        </div>
 
-    <div class="footer-section">
-      <h3>🧑‍💼 Sobre Nós</h3>
-      <p>Somos apaixonados por pets! Nosso objetivo é oferecer os melhores produtos e atendimento para você e seu amigo de quatro patas.</p>
-    </div>
+        <div class="footer-section">
+          <h3>🧑‍💼 Sobre Nós</h3>
+          <p>
+            Nós somos apaixonados pelos animais! Nosso objetivo é oferecer os
+            melhores produtos e atendimento para você e seu amigo de quatro
+            patas.
+          </p>
+        </div>
 
-    <div class="footer-section">
-      <h3>🚀 Carreiras</h3>
-      <p>Quer fazer parte do nosso time?</p>
-      <a href="#">Trabalhe conosco</a>
-    </div>
+        <div class="footer-section">
+          <h3>🚀 Carreiras</h3>
+          <p>Quer fazer parte do nosso time?</p>
+          <a href="#">Trabalhe conosco</a>
+        </div>
 
-    <div class="footer-section">
-      <h3>🛒 Produtos Populares</h3>
-      <ul>
-        <li>Ração Premium para Cães</li>
-        <li>Areia Higiênica Felina</li>
-        <li>Coleira Antipulgas</li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-
-
-
-
-
-
-</body>
+        <div class="footer-section">
+          <h3>🛒 Produtos Populares</h3>
+          <ul>
+            <li>Ração Premium para Cães</li>
+            <li>Areia Higiênica Felina</li>
+            <li>Coleira Antipulgas</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

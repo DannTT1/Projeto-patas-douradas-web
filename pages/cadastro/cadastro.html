@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro - PetShop Patas Douradas</title>
-  <link rel="stylesheet" href="../../css/cadastro.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro | PetShop Patas Douradas</title>
+    <link rel="stylesheet" href="../../css/cadastro.css" />
+  </head>
 
-<body>
+  <body>
+    <h2>Cadastre-se agora no Petshop Patas Douradas!</h2>
 
-  <h2>Crie sua conta no PetShop Patas Douradas</h2>
+    <div class="login-container">
+      <form id="formularioCadastro">
+        <label for="nomeUsuario">Insira o seu nome completo</label>
+        <input type="text" id="nomeUsuario" name="nomeUsuario" required />
 
-  <div class="login-container">
-    <form id="formularioCadastro">
+        <label for="emailUsuario">Insira o seu endereço de e-mail</label>
+        <input type="email" id="emailUsuario" name="emailUsuario" required />
 
-      <label for="nomeUsuario">Insira o seu Nome</label>
-      <input type="text" id="nomeUsuario" name="nomeUsuario" required>
+        <label for="senhaUsuario">Insira a sua senha</label>
+        <input type="password" id="senhaUsuario" name="senhaUsuario" required />
 
-      <label for="emailUsuario">Insira seu email</label>
-      <input type="email" id="emailUsuario" name="emailUsuario" required>
+        <div class="tipo-usuario">
+          <label>
+            <input
+              type="radio"
+              name="opcaoLoginCadastro"
+              value="cliente"
+              id="cliente"
+              checked
+            />
+            Cliente
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="opcaoLoginCadastro"
+              value="vendedor"
+              id="vendedor"
+            />
+            Vendedor
+          </label>
+        </div>
 
-      <label for="senhaUsuario">Insira sua senha</label>
-      <input type="password" id="senhaUsuario" name="senhaUsuario" required>
+        <button type="submit">Cadastrar-se</button>
+      </form>
 
-      <div class="tipo-usuario">
-        <label>
-          <input type="radio" name="opcaoLoginCadastro" value="cliente" id="cliente" checked>
-          Cliente
-        </label>
-        <label>
-          <input type="radio" name="opcaoLoginCadastro" value="vendedor" id="vendedor">
-          Vendedor
-        </label>
-      </div>
+      <p class="cadastro-link">
+        Já possui cadastro? <a href="login.html">Faça login agora</a>
+      </p>
+    </div>
 
-      <button type="submit">Criar conta</button>
-    </form>
-
-    <p class="cadastro-link">Já possui conta? <a href="login.html">Clique aqui para entrar</a></p>
-  </div>
-
-  <script src="../../js/auth.js"></script>
-  <script src="../../js/cadastro.js"></script>
-</body>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/cadastro.js"></script>
+  </body>
 </html>
