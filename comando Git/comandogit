@@ -76,3 +76,13 @@ bash
 Copiar
 Editar
 git push origin main
+
+
+Descartar todas as mudanças locais e resetar para o GitHub
+Se você só quer voltar ao último commit do GitHub (o que está na branch main ou master), faça:
+
+git fetch origin
+git reset --hard origin/main
+
+    🔁 Substitua main por master se seu repositório usa essa branch.
+
