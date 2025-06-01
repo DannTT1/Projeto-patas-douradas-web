@@ -47,9 +47,14 @@ function finalizarPedido() {
     return;
   }
 
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
+  if (!usuarioLogado) {
+    alert("Erro: você precisa estar logado para finalizar o pedido.");
+    return;
+  }
+
   const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
 
-  // Reduz estoque de cada produto comprado
   carrinho.forEach(itemCarrinho => {
     const produtoIndex = produtos.findIndex(p => p.id === itemCarrinho.id);
     if (produtoIndex !== -1) {
@@ -61,13 +66,13 @@ function finalizarPedido() {
 
   const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
 
- const novoPedido = {
-  id: Date.now(),
-  data: Date.now(), // ✔ Armazena como timestamp correto
-  itens: carrinho,
-  total: carrinho.reduce((acc, item) => acc + item.preco, 0)
-};
-
+  const novoPedido = {
+    id: Date.now(),
+    data: Date.now(),
+    cliente: usuarioLogado, // Salva o usuário logado junto com o pedido
+    itens: carrinho,
+    total: carrinho.reduce((acc, item) => acc + item.preco, 0)
+  };
 
   pedidos.push(novoPedido);
   localStorage.setItem("pedidos", JSON.stringify(pedidos));

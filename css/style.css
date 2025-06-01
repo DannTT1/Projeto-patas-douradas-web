@@ -408,3 +408,26 @@ main {
 }
 
 /* gerenciar pedidos*/
+
+
+.relatorio-section {
+  padding: 20px;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.relatorio-box {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #999;
+  max-height: 300px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: monospace;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* RELATORIO LOCALSTORAGE*/

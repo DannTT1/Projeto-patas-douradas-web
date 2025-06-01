@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="../../css/style.css" />
-  </head>
-  <body>
-    <header class="cabecalho">
-      <div class="logo">🐾 PatasDouradas.com</div>
-      <nav class="menu">
-        <a href="home.html">Home</a>
-        <a href="produtos-lista.html">Produtos</a>
-        <a href="carrinho.html">Carrinho</a>
-        <a href="pedidos-cliente.html">Pedidos</a>
-        <a
-          href="../cadastro/login.html"
-          onclick="logout(); window.location.href='../cadastro/login.html'"
-          >Sair</a
-        >
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <title>Home</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
 
-    <div id="catalogo-produtos"></div>
+  <header class="cabecalho">
+    <div class="logo">🐾 PatasDouradas.com</div>
+    <div id="saudacaoUsuario" class="saudacao-usuario"></div> <!-- ✅ Saudação -->
+    <nav class="menu">
+      <a href="home.html">Home</a>
+      <a href="produtos-lista.html">Produtos</a>
+      <a href="carrinho.html">Carrinho</a>
+      <a href="pedidos-cliente.html">Pedidos</a>
+      <a href="../cadastro/login.html" onclick="logout(); window.location.href='../cadastro/login.html'">Sair</a>
+    </nav>
+  </header>
 
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>📞 Contato</h3>
-          <p>Email: suporte@patasdouradas.com</p>
-          <p>Telefone: (11) 5682-7300</p>
-          <p>
-            Endereço: Av. Eng. Eusébio Stevaux, 823 - Santo Amaro, São Paulo
-          </p>
-        </div>
+  <main>
+    <h1>🏠 Bem-vindo à Home!</h1>
+  </main>
 
-        <div class="footer-section">
-          <h3>🧑‍💼 Sobre Nós</h3>
-          <p>
-            Nós somos apaixonados pelos animais! Nosso objetivo é oferecer os
-            melhores produtos e atendimento para você e seu amigo de quatro
-            patas.
-          </p>
-        </div>
+  <script src="../../js/saudacao-usuario.js"></script> <!-- ✅ Script da saudação -->
 
-        <div class="footer-section">
-          <h3>🚀 Carreiras</h3>
-          <p>Quer fazer parte do nosso time?</p>
-          <a href="#">Trabalhe conosco</a>
-        </div>
-
-        <div class="footer-section">
-          <h3>🛒 Produtos Populares</h3>
-          <ul>
-            <li>Ração Premium para Cães</li>
-            <li>Areia Higiênica Felina</li>
-            <li>Coleira Antipulgas</li>
-          </ul>
-        </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>📞 Contato</h3>
+        <p>Email: suporte@patasdouradas.com</p>
+        <p>Telefone: (11) 5682-7300</p>
+        <p>Endereço: Av. Eng. Eusébio Stevaux, 823 - Santo Amaro, São Paulo</p>
       </div>
-    </footer>
-  </body>
+
+      <div class="footer-section">
+        <h3>🧑‍💼 Sobre Nós</h3>
+        <p>
+          Nós somos apaixonados pelos animais! Nosso objetivo é oferecer os melhores produtos e atendimento para você e seu amigo de quatro patas.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3>🚀 Carreiras</h3>
+        <p>Quer fazer parte do nosso time?</p>
+        <a href="#">Trabalhe conosco</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>🛒 Produtos Populares</h3>
+        <ul>
+          <li>Ração Premium para Cães</li>
+          <li>Areia Higiênica Felina</li>
+          <li>Coleira Antipulgas</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

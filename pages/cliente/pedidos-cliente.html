@@ -8,6 +8,7 @@
   <body>
     <header class="cabecalho">
       <div class="logo">🐾 PatasDouradas.com</div>
+      <div id="saudacaoUsuario" class="saudacao-usuario"></div> <!-- ✅ Saudação -->
       <nav class="menu">
         <a href="home.html">Home</a>
         <a href="produtos-lista.html">Produtos</a>
@@ -16,8 +17,7 @@
         <a
           href="../cadastro/login.html"
           onclick="logout(); window.location.href='../cadastro/login.html'"
-          >Sair</a
-        >
+          >Sair</a>
       </nav>
     </header>
 
@@ -26,7 +26,9 @@
       <div id="lista-pedidos"></div>
     </main>
 
+    <script src="../../js/saudacao-usuario.js"></script> <!-- ✅ Script da saudação -->
     <script src="../../js/pedidos-cliente.js"></script>
+
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-section">
@@ -39,29 +41,4 @@
         </div>
 
         <div class="footer-section">
-          <h3>🧑‍💼 Sobre Nós</h3>
-          <p>
-            Nós somos apaixonados pelos animais! Nosso objetivo é oferecer os
-            melhores produtos e atendimento para você e seu amigo de quatro
-            patas.
-          </p>
-        </div>
-
-        <div class="footer-section">
-          <h3>🚀 Carreiras</h3>
-          <p>Quer fazer parte do nosso time?</p>
-          <a href="#">Trabalhe conosco</a>
-        </div>
-
-        <div class="footer-section">
-          <h3>🛒 Produtos Populares</h3>
-          <ul>
-            <li>Ração Premium para Cães</li>
-            <li>Areia Higiênica Felina</li>
-            <li>Coleira Antipulgas</li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-  </body>
-</html>
+          <h3>🧑‍💼 Sobr
