@@ -10,7 +10,7 @@ document.getElementById("formProduto").addEventListener("submit", function (e) {
 
   const novoProduto = {
     id: Date.now(),
-    nome: nome,              // ✅ corrigido
+    nome: nome,       
     preco: Number(preco),
     estoque: Number(estoque),
     imagem: imagem
