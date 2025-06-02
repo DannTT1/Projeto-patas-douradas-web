@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel do Vendedor</title>
-  <link rel="stylesheet" href="../../css/style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Vendedor</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="logo">🐾 PatasDouradas.com</div>
+      <nav class="menu">
+        <a href="painel-vendedor.html">Dashboard</a>
+        <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
+        <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
+        <a href="produtos-adicionar.html">Adicionar Produto</a>
+        <a href="#" onclick="alternarRelatorio()">Relatório</a>
+        <!-- ✅ NOVO -->
+        <a
+          href="/pages/cadastro/login.html"
+          onclick="logout(); window.location.href='/pages/cadastro/login.html'"
+          >Sair</a
+        >
+      </nav>
+    </header>
 
-  <header class="cabecalho">
-    <div class="logo">🐾 PatasDouradas.com</div>
-    <nav class="menu">
-      <a href="painel-vendedor.html">Dashboard</a>
-      <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
-      <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
-      <a href="produtos-adicionar.html">Adicionar Produto</a>
-      <a href="#" onclick="alternarRelatorio()">Relatório</a> <!-- ✅ NOVO -->
-      <a href="/pages/cadastro/login.html" onclick="logout(); window.location.href='/pages/cadastro/login.html'">Sair</a>
-    </nav>
-  </header>
+    <main>
+      <h1>📊 Painel do Vendedor</h1>
 
-  <main>
-    <h1>📊 Painel do Vendedor</h1>
+      <div class="cards-dashboard">
+        <div class="card">
+          📦 Total de Pedidos: <span id="totalPedidos">0</span>
+        </div>
+        <div class="card">
+          💰 Vendas Totais: R$ <span id="totalVendas">0.00</span>
+        </div>
+        <div class="card">
+          📦 Itens em Estoque: <span id="totalEstoque">0</span>
+        </div>
+      </div>
 
-    <div class="cards-dashboard">
-      <div class="card">📦 Total de Pedidos: <span id="totalPedidos">0</span></div>
-      <div class="card">💰 Vendas Totais: R$ <span id="totalVendas">0.00</span></div>
-      <div class="card">📦 Itens em Estoque: <span id="totalEstoque">0</span></div>
-    </div>
+      <!-- ✅ SEÇÃO DO RELATÓRIO OCULTA -->
+      <section
+        class="relatorio-section"
+        id="relatorioContainer"
+        style="display: none; margin-top: 20px"
+      >
+        <h2>📑 Relatório de Dados Salvos</h2>
+        <pre id="relatorioDados" class="relatorio-box"></pre>
+        <button onclick="limparDadosLocalStorage()">🧹 Limpar Dados</button>
+      </section>
+    </main>
 
-    <!-- ✅ SEÇÃO DO RELATÓRIO OCULTA -->
-    <section class="relatorio-section" id="relatorioContainer" style="display: none; margin-top: 20px;">
-      <h2>📑 Relatório de Dados Salvos</h2>
-      <pre id="relatorioDados" class="relatorio-box"></pre>
-      <button onclick="limparDadosLocalStorage()">🧹 Limpar Dados</button>
-    </section>
-  </main>
-
-  <script src="../../js/dashboard-vendedor.js"></script>
-</body>
+    <script src="../../js/dashboard-vendedor.js"></script>
+  </body>
 </html>

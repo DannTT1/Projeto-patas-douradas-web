@@ -6,4 +6,4 @@
         saudacao.textContent = `Olá, ${usuarioLogado.nome} 👤`;
       }
     }
-  });
+  }); 

@@ -47,4 +47,4 @@ function cadastrarUsuario(novoUsuario) {
 function verificadorDeEmailExistente(email) {
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
     return usuarios.some(u => u.email === email);
-}
+} 

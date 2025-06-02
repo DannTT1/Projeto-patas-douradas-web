@@ -85,4 +85,3 @@ git fetch origin
 git reset --hard origin/main
 
     🔁 Substitua main por master se seu repositório usa essa branch.
-

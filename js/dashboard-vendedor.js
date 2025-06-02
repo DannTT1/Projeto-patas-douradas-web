@@ -62,4 +62,4 @@ function limparDadosLocalStorage() {
     exibirRelatorioLocalStorage();
     location.reload();
   }
-}
+} 

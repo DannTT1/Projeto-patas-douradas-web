@@ -5,4 +5,4 @@ document.addEventListener("DOMContentLoaded", () => {
   if (usuario && usuario.nome && saudacao) {
     saudacao.textContent = `Olá, ${usuario.nome}`;
   }
-});
+}); 

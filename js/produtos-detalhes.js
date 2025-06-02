@@ -45,4 +45,4 @@ function voltar() {
   window.location.href = "produtos-lista.html";
 }
 
-document.addEventListener("DOMContentLoaded", carregarDetalhes);
+document.addEventListener("DOMContentLoaded", carregarDetalhes); 

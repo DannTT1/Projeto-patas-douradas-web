@@ -40,4 +40,4 @@ function listarPedidos() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", listarPedidos);
+document.addEventListener("DOMContentLoaded", listarPedidos); 

@@ -23,4 +23,4 @@ document.getElementById("formularioCadastro").addEventListener("submit", functio
    alert('cadastro realizado com sucesso! faça o login agora.');
 window.location.href = "login.html";
 
-});
+}); 

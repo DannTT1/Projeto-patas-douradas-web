@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Gerenciar Produtos</title>
-  <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gerenciar Produtos</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="logo">🐾 PatasDouradas.com</div>
+      <nav class="menu">
+        <a href="painel-vendedor.html">Dashboard</a>
+        <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
+        <a href="produtos-adicionar.html">Adicionar Produto</a>
+        <a
+          href="/pages/cadastro/login.html"
+          onclick="logout(); window.location.href='/pages/cadastro/login.html'"
+          >Sair</a
+        >
+      </nav>
+    </header>
 
-  <header class="cabecalho">
-    <div class="logo">🐾 PatasDouradas.com</div>
-    <nav class="menu">
-      <a href="painel-vendedor.html">Dashboard</a>
-      <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
-      <a href="produtos-adicionar.html">Adicionar Produto</a>
-      <a href="/pages/cadastro/login.html" onclick="logout(); window.location.href='/pages/cadastro/login.html'">Sair</a>
-    </nav>
-  </header>
+    <main>
+      <h1>📦 Produtos Cadastrados</h1>
+      <div id="lista-produtos" class="produtos-container"></div>
+    </main>
 
-  <main>
-    <h1>📦 Produtos Cadastrados</h1>
-    <div id="lista-produtos" class="produtos-container"></div>
-  </main>
-
-  <script src="../../js/gerenciar-produtos.js"></script>
-</body>
+    <script src="../../js/gerenciar-produtos.js"></script>
+  </body>
 </html>

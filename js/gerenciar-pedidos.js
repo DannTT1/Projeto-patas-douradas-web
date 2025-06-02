@@ -28,4 +28,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.appendChild(div);
   });
-});
+}); 

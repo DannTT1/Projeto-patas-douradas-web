@@ -86,4 +86,4 @@ function voltar() {
   window.location.href = "produtos-lista.html";
 }
 
-document.addEventListener("DOMContentLoaded", listarCarrinho);
+document.addEventListener("DOMContentLoaded", listarCarrinho); 

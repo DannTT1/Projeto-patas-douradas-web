@@ -27,4 +27,4 @@ function removerProduto(id) {
   localStorage.setItem("produtosDisponiveis", JSON.stringify(produtos));
   alert("Produto removido com sucesso!");
   location.reload();
-}
+} 

@@ -21,4 +21,4 @@ document.getElementById("formProduto").addEventListener("submit", function (e) {
 
   alert("Produto cadastrado com sucesso!");
   window.location.href = "gerenciar-produtos.html";
-});
+}); 
