@@ -1,0 +1,160 @@
+/* produto-detalhe.css - Estilo padronizado com home.css */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Cabeçalho */
+.cabecalho {
+  background-color: #ff9f1c;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #ffeeba;
+}
+
+/* Botão Voltar */
+.btn-voltar {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.btn-voltar:hover {
+  background-color: #e0e0e0;
+}
+
+/* Cartão do Produto */
+.produto-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 250px;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.produto-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.produto-card h2 {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  color: #ff9f1c;
+}
+
+.produto-card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.produto-card button {
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.produto-card button:hover {
+  background-color: #e68a00;
+}
+
+/* Rodapé */
+.footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: "Segoe UI", sans-serif;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 220px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #f1c40f;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section a {
+  font-size: 14px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.footer-section ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.saudacao-usuario {
+  font-weight: bold;
+  color: #333;          
+  font-size: 14px;
+  text-align: center;
+  flex: 1;
+}

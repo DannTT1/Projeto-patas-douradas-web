@@ -1,0 +1,159 @@
+/* carrinho.css - Estilo padronizado com home.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+}
+
+.cabecalho {
+  background-color: #ff9f1c;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #ffeeba;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #ff9f1c;
+  margin-bottom: 30px;
+}
+
+.carrinho-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item-carrinho {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.item-carrinho button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.item-carrinho button:hover {
+  background-color: #c9302c;
+}
+
+.btn-finalizar {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.btn-finalizar:hover {
+  background-color: #218838;
+}
+
+.btn-voltar {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.btn-voltar:hover {
+  background-color: #e0e0e0;
+}
+
+.footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 40px 20px;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 220px;
+}
+
+.footer-section h3 {
+  color: #f1c40f;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a,
+.footer-section li {
+  font-size: 14px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.footer-section ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.saudacao-usuario {
+  font-weight: bold;
+  color: #333;          
+  font-size: 14px;
+  text-align: center;
+  flex: 1;
+}

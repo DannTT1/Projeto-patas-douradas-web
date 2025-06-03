@@ -1,0 +1,88 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecalho {
+  background-color: #ff9f1c;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #ffeeba;
+}
+
+main {
+  padding: 40px 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff9f1c;
+}
+
+.painel-pedidos {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.pedido {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.pedido h3 {
+  margin-top: 0;
+  color: #183153;
+}
+
+.pedido p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+.pedido ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.pedido li {
+  margin-bottom: 4px;
+}
+
+hr {
+  margin-top: 16px;
+  border: none;
+  border-top: 1px solid #ccc;
+}

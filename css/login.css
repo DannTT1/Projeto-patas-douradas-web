@@ -1,6 +1,6 @@
-/* ---------- cadastro.css ---------- */
+/* ---------- login.css ---------- */
 
-/* Reset e fonte base */
+/* Reset básico */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
@@ -9,14 +9,14 @@ body {
   padding: 0;
 }
 
-/* Título */
+/* Título principal */
 h2 {
   text-align: center;
   margin-top: 40px;
   color: #ff9f1c;
 }
 
-/* Container do formulário de cadastro */
+/* Container do login */
 .login-container {
   max-width: 400px;
   margin: 40px auto;
@@ -25,44 +25,13 @@ h2 {
   background-color: #f8f8f8;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   color: #333;
+  text-align: center;
 }
 
-/* Rótulos e campos */
-label {
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  box-sizing: border-box;
-}
-
-/* Botão de cadastro */
-button[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #ff9f1c;
-  color: #fff;
+/* Parágrafo dentro do container */
+.login-container p {
+  margin-bottom: 20px;
   font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #e88e00;
 }
 
 /* Tipo de usuário */
@@ -84,11 +53,41 @@ button[type="submit"]:hover {
   margin-right: 5px;
 }
 
-/* Link de login */
+/* Campos de input */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+/* Botão de login */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff9f1c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #e88e00;
+}
+
+/* Link de cadastro */
 .cadastro-link {
   margin-top: 15px;
   font-size: 14px;
-  text-align: center;
 }
 
 .cadastro-link a {
@@ -99,4 +98,14 @@ button[type="submit"]:hover {
 
 .cadastro-link a:hover {
   text-decoration: underline;
+}
+
+/* Mensagem de erro */
+.erro {
+  color: #d8000c;
+  background-color: #ffbaba;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
 }
