@@ -30,7 +30,7 @@ function logout() {
 function protegerLogin() {
     if (!usuarioLogado()) {
         alert("Você precisa estar logado");
-        window.location.href = '../../cadastro/login.html';
+        window.location.href = '../../login-cadastro/login.html';
     }
 }
 

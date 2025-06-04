@@ -1,0 +1,158 @@
+-- LOCALSTORAGE --
+O localStorage é um recurso do navegador que permite armazenar dados no computador do usuário, como se fosse um pequeno banco de dados persistente no próprio navegador.
+
+Os dados não se perdem ao recarregar ou fechar a aba.
+
+E eles são armazenados como pares chave-valor (strings).
+
+Exemplo:
+localStorage.setItem('nome', 'Maria');
+const nome = localStorage.getItem('nome'); // 'Maria'
+
+LEMBRE-SE: 
+- O localStorage só armazena strings, então quando você salva um objeto ou array nele, você precisa converter para string com JSON.stringify() e, ao recuperar, precisa converter de volta para objeto com JSON.parse().
+
+COMANDOS PRINCIPAIS DO LOCALSTORAGE:
+
+| Função                   | Descrição                       |
+| ------------------------ | ------------------------------- |
+| `localStorage.getItem()` | Lê uma string do armazenamento. |
+| `localStorage.setItem()` | Armazena uma string.            |
+| `JSON.stringify()`       | Converte um objeto em string.   |
+| `JSON.parse()`           | Converte uma string em objeto.  |
+
+
+
+----- JSON em JavaScript -----
+JSON é um objeto embutido (nativo) do JavaScript usado para trabalhar com dados no formato JSON (JavaScript Object Notation) — um formato leve e amplamente utilizado para troca de dados entre sistemas.
+
+ele possui dois métodos principais:
+
+- JSON.stringify() que é utilizado para converter objetos em strings JSON
+📌 Usado, por exemplo, para salvar objetos no localStorage, que só aceita strings.
+
+// exemplo 
+const obj = { nome: "João", idade: 25 };
+const jsonString = JSON.stringify(obj);
+console.log(jsonString); // {"nome":"João","idade":25}
+
+
+- JSON.parse() que é utilizado para converter uma String JSON em um objeto JavaScript
+📌 Usado para ler dados do localStorage
+// exemplo
+const jsonString = '{"nome":"João","idade":25}';
+const obj = JSON.parse(jsonString);
+console.log(obj.nome); // João
+
+RESUMO: 
+| Ação                 | Método             | Exemplo                         |
+| -------------------- | ------------------ | ------------------------------- |
+| Objeto → String JSON | `JSON.stringify()` | `JSON.stringify({nome: "Ana"})` |
+| String JSON → Objeto | `JSON.parse()`     | `JSON.parse('{"nome":"Ana"}')`  |
+
+Utilizamos o objeto JSON com o localStorage sempre que armazenar ou ler algo
+
+-- Auth.js ---
+O auth.js é responsavel pela autenticação dos nossos usuarios no projeto atraves do localStorage
+
+As constantes abaixo servem para definir os usuarios, e o usuario logado no momento 
+
+- const USUARIO_LOGADO = 'usuario_logado';
+- const USUARIOS = 'usuarios';
+
+Temos a função login 
+// Função de login
+function login(email, senha, tipo) {
+    const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
+
+    const usuario = usuarios.find(
+        u => u.email === email && u.senha === senha && u.tipo === tipo
+    );
+
+    if (usuario) {
+        localStorage.setItem(USUARIO_LOGADO, JSON.stringify(usuario));
+        return true;
+    }
+
+    return false;
+}
+
+Essa função trabalha da seguinte forma: 
+1 - primeiro ela busca todos os usuarios que estão cadastrados no localStorage convertendo de String, para Objeto 
+// auth.js - linha 6
+const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
+
+2 - procura um usuario que tenha os mesmos dados passados (email, senha e tipo)
+// auth - linha 6
+const usuario = usuarios.find(
+    u => u.email === email && u.senha === senha && u.tipo === tipo
+);
+
+3 - se encontrar armazena em usuario_logado no localStorage
+
+localStorage.setItem(USUARIO_LOGADO, JSON.stringify(usuario));
+
+4 - retorna true para dizer que o login foi bem sucedido, ou false caso nao seja 
+
+FUNÇÃO usuarioLogado()
+
+// auth.js - linha 20
+function usuarioLogado() {
+    return JSON.parse(localStorage.getItem(USUARIO_LOGADO));
+}
+
+- Essa função verifica o usuario logado atualmente
+- retorna o objeto do usuario que está logado, ou null caso nao tenha ninguem logado
+
+
+FUNÇÃO logout()
+// auth.js - linha 26
+function logout() {
+    localStorage.removeItem(USUARIO_LOGADO);
+}
+- função que remove o usuario logado do localStorage (essa função aparece nos headers ao clicar em "sair")
+
+
+FUNÇÃO protegerLogin()
+// auth.js - linha 30
+function protegerLogin() {
+    if (!usuarioLogado()) {
+        alert("Você precisa estar logado");
+        window.location.href = '../../cadastro/login.html';
+    }
+}
+
+- Essa funçao verifica se possui um usuario logado, caso nao tenha ela abre um popup 
+notificando que o usario deve estar logado e redireciona para a pagina de login
+
+FUNÇÃO cadastrarUsuario()
+// auth.js - linha 40 
+function cadastrarUsuario(novoUsuario) {
+    // Busca no localStorage a lista de usuários cadastrados.
+    // Se não existir ainda, usa um array vazio como valor padrão.
+    const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
+
+    // Adiciona o novo usuário ao array de usuários.
+    usuarios.push(novoUsuario); // <<< ESSENCIAL: aqui que o novo usuário entra no sistema
+
+    // Atualiza o localStorage com a nova lista de usuários (convertida em string JSON).
+    localStorage.setItem(USUARIOS, JSON.stringify(usuarios));
+}
+
+- Essa função pega o usuario recem preenchido no formulario, adicionando ele a lista de 
+usuarios no localStorage.
+
+FUNÇÃO erificadorDeEmailExistente()
+
+function verificadorDeEmailExistente(email) {
+    // Busca todos os usuários salvos no localStorage.
+    const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
+
+    // Verifica se já existe algum usuário com o mesmo e-mail.
+    // Retorna true se encontrar, false se não encontrar.
+    return usuarios.some(usuario => usuario.email === email);
+}
+
+- Essa função barra qualquer tentativa de cadastro com o mesmo email
+- retornando true se achar, ou false se nao encontrar, deixando o usuario cadastrar  caso
+nao esteja cadastrando email duplicado
