@@ -146,7 +146,8 @@ h1 {
   padding-left: 20px;
   list-style: disc;
 }
- .saudacao-usuario {
+
+.saudacao-usuario {
   font-weight: bold;
   color: #333;          
   font-size: 14px;

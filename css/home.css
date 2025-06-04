@@ -67,7 +67,6 @@ main h1 {
   background-color: #1a1a1a;
   color: #fff;
   padding: 40px 20px;
-  font-family: "Segoe UI", sans-serif;
   margin-top: auto;
 }
 
@@ -85,14 +84,13 @@ main h1 {
 }
 
 .footer-section h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
   color: #f1c40f;
+  margin-bottom: 10px;
 }
 
 .footer-section p,
-.footer-section li,
-.footer-section a {
+.footer-section a,
+.footer-section li {
   font-size: 14px;
   color: #ccc;
   text-decoration: none;
@@ -106,4 +104,12 @@ main h1 {
 .footer-section ul {
   padding-left: 20px;
   list-style: disc;
+}
+
+.saudacao-usuario {
+  font-weight: bold;
+  color: #333;          
+  font-size: 14px;
+  text-align: center;
+  flex: 1;
 }
