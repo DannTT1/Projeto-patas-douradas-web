@@ -25,14 +25,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   totalEstoqueEl.textContent = totalEstoque;
 
-  // exibe o relatório também
   exibirRelatorioLocalStorage();
 });
+
 function alternarRelatorio() {
-  const container = document.getElementById("relatorioContainer");
+  const container = document.querySelector(".relatorio-container");
+  if (!container) {
+    console.error("⚠️ Container do relatório não encontrado.");
+    return;
+  }
+
   if (container.style.display === "none") {
     container.style.display = "block";
-    exibirRelatorioLocalStorage(); // Atualiza sempre que abrir
+    exibirRelatorioLocalStorage();
   } else {
     container.style.display = "none";
   }
@@ -62,4 +67,4 @@ function limparDadosLocalStorage() {
     exibirRelatorioLocalStorage();
     location.reload();
   }
-} 
+}
