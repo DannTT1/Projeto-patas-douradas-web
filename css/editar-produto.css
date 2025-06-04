@@ -1,4 +1,4 @@
-/* ---------- produtos-adicionar.css ---------- */
+/* ---------- editar-produto.css ---------- */
 
 /* Estilo base */
 body {
@@ -9,7 +9,6 @@ body {
   padding: 0;
 }
 
-/* Cabeçalho fixo */
 .cabecalho {
   background-color: #ff9f1c;
   padding: 12px 20px;
@@ -48,7 +47,7 @@ h2 {
   color: #ff9f1c;
 }
 
-/* Formulário de Produto */
+/* Container do Formulário */
 .login-container {
   max-width: 450px;
   margin: 0 auto;
@@ -59,6 +58,7 @@ h2 {
   color: #333;
 }
 
+/* Rótulos */
 label {
   display: block;
   text-align: left;
@@ -66,7 +66,7 @@ label {
   font-weight: 500;
 }
 
-input[type="text"],
+/* Campos de entrada */
 input[type="number"] {
   width: 100%;
   padding: 10px;
@@ -95,7 +95,7 @@ button[type="submit"]:hover {
   background-color: #e88e00;
 }
 
-/* Espaçamento uniforme como no painel */
+/* Espaçamento uniforme */
 main {
   padding: 40px 20px;
 }

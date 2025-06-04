@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <h3>${produto.nome}</h3>
       <p>R$ ${produto.preco.toFixed(2)}</p>
       <p>Estoque: ${produto.estoque}</p>
-      <button onclick="removerProduto(${produto.id})">Remover</button>
+      <button onclick="editarProduto(${produto.id})">Editar</button>
+      <button onclick="removerProduto(${produto.id})"class="btn-excluir">Remover</button>
     `;
     container.appendChild(card);
   });
@@ -27,4 +28,9 @@ function removerProduto(id) {
   localStorage.setItem("produtosDisponiveis", JSON.stringify(produtos));
   alert("Produto removido com sucesso!");
   location.reload();
-} 
+}
+function editarProduto(id) {
+  window.location.href = `editar-produto.html?id=${id}`;
+}
+
+

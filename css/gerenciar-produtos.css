@@ -96,6 +96,11 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
+
 .produto-card button:hover {
   background-color: #e68a00;
+}
+
+.produto-card .btn-excluir:hover {
+  background-color: #cc0000;
 }
