@@ -156,3 +156,207 @@ function verificadorDeEmailExistente(email) {
 - Essa função barra qualquer tentativa de cadastro com o mesmo email
 - retornando true se achar, ou false se nao encontrar, deixando o usuario cadastrar  caso
 nao esteja cadastrando email duplicado
+
+
+
+---- Cadastro.js ----
+- trabalaha puxando o formulario do cadastro.html
+// cadastro.js - linha 1
+document.getElementById("formularioCadastro").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+- aqui ocorre um evento assim que o botao de submit do cadastro.html é usado
+
+É criado 4 variaveis const
+// cadastro.js - linha 4 a linha 7
+    const nomeCompleto = document.getElementById("nomeUsuario").value;
+    const email = document.getElementById("emailUsuario").value;
+    const senha = document.getElementById("senhaUsuario").value;
+    const tipoUsuario = document.querySelector("input[name='opcaoLoginCadastro']:checked").value;
+
+// cadastro.js - linha - 9 a linha 12
+    if(verificadorDeEmailExistente(email)) {
+        alert('Email já cadastrado,faça o login utilizando outro e-mail');
+        return;
+    }   
+
+- Estamos chamando a função verificadorDeEmailExistente() do nosso auth.js
+- aplica a condição if se caso o email ja está cadastrado no site informa um popup ao usuario
+nao permitindo ele cadastrar com esse email e pedindo para cadastrar com outro email
+
+
+---- carrinho.js ------
+FUNÇÃO obterCarrinho()
+
+// carrinho.js - linha 1 a 3
+function obterCarrinho() {
+  return JSON.parse(localStorage.getItem("carrinho")) || [];
+}
+- Aqui recuperamos o conteúdo do carrinho que fica armazenado no localStorage
+- lembrando: Como o localStorage armazena só texto, ele faz o parse do JSON para transformar 
+em array de objetos.
+- Se não houver nada armazenado (retorna null), um array vazio [].
+
+FUNÇÃO salvarCarrinho()
+
+// carrinho.js - linha 5 a 7
+function salvarCarrinho(carrinho) {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+- Essa funçao recebe um array carrinho e salva no locaStorage(assim como os carrinhos de
+outros e-commerces o carrinho do usuario geralmente salva os produtos deixados lá)
+
+FUNÇÃO listarCarrinho()
+// carrinho.js - linha 9 a 34
+function listarCarrinho() {
+  const carrinho = obterCarrinho();
+  const container = document.getElementById("itens-carrinho");
+  const totalSpan = document.getElementById("total");
+  container.innerHTML = "";
+
+  if (carrinho.length === 0) {
+    container.innerHTML = "<p>O carrinho está vazio.</p>";
+    totalSpan.textContent = "";
+    return;
+  }
+
+  let total = 0;
+  carrinho.forEach((item, index) => {
+    total += item.preco;
+    const div = document.createElement("div");
+    div.className = "item-carrinho";
+    div.innerHTML = `
+      <p><strong>${item.nome}</strong> - R$ ${item.preco.toFixed(2)}</p>
+      <button onclick="removerItem(${index})">Remover</button>
+    `;
+    container.appendChild(div);
+  });
+
+  totalSpan.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+- Ela busca o carrinho atual fazendo uma variavel const que recebe a funçao obterCarrinho()
+// carrinho.js - linha 10
+ const carrinho = obterCarrinho();
+
+- Se o carrinho estiver vazio, mostra a mensagem "O carrinho está vazio." e limpa o total.
+// carrinho.js - linha 15 a 19
+  if (carrinho.length === 0) {
+    container.innerHTML = "<p>O carrinho está vazio.</p>";
+    totalSpan.textContent = "";
+    return;
+  }
+
+- se o carrinho possuir itens 
+// carrinho.js - linha 21 a 34
+let total = 0;
+  carrinho.forEach((item, index) => {
+    total += item.preco;
+    const div = document.createElement("div");
+    div.className = "item-carrinho";
+    div.innerHTML = `
+      <p><strong>${item.nome}</strong> - R$ ${item.preco.toFixed(2)}</p>
+      <button onclick="removerItem(${index})">Remover</button>
+    `;
+    container.appendChild(div);
+  });
+
+  totalSpan.textContent = `Total: R$ ${total.toFixed(2)}`;
+
+- itera sobre os produtos e soma os preços para calcular o total.
+
+- Para cada produto, cria um div com o nome, preço formatado e um botão "Remover" que chama a função removerItem(index) para remover o produto pelo índice se quiser.
+
+- Atualiza o total mostrado no elemento com id "total".  
+
+
+FUNÇÃO removerItem() 
+
+// carrinho.js - linha 36 a 41
+function removerItem(index) {
+  const carrinho = obterCarrinho();
+  carrinho.splice(index, 1);
+  salvarCarrinho(carrinho);
+  listarCarrinho();
+}
+
+- Ela remove o item na posição index do array do carrinho.
+- atualiza e salva o carrinho atualizado no localStorage.
+- Atualiza a lista exibida chamando listarCarrinho() novamente.
+
+
+FUNÇÃO finalizarPedido()
+
+// carrinho.js - linha
+function finalizarPedido() {
+  const carrinho = obterCarrinho();
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
+  if (!usuarioLogado) {
+    alert("Erro: você precisa estar logado para finalizar o pedido.");
+    return;
+  }
+
+  const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
+
+  carrinho.forEach(itemCarrinho => {
+    const produtoIndex = produtos.findIndex(p => p.id === itemCarrinho.id);
+    if (produtoIndex !== -1) {
+      produtos[produtoIndex].estoque = Math.max(0, produtos[produtoIndex].estoque - 1);
+    }
+  });
+
+  localStorage.setItem("produtosDisponiveis", JSON.stringify(produtos));
+
+  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+
+  const novoPedido = {
+    id: Date.now(),
+    data: Date.now(),
+    cliente: usuarioLogado, // Salva o usuário logado junto com o pedido
+    itens: carrinho,
+    total: carrinho.reduce((acc, item) => acc + item.preco, 0)
+  };
+
+  pedidos.push(novoPedido);
+  localStorage.setItem("pedidos", JSON.stringify(pedidos));
+  localStorage.removeItem("carrinho");
+
+  alert("Pedido finalizado com sucesso!");
+  window.location.href = "pedidos-cliente.html";
+}
+
+- Essa função faz muitas coisas:
+1 - Ela verifica se o carrinho está vazio
+2 - Verifica se tem um usuario logado(pegando do localStorage em "usuario_logado", se não tiver ele alerta erro e sai).
+3 - recupera a lista de produtos disponíveis.
+4 - para cada produto dentro do carrinho, ele localiza esse produto e diminui o estoque, garantindo que nao há erros de logina na contabilidade dos produtos em estoque.
+5 - atualiza a lista de produtos no localStorage.
+6 - recupera a lista de pedidos ja salvos
+7 - Cria um objeto novoPedido com: 
+  - um id unico(timestamp)
+  - data atual (timestamp)
+  - o usuario logado como cliente
+  - os itens do carrinho 
+  - total do pedido somando os precos dos itens
+8 - Adiciona o novo pedido na lista de pedidos e salva no localStorage.
+9 - Limpa o carrinho (remove a chave "carrinho").
+10 - Exibe um alerta de sucesso.
+11 - Redireciona para a página "pedidos-cliente.html".
+
+
+FUNÇÃO voltar()
+// carrinho.js - linha  85 a 87
+function voltar() {
+  window.location.href = "produtos-lista.html";
+}
+
+- redireciona o usuário para a pagina de produtos
+
+document.addEventListener("DOMContentLoaded", listarCarrinho);
+- garante que o HTML vai carregar primeiro
