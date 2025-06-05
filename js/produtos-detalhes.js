@@ -3,6 +3,9 @@ function getProdutoById(id) {
   return produtos.find(p => p.id === id);
 }
 
+/*aqui estamos pegando o valor do parâmetro id da url
+convertendo esse valor para número, e usando esse número para buscar 
+os detalhes do produto por meio da função getProdutoById */
 function carregarDetalhes() {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));

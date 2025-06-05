@@ -7,6 +7,7 @@ document.getElementById("formLogin").addEventListener("submit", function (e) {
 
   const logou = login(email, senha, tipoUsuario);
 
+// aqui direcionamos o usuario de acordo com o tipo sendo vendedor / cliente
   if (logou) {
     alert('Login realizado com sucesso!!');
     if (tipoUsuario === 'cliente') {

@@ -48,7 +48,7 @@ function adicionarAoCarrinho(id) {
     alert("Produto esgotado!");
     return;
   }
-
+// puxa o produto e coloca ele no carrinho
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
   carrinho.push(produto);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));

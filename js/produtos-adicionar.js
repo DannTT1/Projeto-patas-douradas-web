@@ -15,7 +15,7 @@ document.getElementById("formProduto").addEventListener("submit", function (e) {
     estoque: Number(estoque),
     imagem: imagem
   };
-
+// adiciona o novo produto no localStorage
   produtos.push(novoProduto);
   localStorage.setItem("produtosDisponiveis", JSON.stringify(produtos));
 
