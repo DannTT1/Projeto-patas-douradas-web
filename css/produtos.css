@@ -1,4 +1,4 @@
-/* produtos.css - Estilo padronizado com home.css */
+
 
 html, body {
   height: 100%;
@@ -22,7 +22,7 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Cabeçalho */
+
 .cabecalho {
   background-color: #ff9f1c;
   padding: 12px 20px;
@@ -72,7 +72,7 @@ h1 {
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
-  height: 440px; /* levemente maior */
+  height: 440px; 
 }
 
 .produto-card:hover {
@@ -98,7 +98,7 @@ h1 {
   font-weight: bold;
   color: #333;
   margin: 0.8rem 0 0.5rem;
-  min-height: 48px; /* força altura previsível do título */
+  min-height: 48px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,7 +118,7 @@ h1 {
 }
 
 .produto-card button {
-  margin-top: auto; /* garante alinhamento inferior */
+  margin-top: auto; 
   background-color: #ff9900;
   color: white;
   border: none;

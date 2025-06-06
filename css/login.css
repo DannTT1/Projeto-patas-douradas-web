@@ -1,6 +1,4 @@
-/* ---------- login.css ---------- */
 
-/* Reset básico */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
@@ -9,14 +7,14 @@ body {
   padding: 0;
 }
 
-/* Título principal */
+
 h2 {
   text-align: center;
   margin-top: 40px;
   color: #ff9f1c;
 }
 
-/* Container do login */
+
 .login-container {
   max-width: 400px;
   margin: 40px auto;
@@ -28,13 +26,13 @@ h2 {
   text-align: center;
 }
 
-/* Parágrafo dentro do container */
+
 .login-container p {
   margin-bottom: 20px;
   font-size: 16px;
 }
 
-/* Tipo de usuário */
+
 .tipo-usuario {
   display: flex;
   justify-content: center;
@@ -84,7 +82,7 @@ button[type="submit"]:hover {
   background-color: #e88e00;
 }
 
-/* Link de cadastro */
+
 .cadastro-link {
   margin-top: 15px;
   font-size: 14px;

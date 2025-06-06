@@ -1,4 +1,4 @@
-/* ---------- Estilo da Página Home ---------- */
+
 
 html, body {
   height: 100%;
@@ -33,7 +33,7 @@ h1 {
   text-shadow: 1px 1px 2px #fff;
 }
 
-/* Cabeçalho */
+
 .cabecalho {
   background-color: #ff9f1c;
   padding: 12px 20px;
@@ -118,7 +118,7 @@ h1 {
   list-style: disc;
 }
 
-/* Banner */
+
 .banner-home {
   background-image: url('../assets/img/fundo-banner.png');
   background-size: cover;
@@ -154,7 +154,7 @@ h1 {
   background-color: #ffb347;
 }
 
-/* Produtos em destaque */
+
 .produtos-destaque {
   text-align: center;
   margin-top: 2rem;
@@ -168,7 +168,7 @@ h1 {
   margin-top: 1rem;
 }
 
-/* Produto individual */
+
 .produto {
   background-color: #fff;
   border: 1px solid #ddd;

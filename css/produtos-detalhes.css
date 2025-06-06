@@ -1,4 +1,4 @@
-/* produto-detalhe.css - Estilo padronizado com home.css */
+
 
 html, body {
   height: 100%;
@@ -16,7 +16,7 @@ main {
   text-align: center;
 }
 
-/* Cabeçalho */
+
 .cabecalho {
   background-color: #ff9f1c;
   padding: 12px 20px;
