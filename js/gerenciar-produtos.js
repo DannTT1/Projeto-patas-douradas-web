@@ -7,16 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  produtos.forEach((produto, index) => {
+  produtos.forEach((produto) => {
     const card = document.createElement("div");
     card.className = "produto-card";
     card.innerHTML = `
       <img src="${produto.imagem}" alt="${produto.nome}">
       <h3>${produto.nome}</h3>
       <p>R$ ${produto.preco.toFixed(2)}</p>
-      <p>Estoque: ${produto.estoque}</p>
-      <button onclick="editarProduto(${produto.id})">Editar</button>
-      <button onclick="removerProduto(${produto.id})"class="btn-excluir">Remover</button>
+      <div class="estoque">Estoque: ${produto.estoque}</div>
+      <div class="botoes">
+        <button class="btn-editar" onclick="editarProduto(${produto.id})">Editar</button>
+        <button class="btn-excluir" onclick="removerProduto(${produto.id})">Remover</button>
+      </div>
     `;
     container.appendChild(card);
   });
@@ -29,8 +31,7 @@ function removerProduto(id) {
   alert("Produto removido com sucesso!");
   location.reload();
 }
+
 function editarProduto(id) {
   window.location.href = `editar-produto.html?id=${id}`;
 }
-
-
