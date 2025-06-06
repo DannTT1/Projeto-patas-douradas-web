@@ -70,13 +70,25 @@ main {
   width: 250px;
   text-align: center;
   margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 580px;
 }
 
 .produto-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 360px;
+  object-fit: contain;
+  image-rendering: auto;
   border-radius: 8px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(1.05) contrast(1.05);
+}
+
+.produto-card img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1) contrast(1.1);
 }
 
 .produto-card h2 {
@@ -87,23 +99,31 @@ main {
 
 .produto-card p {
   font-size: 1rem;
-  margin-bottom: 1rem;
   color: #444;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
 }
 
 .produto-card button {
   background-color: #ff9900;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 180px;
+  margin: auto auto 0;
 }
 
 .produto-card button:hover {
   background-color: #e68a00;
 }
+
+/* Rodapé */
 .footer {
   background-color: #1a1a1a;
   color: #fff;
@@ -148,9 +168,15 @@ main {
 }
 
 .saudacao-usuario {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: bold;
-  color: #333;          
+  color: #333;
   font-size: 14px;
-  text-align: center;
-  flex: 1;
+  padding: 4px 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
 }

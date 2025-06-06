@@ -117,9 +117,15 @@ h1 {
 }
 
 .saudacao-usuario {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: bold;
-  color: #333;          
+  color: #333;
   font-size: 14px;
-  text-align: center;
-  flex: 1;
+  padding: 4px 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+border-radius: 6px;
 }
