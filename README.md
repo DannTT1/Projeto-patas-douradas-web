@@ -1,6 +1,10 @@
 # 🐾 Projeto Patas Douradas Web
 
-Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**. Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, pedidos e painel de gerenciamento para vendedores.
+🎯 **Site funcional:**  
+👉 [https://danntt1.github.io/Projeto-patas-douradas-web/](https://danntt1.github.io/Projeto-patas-douradas-web/)
+
+Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**.  
+Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, pedidos e painel de gerenciamento para vendedores.
 
 ---
 
@@ -15,16 +19,17 @@ Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**. Simul
 
 ## 📁 Estrutura de Pastas
 
-📦 Projeto-patas-douradas-web
-├── 📁 css # Estilizações da aplicação
-├── 📁 js # Lógica e funcionalidades em JavaScript
-├── 📁 pages
-│ ├── 📁 cliente # Páginas visíveis para o cliente
-│ ├── 📁 login-cadastro # Autenticação de usuários
-│ └── 📁 vendedor # Painel administrativo
-├── 📁 assets/img # Imagens do projeto
-└── 📁 documentação # Arquivos de documentação interna
+📦 Projeto-patas-douradas-web  
+├── 📁 css — Estilizações da aplicação  
+├── 📁 js — Lógica e funcionalidades em JavaScript  
+├── 📁 pages  
+│   ├── 📁 cliente — Páginas visíveis para o cliente  
+│   ├── 📁 login-cadastro — Autenticação de usuários  
+│   └── 📁 vendedor — Painel administrativo  
+├── 📁 assets/img — Imagens do projeto  
+└── 📁 documentação — Arquivos de documentação interna
 
+---
 
 ## ✨ Funcionalidades
 
@@ -54,15 +59,9 @@ Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**. Simul
 
 ---
 
-## 🧪 Como Executar
+## 🧪 Como Executar Localmente
 
 1. Clone este repositório:
    ```bash
    git clone https://github.com/DannTT1/Projeto-patas-douradas-web.git
-Acesse o diretório do projeto:
-
-
-cd Projeto-patas-douradas-web
-Abra o arquivo pages/cliente/home.html no navegador.
-
-⚠️ Nenhum servidor ou backend é necessário. Tudo funciona via navegador com armazenamento local (localStorage).
+   cd Projeto-patas-douradas-web
