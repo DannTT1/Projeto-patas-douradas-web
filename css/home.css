@@ -134,7 +134,8 @@ h2 {
 
 
 .banner-home {
-  background-image: url('../assets/img/banner-home.png');
+  background-image: url('/Projeto-patas-douradas-web/assets/img/banner-home.png');
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
