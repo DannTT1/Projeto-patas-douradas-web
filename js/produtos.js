@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Esta lista será usada para ATUALIZAR os produtos na memória do navegador toda vez que a página carregar.
 // VERSÃO FINAL PARA PUBLICAR NO GITHUB
 const produtosIniciais = [
-  { id: 1, nome: "Ração Premium para Cães", preco: 199.90, imagem: "/Projeto-patas-douradas-web/assets/img/raçao premium canina 15kg.png", estoque: 18 },
-  { id: 2, nome: "Ração Premium para Gatos", preco: 164.90, imagem: "/Projeto-patas-douradas-web/assets/img/raçao premium felina 10kg.png", estoque: 22 },
-  { id: 3, nome: "Mordedor de Borracha", preco: 19.90, imagem: "/Projeto-patas-douradas-web/assets/img/mordedor pequeno canino.png", estoque: 30 },
-  { id: 4, nome: "Casinha para Cães", preco: 289.90, imagem: "/Projeto-patas-douradas-web/assets/img/casinha para caes.png", estoque: 7 },
-  { id: 5, nome: "Rosquinha para Gatos", preco: 84.90, imagem: "/Projeto-patas-douradas-web/assets/img/rosquinha para gatos.png", estoque: 15 },
-  { id: 6, nome: "Gaiola para Calopsitas", preco: 139.90, imagem: "/Projeto-patas-douradas-web/assets/img/gaiola para calopsitas.png", estoque: 9 },
-  { id: 7, nome: "Areia Higiênica para Gatos", preco: 29.90, imagem: "/Projeto-patas-douradas-web/assets/img/areia higienica felina.png", estoque: 24 }
+  { id: 1, nome: "Ração Premium para Cães", preco: 199.90, imagem: "/Projeto-patas-douradas-web/assets/img/raçaopremiumcanina15kg.png", estoque: 18 },
+  { id: 2, nome: "Ração Premium para Gatos", preco: 164.90, imagem: "/Projeto-patas-douradas-web/assets/img/raçaopremiumfelina10kg.png", estoque: 22 },
+  { id: 3, nome: "Mordedor de Borracha", preco: 19.90, imagem: "/Projeto-patas-douradas-web/assets/img/mordedorpequenocanino.png", estoque: 30 },
+  { id: 4, nome: "Casinha para Cães", preco: 289.90, imagem: "/Projeto-patas-douradas-web/assets/img/casinhaparacaes.png", estoque: 7 },
+  { id: 5, nome: "Rosquinha para Gatos", preco: 84.90, imagem: "/Projeto-patas-douradas-web/assets/img/rosquinhaparagatos.png", estoque: 15 },
+  { id: 6, nome: "Gaiola para Calopsitas", preco: 139.90, imagem: "/Projeto-patas-douradas-web/assets/img/gaiolaparacalopsitas.png", estoque: 9 },
+  { id: 7, nome: "Areia Higiênica para Gatos", preco: 29.90, imagem: "/Projeto-patas-douradas-web/assets/img/areiahigienicafelina.png", estoque: 24 }
 ];
 
   // Salva a lista atualizada no localStorage, sobrescrevendo qualquer lista antiga.
