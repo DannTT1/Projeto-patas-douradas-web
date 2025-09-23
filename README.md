@@ -1,7 +1,7 @@
 # 🐾 Projeto Patas Douradas Web
 
 🎯 **Site funcional:**
-👉 [https://danntt1.github.io/Projeto-patas-douradas-web/]([https://danntt1.github.io/Projeto-patas-douradas-web/))
+👉 [https://danntt1.github.io/Projeto-patas-douradas-web/](https://danntt1.github.io/Projeto-patas-douradas-web/)
 
 Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**.
 Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, pedidos e painel de gerenciamento para vendedores.
@@ -55,4 +55,15 @@ Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, 
 - Visualização do dashboard com dados agregados
 - Adição, edição e exclusão de produtos
 - Gerenciamento dos pedidos recebidos
-- G
+- Geração de relatórios (via interface)
+
+---
+
+## 🧪 Como Executar Localmente
+
+1.  Clone este repositório:
+    ```bash
+    git clone [https://github.com/DannTT1/Projeto-patas-douradas-web.git](https://github.com/DannTT1/Projeto-patas-douradas-web.git)
+    cd Projeto-patas-douradas-web
+    ```
+2.  Abra o arquivo `index.html` em seu navegador de preferência.
