@@ -1,9 +1,9 @@
 # 🐾 Projeto Patas Douradas Web
 
-🎯 **Site funcional:**  
-👉 [https://danntt1.github.io/Projeto-patas-douradas-web/](https://danntt1.github.io/Projeto-patas-douradas-web/pages/cliente/home.html)
+🎯 **Site funcional:**
+👉 [https://danntt1.github.io/Projeto-patas-douradas-web/](https://danntt1.github.io/Projeto-patas-douradas-web/)
 
-Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**.  
+Aplicação web desenvolvida com **HTML**, **CSS** e **JavaScript puros**.
 Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, pedidos e painel de gerenciamento para vendedores.
 
 ---
@@ -19,14 +19,14 @@ Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, 
 
 ## 📁 Estrutura de Pastas
 
-📦 Projeto-patas-douradas-web  
-├── 📁 css — Estilizações da aplicação  
-├── 📁 js — Lógica e funcionalidades em JavaScript  
-├── 📁 pages  
-│   ├── 📁 cliente — Páginas visíveis para o cliente  
-│   ├── 📁 login-cadastro — Autenticação de usuários  
-│   └── 📁 vendedor — Painel administrativo  
-├── 📁 assets/img — Imagens do projeto  
+📦 Projeto-patas-douradas-web
+├── 📁 css — Estilizações da aplicação
+├── 📁 js — Lógica e funcionalidades em JavaScript
+├── 📁 pages
+│   ├── 📁 cliente — Páginas visíveis para o cliente
+│   ├── 📁 login-cadastro — Autenticação de usuários
+│   └── 📁 vendedor — Painel administrativo
+├── 📁 assets/img — Imagens do projeto
 └── 📁 documentação — Arquivos de documentação interna
 
 ---
@@ -63,5 +63,5 @@ Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, 
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/DannTT1/Projeto-patas-douradas-web.git
+   git clone [https://github.com/DannTT1/Projeto-patas-douradas-web.git](https://github.com/DannTT1/Projeto-patas-douradas-web.git)
    cd Projeto-patas-douradas-web
