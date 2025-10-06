@@ -17,7 +17,7 @@ document.getElementById("formularioCadastro").addEventListener("submit", functio
         senha: senha,
         tipo: tipoUsuario
     };
-// aqui estamos salvando no localStorage
+
     cadastrarUsuario(novoUsuario)
 
    alert('cadastro realizado com sucesso! faça o login agora.');

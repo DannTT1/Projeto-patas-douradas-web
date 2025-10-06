@@ -1,7 +1,6 @@
 const USUARIO_LOGADO = 'usuario_logado';
 const USUARIOS = 'usuarios';
 
-// Função de login
 function login(email, senha, tipo) {
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
 
@@ -17,12 +16,12 @@ function login(email, senha, tipo) {
     return false;
 }
 
-// Retorna o usuário logado
+
 function usuarioLogado() {
     return JSON.parse(localStorage.getItem(USUARIO_LOGADO));
 }
 
-// Faz logout
+
 function logout() {
     localStorage.removeItem(USUARIO_LOGADO);
 }
@@ -36,14 +35,14 @@ function protegerLogin() {
 
 
 
-// Cadastra um novo usuário
+
 function cadastrarUsuario(novoUsuario) {
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
-    usuarios.push(novoUsuario); // <<< ESSENCIAL
+    usuarios.push(novoUsuario); 
     localStorage.setItem(USUARIOS, JSON.stringify(usuarios));
 }
 
-// Verifica se o e-mail já existe
+
 function verificadorDeEmailExistente(email) {
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS)) || [];
     return usuarios.some(u => u.email === email);

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const div = document.createElement("div");
     div.className = "produto-card"; 
     
-    // --- ESTRUTURA HTML DO CARD CORRIGIDA ---
+   
     div.innerHTML = `
       <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
           <img src="${produto.imagem}" alt="${produto.nome}">
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// --- FUNÇÕES GLOBAIS (NECESSÁRIAS PARA OS BOTÕES) ---
+
 
 function adicionarAoCarrinho(id) {
   const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
@@ -55,6 +55,6 @@ function adicionarAoCarrinho(id) {
 }
 
 function verDetalhes(id) {
-    // Caminho para a página de detalhes a partir do index.html
+    
     window.location.href = `pages/cliente/produto-detalhes.html?id=${id}`;
 }

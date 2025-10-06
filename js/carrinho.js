@@ -7,7 +7,7 @@ function salvarCarrinho(carrinho) {
 }
 
 function listarCarrinho() {
-  // puxa os itens do carrinho
+  
   const carrinho = obterCarrinho();
   const container = document.getElementById("itens-carrinho");
   const totalSpan = document.getElementById("total");
@@ -18,8 +18,7 @@ function listarCarrinho() {
     totalSpan.textContent = "";
     return;
   }
-/*caso o carrinho nao esteja vazio, itera sobre o array somando os valores
-dos produtos */
+
   let total = 0;
   carrinho.forEach((item, index) => {
     total += item.preco;
@@ -71,7 +70,7 @@ function finalizarPedido() {
   const novoPedido = {
     id: Date.now(),
     data: Date.now(),
-    cliente: usuarioLogado, // Salva o usuário logado junto com o pedido
+    cliente: usuarioLogado, 
     itens: carrinho,
     total: carrinho.reduce((acc, item) => acc + item.preco, 0)
   };
