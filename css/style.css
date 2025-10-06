@@ -1,8 +1,6 @@
 /* ============================================== */
 /* --- ESTILOS GERAIS E COMUNS --- */
 /* ============================================== */
-
-/* Garante que o footer fique no final da página */
 html {
     height: 100%;
 }
@@ -24,13 +22,24 @@ main {
     text-align: center;
 }
 
-/* Títulos */
 h1, h2 {
     color: #ff9f1c;
     text-align: center;
 }
 
-/* --- Cabeçalho e Menu --- */
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 40px;
+}
+
+/* ============================================== */
+/* --- CABEÇALHO E MENU --- */
+/* ============================================== */
 .cabecalho {
     background-color: #ff9f1c;
     padding: 12px 20px;
@@ -60,8 +69,9 @@ h1, h2 {
     color: #ffeeba;
 }
 
-
-
+/* ================================== */
+/* --- BANNER DA HOME PAGE --- */
+/* ================================== */
 .banner-home {
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
     background-size: cover;
@@ -74,7 +84,7 @@ h1, h2 {
     align-items: center;
     text-align: center;
     color: white;
-    min-height: 350px; /* GARANTE ALTURA MÍNIMA NO DESKTOP */
+    min-height: 350px;
 }
 
 .banner-home h2 {
@@ -102,7 +112,9 @@ h1, h2 {
     background-color: #e88e00;
 }
 
-/* --- Formulários (Login, Cadastro, etc.) --- */
+/* ============================================== */
+/* --- FORMULÁRIOS (LOGIN, CADASTRO, ETC.) --- */
+/* ============================================== */
 .login-container {
     max-width: 450px;
     margin: 40px auto;
@@ -112,9 +124,47 @@ h1, h2 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
 
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="password"],
+.login-container input[type="number"],
+.login-container textarea { /* Adicionado textarea aqui */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
 
-/* --- Cards de Produto --- */
+.login-container button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff9f1c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #e88e00;
+}
+
+/* ============================================== */
+/* --- CARDS DE PRODUTO (LISTAGEM) --- */
+/* ============================================== */
 .produtos-container {
     display: flex;
     flex-wrap: wrap;
@@ -123,15 +173,186 @@ h1, h2 {
     margin-top: 2rem;
 }
 
+.produto-card, .produto {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.produto-card:hover, .produto:hover {
+    transform: scale(1.03);
+}
+
+.produto-card img, .produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.produto-card h3, .produto h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0.8rem 0 0.5rem;
+    min-height: 48px;
+}
+
+.produto-card p, .produto p {
+    font-size: 1rem;
+    color: #444;
+    margin: 0.25rem 0;
+}
+
+.produto-card button, .produto button {
+    margin-top: auto;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ======================================= */
+/* --- PÁGINA DE DETALHES DO PRODUTO --- */
+/* ======================================= */
+.detalhe-produto-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: flex-start; 
+    gap: 2rem;
+    max-width: 900px; 
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left; 
+}
+
+.detalhe-produto-container img {
+    max-width: 100%;
+    width: 400px; 
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.detalhe-produto-info {
+    flex: 1; 
+    min-width: 300px; 
+}
+
+.detalhe-produto-info h1 {
+    text-align: left; 
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.detalhe-produto-info .preco {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff9f1c;
+    margin: 1rem 0;
+}
+
+.detalhe-produto-info .descricao {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.detalhe-produto-info button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.detalhe-produto-info button:hover {
+    background-color: #e88e00;
+}
 
 
+/* ============================================== */
+/* --- PAINEL DO VENDEDOR --- */
+/* ============================================== */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
 
+.dashboard-section {
+    margin-bottom: 40px;
+}
 
+.dashboard-section h2 {
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.cards-dashboard {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    flex: 1 1 300px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.card p {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ============================================== */
+/* --- RODAPÉ --- */
+/* ============================================== */
 .footer {
     background-color: #1a1a1a;
     color: #fff;
     padding: 40px 20px;
-    margin-top: auto; /* Empurra o rodapé para baixo */
+    margin-top: auto;
     width: 100%;
     box-sizing: border-box;
 }
@@ -172,7 +393,6 @@ h1, h2 {
 /* ========================================== */
 /* --- RESPONSIVIDADE --- */
 /* ========================================== */
-
 @media (max-width: 768px) {
     main {
         padding: 1rem;
@@ -194,12 +414,31 @@ h1, h2 {
         margin-left: 0;
     }
 
-    /* CORRIGE O BANNER NO CELULAR */
     .banner-home {
-        min-height: 250px; /* Altura menor para telas pequenas */
+        min-height: 250px;
     }
     
     .banner-home h2 {
         font-size: 1.8rem;
+    }
+
+    .login-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .produtos-container {
+        gap: 1rem;
+    }
+
+    .produto-card, .produto {
+        width: 85%;
+        max-width: 300px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
     }
 }

@@ -7,15 +7,17 @@ document.getElementById("formLogin").addEventListener("submit", function (e) {
 
   const logou = login(email, senha, tipoUsuario);
 
-// aqui direcionamos o usuario de acordo com o tipo sendo vendedor / cliente
+  
   if (logou) {
     alert('Login realizado com sucesso!!');
+    
     if (tipoUsuario === 'cliente') {
-      window.location.href = "../cliente/home.html"; 
+      
+      window.location.href = "../../index.html"; 
     } else {
       window.location.href = "../vendedor/painel-vendedor.html"; 
     }
   } else {
     alert("Usuário ou senha estão incorretos!.");
   }
-}); 
+});
