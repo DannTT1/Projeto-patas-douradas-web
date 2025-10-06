@@ -1,6 +1,3 @@
-/* ============================================== */
-/* --- ESTILOS GERAIS E COMUNS --- */
-/* ============================================== */
 html {
     height: 100%;
 }
@@ -17,7 +14,7 @@ body {
 }
 
 main {
-    flex: 1; /* Faz o conteúdo principal ocupar o espaço disponível */
+    flex: 1;
     padding: 2rem;
     text-align: center;
 }
@@ -37,9 +34,6 @@ h2 {
     margin-top: 40px;
 }
 
-/* ============================================== */
-/* --- CABEÇALHO E MENU --- */
-/* ============================================== */
 .cabecalho {
     background-color: #ff9f1c;
     padding: 12px 20px;
@@ -69,9 +63,6 @@ h2 {
     color: #ffeeba;
 }
 
-/* ================================== */
-/* --- BANNER DA HOME PAGE (CORRIGIDO) --- */
-/* ================================== */
 .banner-home {
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
     background-size: cover;
@@ -84,7 +75,7 @@ h2 {
     align-items: center;
     text-align: center;
     color: white;
-    min-height: 50vh; /* ALTURA PROPORCIONAL: 50% da altura da tela */
+    min-height: 50vh;
 }
 
 .banner-home h2 {
@@ -112,9 +103,6 @@ h2 {
     background-color: #e88e00;
 }
 
-/* ============================================== */
-/* --- FORMULÁRIOS (LOGIN, CADASTRO, ETC.) --- */
-/* ============================================== */
 .login-container {
     max-width: 450px;
     margin: 40px auto;
@@ -162,9 +150,6 @@ h2 {
     background-color: #e88e00;
 }
 
-/* ============================================== */
-/* --- CARDS DE PRODUTO (LISTAGEM) - CORRIGIDO --- */
-/* ============================================== */
 .produtos-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -202,7 +187,6 @@ h2 {
 .produto-card img, .produto img {
     width: 100%;
     height: 100%;
-    
     object-fit: contain; 
 }
 
@@ -237,9 +221,6 @@ h2 {
     font-weight: bold;
 }
 
-/* ================================================= */
-/* --- PRODUTOS EM DESTAQUE (HOME) --- */
-/* ================================================= */
 .produtos-destaque {
     background-color: #fffaf0;
     padding: 2rem;
@@ -257,9 +238,6 @@ h2 {
     transform: scale(1.1);
 }
 
-/* ======================================= */
-/* --- PÁGINA DE DETALHES DO PRODUTO --- */
-/* ======================================= */
 .detalhe-produto-container {
     display: flex;
     flex-wrap: wrap;
@@ -325,9 +303,6 @@ h2 {
     background-color: #e88e00;
 }
 
-/* ============================================== */
-/* --- PAINEL DO VENDEDOR --- */
-/* ============================================== */
 .dashboard-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -381,9 +356,6 @@ h2 {
     color: #333;
 }
 
-/* ============================================== */
-/* --- RODAPÉ --- */
-/* ============================================== */
 .footer {
     background-color: #1a1a1a;
     color: #fff;
@@ -425,9 +397,6 @@ h2 {
     color: #fff;
 }
 
-/* ========================================== */
-/* --- RESPONSIVIDADE --- */
-/* ========================================== */
 @media (max-width: 768px) {
     main {
         padding: 1rem;
