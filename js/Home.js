@@ -15,23 +15,29 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Somente os produtos em destaque (IDs 1, 2, 10)
   const destaque = produtos.filter(p => [1, 2, 7].includes(p.id));
 
   destaque.forEach(produto => {
     const div = document.createElement("div");
-    div.className = "produto";
+    div.className = "produto-card"; 
+    
+    // --- ESTRUTURA HTML DO CARD CORRIGIDA ---
     div.innerHTML = `
-      <img src="${produto.imagem}" alt="${produto.nome}" />
-      <h3>${produto.nome}</h3>
-      <p>R$ ${produto.preco.toFixed(2)}</p>
-      <button onclick="adicionarAoCarrinho(${produto.id})">Adicionar ao Carrinho</button>
+      <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
+          <img src="${produto.imagem}" alt="${produto.nome}">
+      </div>
+      <div class="produto-info">
+          <h3>${produto.nome}</h3>
+          <p>R$ ${produto.preco.toFixed(2)}</p>
+          <button onclick="adicionarAoCarrinho(${produto.id})">Adicionar ao Carrinho</button>
+      </div>
     `;
     container.appendChild(div);
   });
 });
 
-// Função global para adicionar ao carrinho
+// --- FUNÇÕES GLOBAIS (NECESSÁRIAS PARA OS BOTÕES) ---
+
 function adicionarAoCarrinho(id) {
   const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
   const produto = produtos.find(p => p.id === id);
@@ -46,4 +52,9 @@ function adicionarAoCarrinho(id) {
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
   alert(`${produto.nome} foi adicionado ao carrinho!`);
+}
+
+function verDetalhes(id) {
+    // Caminho para a página de detalhes a partir do index.html
+    window.location.href = `pages/cliente/produto-detalhes.html?id=${id}`;
 }
