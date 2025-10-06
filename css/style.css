@@ -84,8 +84,7 @@ h2 {
     align-items: center;
     text-align: center;
     color: white;
-    /* ALTURA PROPORCIONAL: Ocupa 50% da altura da tela visível */
-    min-height: 50vh;
+    min-height: 50vh; /* ALTURA PROPORCIONAL: 50% da altura da tela */
 }
 
 .banner-home h2 {
@@ -168,7 +167,6 @@ h2 {
 /* ============================================== */
 .produtos-container {
     display: grid;
-    /* CRIA COLUNAS FLEXÍVEIS: Mínimo de 240px, máximo de 1fr (ocupa o espaço disponível) */
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
@@ -182,7 +180,7 @@ h2 {
     transition: transform 0.2s ease;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Garante que a imagem não saia do card arredondado */
+    overflow: hidden;
 }
 
 .produto-card:hover, .produto:hover {
@@ -191,16 +189,14 @@ h2 {
 
 .produto-card .imagem-container, 
 .produto .imagem-container {
-    /* MANTÉM A PROPORÇÃO QUADRADA (1:1) */
     aspect-ratio: 1 / 1;
     width: 100%;
-    background-color: #f9f9f9; /* Cor de fundo caso a imagem não carregue */
+    background-color: #f9f9f9;
 }
 
 .produto-card img, .produto img {
     width: 100%;
     height: 100%;
-    /* PREENCHE O CONTAINER SEM DISTORCER (PODE CORTAR UM POUCO A IMAGEM) */
     object-fit: cover;
 }
 
@@ -208,14 +204,14 @@ h2 {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Garante que esta área cresça e empurre o botão para baixo */
+    flex-grow: 1;
 }
 
 .produto-info h3 {
     font-size: 1.1rem;
     color: #333;
     margin: 0 0 0.5rem;
-    min-height: 48px; /* Para alinhar títulos com 2 linhas */
+    min-height: 48px;
 }
 
 .produto-info p {
@@ -225,7 +221,7 @@ h2 {
 }
 
 .produto-info button {
-    margin-top: auto; /* Empurra o botão para o final do card */
+    margin-top: auto;
     background-color: #ff9900;
     color: white;
     border: none;
@@ -239,7 +235,7 @@ h2 {
 /* --- PRODUTOS EM DESTAQUE (HOME) --- */
 /* ================================================= */
 .produtos-destaque {
-    background-color: #fffaf0; /* Fundo sutil para destacar a seção */
+    background-color: #fffaf0;
     padding: 2rem;
     margin: 3rem 0;
     border-radius: 15px;
@@ -247,12 +243,12 @@ h2 {
 }
 
 .produtos-destaque .produto-card {
-    transform: scale(1.05); /* Um pouco maiores por padrão */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .produtos-destaque .produto-card:hover {
-    transform: scale(1.1); /* Efeito de zoom maior ao passar o mouse */
+    transform: scale(1.1);
 }
 
 /* ======================================= */
@@ -437,6 +433,16 @@ h2 {
         gap: 10px;
     }
 
+    /* CORREÇÃO PARA O DASHBOARD DO VENDEDOR */
+    .cabecalho-vendedor {
+        flex-direction: row;      /* Força a direção de linha */
+        justify-content: space-between;
+    }
+
+    .cabecalho-vendedor .menu {
+        gap: 8px;
+    }
+    
     .menu {
         flex-wrap: wrap;
         justify-content: center;
