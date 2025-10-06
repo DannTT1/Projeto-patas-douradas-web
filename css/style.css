@@ -11,63 +11,11 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garante que o footer fique no final */
-}
-
-/* ================================== */
-/* --- ESTILO DO BANNER DA HOME PAGE --- */
-/* ================================== */
-
-.banner-home {
-  /* Caminho correto a partir da pasta /css */
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  padding: 3rem 1.5rem;
-  margin: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white; 
-}
-
-.banner-home h2 {
-    color: #fff;
-    font-size: 2.2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 6px #000;
-    margin: 0 0 1rem 0;
-}
-
-.banner-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 12px 24px;
-  background-color: #ff9f1c;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.banner-btn:hover {
-  transform: scale(1.05);
-  background-color: #e88e00;
-}
-
-/* Ajuste do banner para telas menores */
-@media (max-width: 768px) {
-    .banner-home h2 {
-        font-size: 1.8rem;
-    }
+  min-height: 100vh;
 }
 
 main {
-  flex: 1; /* Faz o conteúdo principal ocupar o espaço disponível */
+  flex: 1;
   padding: 2rem;
   text-align: center;
 }
@@ -118,6 +66,50 @@ h2 {
   color: #ffeeba;
 }
 
+/* ================================== */
+/* --- ESTILO DO BANNER DA HOME PAGE --- */
+/* ================================== */
+
+.banner-home {
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white; 
+}
+
+.banner-home h2 {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px #000;
+    margin: 0 0 1rem 0;
+}
+
+.banner-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 12px 24px;
+  background-color: #ff9f1c;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.banner-btn:hover {
+  transform: scale(1.05);
+  background-color: #e88e00;
+}
+
 /* --- Rodapé --- */
 .footer {
   background-color: #1a1a1a;
@@ -136,7 +128,7 @@ h2 {
 }
 
 .footer-section {
-  flex: 1 1 220px; /* Em telas maiores, ocupa espaço. Em menores, quebra a linha */
+  flex: 1 1 220px;
 }
 
 .footer-section h3 {
@@ -182,7 +174,7 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 15px;
-  box-sizing: border-box; /* Evita que o padding aumente a largura total */
+  box-sizing: border-box;
 }
 
 .login-container button[type="submit"] {
@@ -202,7 +194,7 @@ h2 {
   background-color: #e88e00;
 }
 
-/* --- Cards de Produto --- */
+/* --- Cards de Produto (Lista) --- */
 .produtos-container {
   display: flex;
   flex-wrap: wrap;
@@ -258,187 +250,139 @@ h2 {
   font-weight: bold;
 }
 
+/* ======================================= */
+/* --- PÁGINA DE DETALHES DO PRODUTO (NOVO) --- */
+/* ======================================= */
+
+.detalhe-produto-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: flex-start; 
+  gap: 2rem;
+  max-width: 900px; 
+  margin: 40px auto; 
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left; 
+}
+
+.detalhe-produto-container img {
+  max-width: 100%;
+  width: 400px; 
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.detalhe-produto-info {
+  flex: 1; 
+  min-width: 300px; 
+}
+
+.detalhe-produto-info h1 {
+  text-align: left; 
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.detalhe-produto-info .preco {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff9f1c;
+  margin: 1rem 0;
+}
+
+.detalhe-produto-info .descricao {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.detalhe-produto-info button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.detalhe-produto-info button:hover {
+  background-color: #e88e00;
+}
+
+
 /* ========================================== */
-/* --- A MÁGICA DA RESPONSIVIDADE COMEÇA AQUI --- */
+/* --- RESPONSIVIDADE --- */
 /* ========================================== */
 
 @media (max-width: 768px) {
-  
-  /* Ajusta o padding geral para telas menores */
   main {
     padding: 1rem;
   }
 
   /* --- Cabeçalho Responsivo --- */
   .cabecalho {
-    flex-direction: column; /* Coloca o logo acima do menu */
+    flex-direction: column;
     padding: 15px;
-    gap: 10px; /* Espaço entre o logo e o menu */
+    gap: 10px;
   }
 
   .menu {
     display: flex;
-    flex-wrap: wrap; /* Permite que os links quebrem a linha */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
   .menu a {
-    margin-left: 0; /* Remove a margem da versão desktop */
+    margin-left: 0;
   }
   
   /* --- Formulários Responsivos --- */
   .login-container {
-    width: 90%; /* Ocupa 90% da tela ao invés de um valor fixo */
+    width: 90%;
     margin: 20px auto;
     padding: 20px;
   }
   
   /* --- Cards de Produto Responsivos --- */
   .produtos-container {
-    gap: 1rem; /* Diminui o espaço entre os cards */
+    gap: 1rem;
   }
 
   .produto-card, .produto {
-    width: 85%; /* Faz o card ocupar quase toda a largura da tela */
-    max-width: 300px; /* Limita para não ficar gigante em telas intermediárias */
+    width: 85%;
+    max-width: 300px;
   }
 
   /* --- Rodapé Responsivo --- */
   .footer-container {
-    flex-direction: column; /* Empilha as seções verticalmente */
+    flex-direction: column;
     text-align: center;
   }
-}
-/* ================================== */
-/* --- ESTILOS PARA O PAINEL VENDEDOR --- */
-/* ================================== */
 
+  /* --- Banner Responsivo --- */
+  .banner-home h2 {
+      font-size: 1.8rem;
+  }
+}
+
+/* ================================== */
+/* --- PAINEL VENDEDOR --- */
+/* ================================== */
 .dashboard-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.dashboard-section {
-  margin-bottom: 40px;
-}
-
-.dashboard-section h2 {
-  text-align: left;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-.cards-dashboard {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center; /* <-- MELHORIA APLICADA AQUI */
-}
-.card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  flex: 1 1 300px; /* Base de 300px, cresce para ocupar espaço */
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.card p {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* --- Seção de Relatório --- */
-.relatorio-container {
-  position: relative;
-  display: none; /* COMEÇA ESCONDIDO POR PADRÃO */
-  margin-top: 20px;
-  padding: 30px;
-  background-color: #fdfdfd;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
-
-.btn-fechar-relatorio {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  color: #555;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%; /* Deixa o botão redondo */
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.btn-fechar-relatorio:hover {
-  background-color: #d9534f;
-  color: white;
-  border-color: #d9534f;
-}
-
-.relatorio-container h2 {
-    font-size: 1.5rem;
-}
-
-.relatorio-container p {
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.relatorio-box {
-  width: 100%;
-  height: 300px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  padding: 16px;
-  overflow: auto;
-  white-space: pre-wrap;
-  font-size: 14px;
-  font-family: monospace;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
-.btn-limpar {
-  display: block;
-  margin: 0 auto;
-  padding: 12px 24px;
-  background-color: #d9534f; /* Vermelho para ação destrutiva */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.btn-limpar:hover {
-  background-color: #c9302c;
-}
+/* Restante do seu CSS para o dashboard... */

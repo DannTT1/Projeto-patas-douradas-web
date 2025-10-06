@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adicionar Produto</title>
-  <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
   </head>
   <body>
     <header class="cabecalho">
@@ -13,7 +13,7 @@
         <a href="painel-vendedor.html">Dashboard</a>
         <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
         <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
-   <a href="../login-cadastro/login.html" onclick="logout()">Sair</a>
+        <a href="../login-cadastro/login.html" onclick="logout()">Sair</a>
       </nav>
     </header>
 
@@ -31,6 +31,9 @@
 
         <label for="imagem">URL da Imagem:</label>
         <input type="text" id="imagem" />
+
+        <label for="descricao">Descrição do Produto:</label>
+        <textarea id="descricao" rows="4" required></textarea>
 
         <button type="submit">Cadastrar Produto</button>
       </form>
