@@ -1,88 +1,80 @@
 /* ============================================== */
-/* --- ESTILOS GERAIS E COMUNS (Base para tudo) --- */
+/* --- ESTILOS GERAIS E COMUNS --- */
 /* ============================================== */
 
-/* Reset e Padrões do Body */
+/* Garante que o footer fique no final da página */
+html {
+    height: 100%;
+}
+
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fffef9;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffef9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 main {
-  flex: 1;
-  padding: 2rem;
-  text-align: center;
+    flex: 1; /* Faz o conteúdo principal ocupar o espaço disponível */
+    padding: 2rem;
+    text-align: center;
 }
 
 /* Títulos */
 h1, h2 {
-  color: #ff9f1c;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin-top: 40px;
+    color: #ff9f1c;
+    text-align: center;
 }
 
 /* --- Cabeçalho e Menu --- */
 .cabecalho {
-  background-color: #ff9f1c;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background-color: #ff9f1c;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
 }
 
 .menu a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  transition: color 0.3s;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 .menu a:hover {
-  color: #ffeeba;
+    color: #ffeeba;
 }
 
-/* ================================== */
-/* --- ESTILO DO BANNER DA HOME PAGE --- */
-/* ================================== */
+
 
 .banner-home {
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  padding: 3rem 1.5rem;
-  margin: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white; 
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    padding: 3rem 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    min-height: 350px; /* GARANTE ALTURA MÍNIMA NO DESKTOP */
 }
 
 .banner-home h2 {
@@ -94,229 +86,86 @@ h2 {
 }
 
 .banner-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 12px 24px;
-  background-color: #ff9f1c;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 12px 24px;
+    background-color: #ff9f1c;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .banner-btn:hover {
-  transform: scale(1.05);
-  background-color: #e88e00;
-}
-
-/* --- Rodapé --- */
-.footer {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 40px 20px;
-  margin-top: auto;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.footer-section {
-  flex: 1 1 220px;
-}
-
-.footer-section h3 {
-  color: #f1c40f;
-  margin-bottom: 10px;
-}
-
-.footer-section p, .footer-section a, .footer-section li {
-  font-size: 14px;
-  color: #ccc;
-  text-decoration: none;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-  color: #fff;
+    transform: scale(1.05);
+    background-color: #e88e00;
 }
 
 /* --- Formulários (Login, Cadastro, etc.) --- */
 .login-container {
-  max-width: 450px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 15px;
-  background-color: #f8f8f8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.login-container label {
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
 
-.login-container input[type="text"],
-.login-container input[type="email"],
-.login-container input[type="password"],
-.login-container input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  box-sizing: border-box;
-}
 
-.login-container button[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #ff9f1c;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-container button[type="submit"]:hover {
-  background-color: #e88e00;
-}
-
-/* --- Cards de Produto (Lista) --- */
+/* --- Cards de Produto --- */
 .produtos-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.produto-card, .produto {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  width: 250px;
-  text-align: center;
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
+
+
+
+
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 40px 20px;
+    margin-top: auto; /* Empurra o rodapé para baixo */
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.produto-card:hover, .produto:hover {
-  transform: scale(1.03);
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.produto-card img, .produto img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  border-radius: 8px;
+.footer-section {
+    flex: 1;
+    min-width: 220px;
 }
 
-.produto-card h3, .produto h3 {
-  font-size: 1.1rem;
-  color: #333;
-  margin: 0.8rem 0 0.5rem;
-  min-height: 48px;
+.footer-section h3 {
+    color: #ff9f1c;
+    margin-bottom: 15px;
 }
 
-.produto-card p, .produto p {
-  font-size: 1rem;
-  color: #444;
-  margin: 0.25rem 0;
+.footer-section p, .footer-section a {
+    font-size: 14px;
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.6;
 }
 
-.produto-card button, .produto button {
-  margin-top: auto;
-  background-color: #ff9900;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/* ======================================= */
-/* --- PÁGINA DE DETALHES DO PRODUTO (NOVO) --- */
-/* ======================================= */
-
-.detalhe-produto-container {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  align-items: flex-start; 
-  gap: 2rem;
-  max-width: 900px; 
-  margin: 40px auto; 
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left; 
-}
-
-.detalhe-produto-container img {
-  max-width: 100%;
-  width: 400px; 
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.detalhe-produto-info {
-  flex: 1; 
-  min-width: 300px; 
-}
-
-.detalhe-produto-info h1 {
-  text-align: left; 
-  font-size: 2rem;
-  margin-top: 0;
-}
-
-.detalhe-produto-info .preco {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ff9f1c;
-  margin: 1rem 0;
-}
-
-.detalhe-produto-info .descricao {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-.detalhe-produto-info button {
-  width: 100%;
-  padding: 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: #ff9900;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.detalhe-produto-info button:hover {
-  background-color: #e88e00;
+.footer-section a:hover {
+    text-decoration: underline;
+    color: #fff;
 }
 
 
@@ -325,64 +174,32 @@ h2 {
 /* ========================================== */
 
 @media (max-width: 768px) {
-  main {
-    padding: 1rem;
-  }
+    main {
+        padding: 1rem;
+    }
 
-  /* --- Cabeçalho Responsivo --- */
-  .cabecalho {
-    flex-direction: column;
-    padding: 15px;
-    gap: 10px;
-  }
+    .cabecalho {
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+    }
 
-  .menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
 
-  .menu a {
-    margin-left: 0;
-  }
-  
-  /* --- Formulários Responsivos --- */
-  .login-container {
-    width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-  }
-  
-  /* --- Cards de Produto Responsivos --- */
-  .produtos-container {
-    gap: 1rem;
-  }
+    .menu a {
+        margin-left: 0;
+    }
 
-  .produto-card, .produto {
-    width: 85%;
-    max-width: 300px;
-  }
-
-  /* --- Rodapé Responsivo --- */
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  /* --- Banner Responsivo --- */
-  .banner-home h2 {
-      font-size: 1.8rem;
-  }
+    /* CORRIGE O BANNER NO CELULAR */
+    .banner-home {
+        min-height: 250px; /* Altura menor para telas pequenas */
+    }
+    
+    .banner-home h2 {
+        font-size: 1.8rem;
+    }
 }
-
-/* ================================== */
-/* --- PAINEL VENDEDOR --- */
-/* ================================== */
-.dashboard-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Restante do seu CSS para o dashboard... */

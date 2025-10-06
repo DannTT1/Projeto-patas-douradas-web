@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8" />
-  <title>Home | Patas Douradas</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Patas Douradas</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body style="background-image: url('./assets/img/fundo.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
 
-  <header class="cabecalho">
-    <div class="logo">🐾 PatasDouradas.com</div>
-    <div id="saudacaoUsuario" class="saudacao-usuario"></div>
-    <nav class="menu">
-      <a href="index.html">Home</a>
-      <a href="pages/cliente/produtos-lista.html">Produtos</a>
-      <a href="pages/cliente/carrinho.html">Carrinho</a>
-      <a href="pages/cliente/pedidos-cliente.html">Pedidos</a>
-      <a href="pages/login-cadastro/login.html" onclick="logout()">Sair</a>
-    </nav>
-  </header>
+    <header class="cabecalho">
+        <div class="logo">🐾 PatasDouradas.com</div>
+        <div id="saudacaoUsuario" class="saudacao-usuario"></div>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="pages/cliente/produtos-lista.html">Produtos</a>
+            <a href="pages/cliente/carrinho.html">Carrinho</a>
+            <a href="pages/cliente/pedidos-cliente.html">Pedidos</a>
+            <a href="pages/login-cadastro/login.html" onclick="logout()">Sair</a>
+        </nav>
+    </header>
 
-  <main>
-    <h1>🏠 Bem-vindo à Patas Douradas!</h1>
+    <main>
+        <h1>🏠 Bem-vindo à Patas Douradas!</h1>
 
-    <section class="banner-home">
-      <div>
-        Aqui seu pet é tratado com amor! 💛<br />
-        <a href="pages/cliente/produtos-lista.html" class="banner-btn">Ver Produtos</a>
-      </div>
-    </section>
-    
-    <div id="produtosContainer" class="produtos-container"></div>
+        <section class="banner-home">
+            <div>
+                <h2>Aqui seu pet é tratado com amor! 💛</h2>
+                <a href="pages/cliente/produtos-lista.html" class="banner-btn">Ver Produtos</a>
+            </div>
+        </section>
+        
+        <div id="produtosContainer" class="produtos-container"></div>
 
-    <section class="produtos-destaque">
-      <h2>🐾 Produtos em Destaque</h2>
-      <div class="produtos-container" id="produtosDestaque"></div>
-    </section>
-  </main>
+        <section class="produtos-destaque">
+            <h2>🐾 Produtos em Destaque</h2>
+            <div class="produtos-container" id="produtosDestaque"></div>
+        </section>
+    </main>
 
-  <footer class="rodape">
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sobre a Patas Douradas</h3>
+                <p>Oferecemos os melhores produtos para a saúde e bem-estar do seu pet. Amor e cuidado em cada detalhe.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: contato@patasdouradas.com</p>
+                <p>Telefone: (11) 98765-4321</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <a href="#">Facebook</a> | 
+                <a href="#">Instagram</a> | 
+                <a href="#">Twitter</a>
+            </div>
+        </div>
     </footer>
-
-  <script src="js/saudacao-usuario.js"></script>
-  <script src="js/produtos.js"></script>
-  <script src="js/Home.js"></script>
+    <script src="js/saudacao-usuario.js"></script>
+    <script src="js/produtos.js"></script>
+    <script src="js/Home.js"></script>
 </body>
-
 </html>
