@@ -12,7 +12,7 @@ const produtosIniciais = [
         id: 2, 
         nome: "Arranhador Felino", 
         preco: 89.90, 
-        imagem: "/assets/img/arranhadorfelino.png", 
+        imagem: "assets/img/arranhadorfelino.png", 
         estoque: 15,
         descricao: "Arranhador resistente para gatos, ideal para afiar as unhas, alongar e aliviar o estresse."
     },
@@ -20,7 +20,7 @@ const produtosIniciais = [
         id: 3, 
         nome: "Caixa de Transporte para Gatos", 
         preco: 129.50, 
-        imagem: "/assets/img/caixadetransporteparagatos.png", 
+        imagem: "assets/img/caixadetransporteparagatos.png", 
         estoque: 12,
         descricao: "Caixa de transporte segura e ventilada, ideal para viagens e visitas ao veterinário."
     },
@@ -28,7 +28,7 @@ const produtosIniciais = [
         id: 4, 
         nome: "Coleira Antipulgas", 
         preco: 59.90, 
-        imagem: "/assets/img/coleiraantipulgascaesegatos.png", 
+        imagem: "assets/img/coleiraantipulgascaesegatos.png", 
         estoque: 30,
         descricao: "Coleira eficaz contra pulgas e carrapatos para cães e gatos, com longa duração."
     },
@@ -36,7 +36,7 @@ const produtosIniciais = [
         id: 5, 
         nome: "Frisbee para Cães", 
         preco: 25.00, 
-        imagem: "/assets/img/frisbeeparacaes.png", 
+        imagem: "assets/img/frisbeeparacaes.png", 
         estoque: 40,
         descricao: "Disco de frisbee flexível e seguro para brincadeiras de arremesso e busca com seu cão."
     },
@@ -44,7 +44,7 @@ const produtosIniciais = [
         id: 6, 
         nome: "Mordedor Pequeno Canino", 
         preco: 19.90, 
-        imagem: "/assets/img/mordedorpequenocanino.png", 
+        imagem: "assets/img/mordedorpequenocanino.png", 
         estoque: 50,
         descricao: "Brinquedo mordedor para cães de porte pequeno, ajuda na saúde bucal e alivia a ansiedade."
     },
@@ -52,7 +52,7 @@ const produtosIniciais = [
         id: 7, 
         nome: "Ração Premium para Cães 15kg", 
         preco: 199.90, 
-        imagem: "/assets/img/raçaopremiumcanina15kg.png", 
+        imagem: "assets/img/raçaopremiumcanina15kg.png", 
         estoque: 18,
         descricao: "Alimento completo e balanceado para cães de porte médio e grande."
     },
@@ -60,7 +60,7 @@ const produtosIniciais = [
         id: 8, 
         nome: "Rosquinha para Gatos", 
         preco: 15.50, 
-        imagem: "/assets/img/rosquinhaparagatos.png", 
+        imagem: "assets/img/rosquinhaparagatos.png", 
         estoque: 35,
         descricao: "Brinquedo em formato de rosquinha com catnip para entreter e estimular seu gato."
     },
@@ -68,7 +68,7 @@ const produtosIniciais = [
         id: 9, 
         nome: "Casinha de Madeira para Cães", 
         preco: 349.90, 
-        imagem: "/assets/img/casinhaparacaes.png", 
+        imagem: "assets/img/casinhaparacaes.png", 
         estoque: 10,
         descricao: "Casinha de madeira resistente e confortável, oferecendo um abrigo seguro para seu cão."
     }

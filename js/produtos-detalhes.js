@@ -26,7 +26,7 @@ function carregarDetalhesDoProduto() {
     }
 
     container.innerHTML = `
-        <img src="${produto.imagem}" alt="${produto.nome}" class="detalhe-produto-imagem">
+        <img src="../../${produto.imagem}" alt="${produto.nome}" class="detalhe-produto-imagem">
         <div class="detalhe-produto-info">
             <h1>${produto.nome}</h1>
             <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
