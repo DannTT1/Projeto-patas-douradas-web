@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function renderizarDestaquesNaHome() {
     const container = document.getElementById("produtosDestaque");
     if (!container) {
-        console.error("Container #produtosDestaque não foi encontrado!");
+        console.error("ERRO: Container #produtosDestaque não foi encontrado!");
         return;
     }
 
@@ -43,4 +43,3 @@ function renderizarDestaquesNaHome() {
 function verDetalhes(id) {
     window.location.href = `pages/cliente/produto-detalhes.html?id=${id}`;
 }
-
