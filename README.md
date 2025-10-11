@@ -1,7 +1,7 @@
 # 🐾 Patas Douradas - Pet Shop E-Commerce
 
 > Uma aplicação web de e-commerce front-end que simula uma experiência full-stack utilizando o `localStorage` do navegador como banco de dados.
-
+https://danntt1.github.io/Projeto-patas-douradas-web/index.html
 ## ✨ Funcionalidades Principais
 
 -   **Autenticação de Usuários:** Sistema completo de cadastro e login com dois perfis distintos: **Cliente** e **Vendedor**.
