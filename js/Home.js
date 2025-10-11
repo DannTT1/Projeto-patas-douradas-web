@@ -26,7 +26,7 @@ function renderizarDestaquesNaHome() {
         card.className = "produto-card"; 
         card.innerHTML = `
             <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
-                <img src="../../${produto.imagem}" alt="${produto.nome}">
+                <img src="${produto.imagem}" alt="${produto.nome}">
             </div>
             <div class="produto-info">
                 <h3>${produto.nome}</h3>
