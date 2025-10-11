@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function renderizarDestaquesNaHome() {
     const container = document.getElementById("produtosDestaque");
     if (!container) {
-        console.error("Container #produtosDestaque não encontrado!");
+        console.error("Container #produtosDestaque não foi encontrado!");
         return;
     }
 
@@ -16,7 +16,7 @@ function renderizarDestaquesNaHome() {
         return;
     }
 
-    const idsDestaque = [3, 5, 4]; 
+    const idsDestaque = [7, 5, 9]; 
     const produtosEmDestaque = todosProdutos.filter(p => idsDestaque.includes(p.id));
     
     container.innerHTML = "";
@@ -38,5 +38,9 @@ function renderizarDestaquesNaHome() {
         `;
         container.appendChild(card);
     });
+}
+
+function verDetalhes(id) {
+    window.location.href = `pages/cliente/produto-detalhes.html?id=${id}`;
 }
 
