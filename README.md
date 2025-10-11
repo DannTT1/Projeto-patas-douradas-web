@@ -1,102 +1,89 @@
-🐱 💛 🐶 Projeto Patas Douradas Web
-🎯        Site funcional:
-👉 https://danntt1.github.io/Projeto-patas-douradas-web/
+# 🐾 Patas Douradas - Pet Shop E-Commerce
 
-Aplicação web desenvolvida com HTML, CSS e JavaScript puros.
-Simula uma loja de pet shop com funcionalidades completas de vitrine, carrinho, pedidos e painel de gerenciamento para vendedores.
+> Uma aplicação web de e-commerce front-end que simula uma experiência full-stack utilizando o `localStorage` do navegador como banco de dados.
 
-🚀 Tecnologias Utilizadas
-HTML5
+## ✨ Funcionalidades Principais
 
-CSS3
+-   **Autenticação de Usuários:** Sistema completo de cadastro e login com dois perfis distintos: **Cliente** e **Vendedor**.
+-   **Vitrine de Produtos:** Exibição de produtos em destaque na home e uma página com o catálogo completo.
+-   **Detalhes do Produto:** Página dedicada para cada item, com descrição, preço e estoque.
+-   **Carrinho de Compras:** Lógica avançada de carrinho com gerenciamento de **quantidade**, cálculo de subtotal e total.
+-   **Finalização de Pedidos:** Clientes logados podem finalizar suas compras, atualizando o estoque dos produtos e gerando um histórico de pedidos.
+-   **Painel do Vendedor:** Área administrativa segura onde vendedores podem:
+    -   Visualizar um dashboard com métricas de vendas.
+    -   Adicionar, editar e remover produtos do catálogo.
+    -   Consultar o histórico de todos os pedidos recebidos.
+-   **Segurança:** Páginas de cliente e vendedor são protegidas, garantindo que apenas usuários autenticados e com o perfil correto possam acessá-las.
 
-JavaScript Vanilla (sem frameworks)
+## 🛠️ Tecnologias Utilizadas
 
-LocalStorage para persistência de dados no navegador
+-   **HTML5:** Estrutura semântica e acessível.
+-   **CSS3:** Estilização moderna com Flexbox, Grid e Variáveis CSS para um design responsivo e de fácil manutenção.
+-   **JavaScript (ES6+):** Toda a lógica da aplicação, incluindo manipulação do DOM, gerenciamento de estado e interatividade.
 
-📁 Estrutura de Pastas
-📦 Projeto-patas-douradas-web
-├── 📁 css — Estilizações da aplicação
-├── 📁 js — Lógica e funcionalidades em JavaScript
-├── 📁 pages
-│   ├── 📁 cliente — Páginas visíveis para o cliente
-│   ├── 📁 login-cadastro — Autenticação de usuários
-│   └── 📁 vendedor — Painel administrativo
-├── 📁 assets/img — Imagens do projeto
-└── 📁 documentação — Arquivos de documentação interna
-✨ Funcionalidades
-👤 Cliente
-Listagem de produtos
+## 🏛️ Arquitetura do Projeto
 
-Visualização de detalhes do produto
+### O "Banco de Dados" no Navegador: `localStorage`
 
-Adicionar itens ao carrinho
+O `localStorage` é o coração da persistência de dados do projeto. Ele armazena o estado da aplicação no formato chave-valor, garantindo que as informações de usuários, produtos e pedidos não se percam ao recarregar a página.
 
-Edição e remoção de itens no carrinho
+| Chave | Descrição |
+| :--- | :--- |
+| `usuarios` | Armazena um array com todos os objetos de usuários cadastrados. |
+| `usuario_logado` | Armazena o objeto do usuário que está com a sessão ativa. |
+| `produtosDisponiveis` | Armazena o catálogo completo de produtos, sendo a "fonte da verdade". |
+| `carrinho` | Armazena os itens que o cliente adicionou, incluindo a quantidade. |
+| `pedidos` | Armazena um histórico de todos os pedidos finalizados. |
 
-Finalização de pedidos
+Como o `localStorage` só armazena texto (strings), utilizamos `JSON.stringify()` para converter objetos em texto antes de salvar e `JSON.parse()` para convertê-los de volta em objetos ao ler.
 
-Visualização do histórico de pedidos
+### A Arquitetura Modular JavaScript
 
-🔐 Login e Cadastro
-Tela de login e cadastro
+O código JavaScript foi modularizado para seguir o princípio de responsabilidade única, tornando o projeto mais organizado e escalável.
 
-Armazenamento de dados de usuários no LocalStorage
+-   **Módulos de Lógica (Core):** `gerenciador-produtos.js` e `auth.js` formam o núcleo da aplicação, contendo a lógica de negócio principal.
+-   **Módulos de Página (Controllers):** Arquivos como `home.js`, `carrinho.js` e `painel.js` atuam como "controladores", capturando eventos da interface e utilizando as funções dos módulos principais para executar as ações.
 
-Validação de credenciais
+## 🚀 Como Executar o Projeto
 
-🛒 Carrinho
-Persistência de itens no navegador
+1.  Clone ou baixe o repositório.
+2.  Para uma melhor experiência de desenvolvimento, utilize a extensão **Live Server** no Visual Studio Code.
+3.  Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+4.  A aplicação será aberta em seu navegador em um endereço local (ex: `http://127.0.0.1:5500`).
 
-Cálculo automático de totais
+## 📄 Detalhamento dos Módulos JavaScript
 
-Vinculação do pedido ao cliente logado
+#### `js/gerenciador-produtos.js` (O Coração do Catálogo)
 
-🧑‍💼 Painel do Vendedor
-Visualização do dashboard com dados agregados
+Este é o módulo mais importante para a gestão de produtos.
 
-Adição, edição e exclusão de produtos
+-   **`produtosIniciais`**: Um array que serve como o "banco de dados" inicial de produtos. Ele é usado para popular o `localStorage` na primeira vez que o site é acessado.
+-   **`carregarProdutos()`**: A única função no sistema responsável por ler os produtos. Ela verifica se `produtosDisponiveis` já existe no `localStorage`. Se sim, o retorna. Se não, salva a lista `produtosIniciais` e a retorna. Possui tratamento de erros (`try...catch`) para casos de dados corrompidos.
+-   **`salvarProdutos(listaDeProdutos)`**: A única função responsável por salvar o catálogo. Ela recebe uma lista de produtos atualizada e a persiste no `localStorage`.
 
-Gerenciamento dos pedidos recebidos
+#### `js/auth.js` (Módulo de Autenticação)
 
-Geração de relatórios (via interface)
+Encapsula toda a lógica de usuários em um objeto `Auth`.
 
-📜 Descrição dos Módulos JavaScript (/js)
-A lógica da aplicação é dividida em vários scripts, cada um com sua responsabilidade.
+-   **`Auth.login(email, senha, tipo)`**: Valida as credenciais e, se corretas, salva o usuário em `usuario_logado`.
+-   **`Auth.logout()`**: Remove `usuario_logado` do `localStorage`.
+-   **`Auth.cadastrar(novoUsuario)`**: Adiciona um novo usuário à lista de `usuarios`.
+-   **`Auth.verificarEmailExistente(email)`**: Previne cadastros duplicados.
+-   **`Auth.getUsuarioLogado()`**: Retorna o objeto do usuário logado.
+-   **`protegerPagina(tiposPermitidos)`**: Função de segurança crucial. Garante que apenas usuários logados e com o perfil correto (ex: `['vendedor']`) possam acessar determinadas páginas.
 
-auth.js: Módulo central de autenticação. Gerencia o login, logout e os dados dos usuários salvos.
+#### Scripts do Cliente
 
-cadastro.js: Controla a lógica do formulário de cadastro, validando dados e prevenindo a criação de usuários com e-mails duplicados.
+-   **`js/home.js`**: Renderiza os produtos em destaque na `index.html`.
+-   **`js/produtos.js`**: Renderiza a lista completa de produtos na `produtos-lista.html`.
+-   **`js/detalhes-produto.js`**: Busca um produto por ID e exibe suas informações detalhadas.
+-   **`js/carrinho.js`**: Gerencia a página do carrinho. Contém a lógica de **quantidade**, cálculo de total, e a função `finalizarPedido()` que atualiza o estoque e cria o registro do pedido.
+-   **`js/pedidos-cliente.js`**: Filtra e exibe apenas os pedidos realizados pelo cliente atualmente logado.
 
-carrinho.js: Gerencia todas as funcionalidades do carrinho de compras do cliente, como adicionar, remover e listar itens.
+#### Scripts do Vendedor
 
-dashboard-vendedor.js: Contém lógicas específicas do painel do vendedor, como a funcionalidade de apagar todos os dados do localStorage para reiniciar a loja.
-
-editar-produto.js: Controla o formulário de edição de produtos, permitindo que o vendedor altere preço e estoque.
-
-gerenciar-pedidos.js: Responsável pela lógica de visualização dos pedidos no painel do vendedor.
-
-gerenciar-produtos.js: Controla a página de gerenciamento de produtos, implementando a exclusão de itens e o redirecionamento para a página de edição.
-
-home.js: Script para a página principal do cliente, geralmente lidando com a exibição de produtos em destaque.
-
-login.js: Gerencia o formulário de login, direcionando o usuário para a área correta (cliente ou vendedor) ou exibindo mensagens de erro.
-
-pedidos-cliente.js: Controla a lógica de exibição do histórico de pedidos para o cliente.
-
-produtos-adicionar.js: Script que gerencia o formulário de adição de novos produtos pelo vendedor.
-
-produto-detalhes.js: Responsável por buscar e exibir as informações de um produto específico na página de detalhes.
-
-produtos.js: Contém a lógica principal relacionada aos produtos, como a inicialização do catálogo e a listagem na vitrine.
-
-saudacao-usuario.js: Script que exibe uma mensagem de boas-vindas personalizada no cabeçalho para o usuário logado.
-
-🧪 Como Executar Localmente
-Clone este repositório:
-
-Bash
-
-git clone https://github.com/DannTT1/Projeto-patas-douradas-web.git
-cd Projeto-patas-douradas-web
-Abra o arquivo index.html em seu navegador de preferência.
+-   **`js/painel.js`**: Alimenta o dashboard com métricas (total de vendas, pedidos, etc.) e protege o acesso.
+-   **`js/gerenciar-produtos.js`**: Renderiza a lista de produtos com botões de "Editar" e "Remover".
+-   **`js/produtos-adicionar.js`**: Controla o formulário para adicionar novos produtos.
+-   **`js/editar-produto.js`**: Controla o formulário para editar um produto existente.
+-   **`js/gerenciar-pedidos.js`**: Exibe o histórico de **todos** os pedidos recebidos de todos os clientes.
