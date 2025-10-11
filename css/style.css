@@ -1,29 +1,48 @@
-/* ============================================== */
-/* --- ESTILOS GERAIS E COMUNS --- */
-/* ============================================== */
+
+:root {
+    --cor-primaria: #ff9f1c;
+    --cor-primaria-hover: #e88e00;
+    --cor-texto: #333;
+    --cor-fundo: #fffef9;
+    --cor-branca: #fff;
+    --cor-cinza-claro: #f8f8f8;
+    --cor-cinza-borda: #ccc;
+    --cor-sucesso: #28a745;
+    --cor-erro: #dc3545;
+    --cor-info: #007bff;
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
 html {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fffef9;
-    color: #333;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    background-image: url('../assets/img/fundo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 main {
-    flex: 1; /* Faz o conteúdo principal ocupar o espaço disponível */
+    flex: 1;
     padding: 2rem;
     text-align: center;
 }
 
 h1, h2 {
-    color: #ff9f1c;
+    color: var(--cor-primaria);
     text-align: center;
 }
 
@@ -37,11 +56,9 @@ h2 {
     margin-top: 40px;
 }
 
-/* ============================================== */
-/* --- CABEÇALHO E MENU --- */
-/* ============================================== */
+
 .cabecalho {
-    background-color: #ff9f1c;
+    background-color: var(--cor-primaria);
     padding: 12px 20px;
     display: flex;
     justify-content: space-between;
@@ -54,13 +71,13 @@ h2 {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: var(--cor-branca);
 }
 
 .menu a {
     margin-left: 20px;
     text-decoration: none;
-    color: #fff;
+    color: var(--cor-branca);
     font-weight: bold;
     transition: color 0.3s;
 }
@@ -69,9 +86,8 @@ h2 {
     color: #ffeeba;
 }
 
-/* ================================== */
-/* --- BANNER DA HOME PAGE --- */
-/* ================================== */
+
+
 .banner-home {
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/img/banner-home.png');
     background-size: cover;
@@ -83,14 +99,13 @@ h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: var(--cor-branca);
     min-height: 50vh;
 }
 
 .banner-home h2 {
-    color: #fff;
+    color: var(--cor-branca);
     font-size: 2.2rem;
-    font-weight: bold;
     text-shadow: 2px 2px 6px #000;
     margin: 0 0 1rem 0;
 }
@@ -99,8 +114,8 @@ h2 {
     display: inline-block;
     margin-top: 1rem;
     padding: 12px 24px;
-    background-color: #ff9f1c;
-    color: white;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
@@ -109,19 +124,17 @@ h2 {
 
 .banner-btn:hover {
     transform: scale(1.05);
-    background-color: #e88e00;
+    background-color: var(--cor-primaria-hover);
 }
 
-/* ============================================== */
-/* --- FORMULÁRIOS (LOGIN, CADASTRO, ETC.) --- */
-/* ============================================== */
+
 .login-container {
     max-width: 450px;
     margin: 40px auto;
     padding: 30px;
     border-radius: 15px;
-    background-color: #f8f8f8;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: var(--cor-cinza-claro);
+    box-shadow: var(--sombra-card);
 }
 
 .login-container label {
@@ -131,15 +144,12 @@ h2 {
     font-weight: 500;
 }
 
-.login-container input[type="text"],
-.login-container input[type="email"],
-.login-container input[type="password"],
-.login-container input[type="number"],
+.login-container input,
 .login-container textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cor-cinza-borda);
     border-radius: 8px;
     font-size: 15px;
     box-sizing: border-box;
@@ -148,8 +158,8 @@ h2 {
 .login-container button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #ff9f1c;
-    color: #fff;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
     font-size: 16px;
     font-weight: 600;
     border: none;
@@ -159,79 +169,60 @@ h2 {
 }
 
 .login-container button[type="submit"]:hover {
-    background-color: #e88e00;
+    background-color: var(--cor-primaria-hover);
 }
 
-/* ============================================== */
-/* --- CARDS DE PRODUTO (LISTAGEM) - FINAL --- */
-/* ============================================== */
-/* ============================================== */
-/* --- CARDS DE PRODUTO (LISTAGEM) - OTIMIZADO --- */
-/* ============================================== */
 
-/* A MUDANÇA PRINCIPAL ACONTECE AQUI */
 .produtos-container {
-    display: grid; /* 1. Trocamos flex por grid */
-    
-    /* 2. A "mágica" para o layout responsivo e otimizado:
-       - 'auto-fill': cria quantas colunas couberem no espaço.
-       - 'minmax(250px, 1fr)': cada coluna terá no MÍNIMO 250px, 
-         mas pode crescer ('1fr') para preencher o espaço que sobrar.
-         Isso elimina os espaços vazios nas laterais. */
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    
-    gap: 2rem; /* Mantém o espaçamento que você já tinha */
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-/* AQUI REMOVEMOS A LARGURA FIXA */
-.produto-card, .produto {
-    /* width: 250px; <-- REMOVIDO! O grid agora controla a largura. */
-    background-color: #fff;
+.produto-card {
+    background-color: var(--cor-branca);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.2s ease;
-    display: flex; /* Manter flex aqui é ótimo para alinhar o conteúdo interno do card */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.produto-card:hover, .produto:hover {
+.produto-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--sombra-card);
 }
 
-.produto-card .imagem-container, 
-.produto .imagem-container {
+.produto-card .imagem-container {
     aspect-ratio: 1 / 1;
     width: 100%;
-    background-color: #f9f9f9;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
     box-sizing: border-box;
-    cursor: pointer; /* Adicionado para indicar que a imagem é clicável */
+    cursor: pointer;
 }
 
-.produto-card img, .produto img {
+.produto-card img {
     width: 100%;
     height: 100%;
-    object-fit: contain; 
+    object-fit: contain;
 }
 
 .produto-info {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Essencial para que o botão fique sempre no final */
+    flex-grow: 1;
 }
 
 .produto-info h3 {
     font-size: 1.1rem;
-    color: #333;
     margin: 0 0 0.5rem;
-    /* Garante que títulos de 1 ou 2 linhas tenham a mesma altura, alinhando os cards */
     min-height: 2.5em; 
 }
 
@@ -242,48 +233,27 @@ h2 {
 }
 
 .produto-info button {
-    margin-top: auto; /* Empurra o botão para o final do card */
-    background-color: #ff9900;
-    color: white;
+    margin-top: auto;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
     border: none;
-    padding: 10px 16px; /* Aumentei um pouco o padding para melhor toque */
+    padding: 10px 16px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.2s ease; /* Adicionada transição suave */
+    transition: background-color 0.2s ease;
 }
 
 .produto-info button:hover {
-    background-color: #e88e00;
+    background-color: var(--cor-primaria-hover);
 }
 
 .produto-info button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
-/* ================================================= */
-/* --- PRODUTOS EM DESTAQUE (HOME) --- */
-/* ================================================= */
-.produtos-destaque {
-    background-color: #fffaf0;
-    padding: 2rem;
-    margin: 3rem 0;
-    border-radius: 15px;
-    border: 1px solid #ffeeba;
-}
 
-.produtos-destaque .produto-card {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
 
-.produtos-destaque .produto-card:hover {
-    transform: scale(1.1);
-}
-
-/* ======================================= */
-/* --- PÁGINA DE DETALHES DO PRODUTO --- */
-/* ======================================= */
 .detalhe-produto-container {
     display: flex;
     flex-wrap: wrap;
@@ -293,23 +263,26 @@ h2 {
     max-width: 900px;
     margin: 40px auto;
     padding: 2rem;
-    background-color: #fff;
+    background-color: var(--cor-branca);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--sombra-card);
     text-align: left;
 }
 
-.detalhe-produto-container img {
-    max-width: 100%;
-    width: 400px;
+.detalhe-produto-imagem {
+    flex: 1 1 300px; 
+    max-width: 400px;
+}
+
+.detalhe-produto-imagem img {
+    width: 100%; 
     height: auto;
     object-fit: contain;
     border-radius: 8px;
 }
 
 .detalhe-produto-info {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 300px;
 }
 
 .detalhe-produto-info h1 {
@@ -321,12 +294,17 @@ h2 {
 .detalhe-produto-info .preco {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #ff9f1c;
+    color: var(--cor-primaria);
     margin: 1rem 0;
 }
 
+.detalhe-produto-info .estoque {
+    font-weight: bold;
+    color: var(--cor-sucesso);
+    margin-bottom: 1rem;
+}
+
 .detalhe-produto-info .descricao {
-    font-size: 1rem;
     line-height: 1.6;
     color: #555;
     margin-bottom: 1.5rem;
@@ -336,81 +314,157 @@ h2 {
     width: 100%;
     padding: 15px;
     font-size: 1.1rem;
-    font-weight: bold;
-    background-color: #ff9900;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    background-color: var(--cor-primaria);
 }
 
 .detalhe-produto-info button:hover {
-    background-color: #e88e00;
+    background-color: var(--cor-primaria-hover);
 }
 
-/* ============================================== */
-/* --- PAINEL DO VENDEDOR --- */
-/* ============================================== */
-.dashboard-container {
-    max-width: 1200px;
-    margin: 0 auto;
+
+.carrinho-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--cor-branca);
     padding: 2rem;
-}
-
-.dashboard-section {
-    margin-bottom: 40px;
-}
-
-.dashboard-section h2 {
-    text-align: left;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.cards-dashboard {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    flex: 1 1 300px;
-    text-align: center;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--sombra-card);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+.tabela-carrinho {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
 }
 
-.card h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.1rem;
-    color: #555;
+.tabela-carrinho th, .tabela-carrinho td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
 }
 
-.card p {
-    margin: 0;
-    font-size: 2.2rem;
+.tabela-carrinho th {
+    background-color: var(--cor-cinza-claro);
+    font-weight: 600;
+}
+
+.quantidade-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantidade-controls button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--cor-cinza-borda);
+    background-color: var(--cor-cinza-claro);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.btn-remover {
+    background-color: var(--cor-erro);
+    color: var(--cor-branca);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.carrinho-total {
+    margin-top: 2rem;
+    text-align: right;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
 }
 
-/* ============================================== */
-/* --- RODAPÉ --- */
-/* ============================================== */
+.btn-finalizar {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto 0;
+    padding: 15px;
+    background-color: var(--cor-sucesso);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.estoque-insuficiente {
+    background-color: #ffe8e8;
+    border: 1px solid var(--cor-erro);
+}
+
+.estoque-insuficiente td {
+    color: var(--cor-erro);
+}
+
+
+.pedido-card {
+    background-color: var(--cor-branca);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.pedido-card h3 {
+    margin-top: 0;
+    color: var(--cor-primaria);
+}
+
+.pedido-card p {
+    margin: 0.5rem 0;
+}
+
+.pedido-card ul {
+    padding-left: 20px;
+    margin-top: 0.5rem;
+    list-style-type: disc;
+}
+
+
+.botoes-gerenciamento {
+    display: flex;
+    gap: 10px;
+    padding: 0 1rem 1rem;
+}
+
+.botoes-gerenciamento button {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--cor-branca);
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.botoes-gerenciamento button:hover {
+    opacity: 0.85;
+}
+
+.btn-editar {
+    background-color: var(--cor-info); 
+}
+
+.btn-excluir {
+    background-color: var(--cor-erro); 
+}
+
+
 .footer {
     background-color: #1a1a1a;
-    color: #fff;
+    color: var(--cor-branca);
     padding: 40px 20px;
     margin-top: auto;
     width: 100%;
@@ -433,25 +487,19 @@ h2 {
 }
 
 .footer-section h3 {
-    color: #ff9f1c;
-    margin-bottom: 15px;
+    color: var(--cor-primaria);
 }
 
-.footer-section p, .footer-section a {
-    font-size: 14px;
+.footer-section a {
     color: #ccc;
     text-decoration: none;
-    line-height: 1.6;
 }
 
 .footer-section a:hover {
-    text-decoration: underline;
-    color: #fff;
+    color: var(--cor-branca);
 }
 
-/* ========================================== */
-/* --- RESPONSIVIDADE --- */
-/* ========================================== */
+
 @media (max-width: 768px) {
     main {
         padding: 1rem;
@@ -459,31 +507,18 @@ h2 {
 
     .cabecalho {
         flex-direction: column;
-        padding: 15px;
         gap: 10px;
-    }
-
-    .cabecalho-vendedor {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .cabecalho-vendedor .menu {
-        gap: 8px;
     }
     
     .menu {
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 15px;
     }
 
     .menu a {
         margin-left: 0;
-    }
-
-    .banner-home {
-        min-height: 40vh;
     }
 
     .banner-home h2 {
@@ -496,16 +531,34 @@ h2 {
         padding: 20px;
     }
     
-    .produtos-destaque .produto-card {
-        transform: scale(1);
-    }
-    
-    .produtos-destaque .produto-card:hover {
-        transform: scale(1.05);
-    }
-
     .footer-container {
         flex-direction: column;
         text-align: center;
+    }
+
+    .tabela-carrinho thead {
+        display: none; 
+    }
+    .tabela-carrinho, .tabela-carrinho tbody, .tabela-carrinho tr, .tabela-carrinho td {
+        display: block;
+        width: 100%;
+    }
+    .tabela-carrinho tr {
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+    }
+    .tabela-carrinho td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .tabela-carrinho td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        text-align: left;
+        font-weight: bold;
     }
 }

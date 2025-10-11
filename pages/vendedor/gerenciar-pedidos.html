@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Pedidos</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <title>Gerenciar Pedidos - Painel do Vendedor</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <header class="cabecalho cabecalho-vendedor">
-        <div class="logo">🐾 PatasDouradas.com</div>
+        <a href="painel-vendedor.html" class="logo" aria-label="Dashboard do Vendedor">🐾 PatasDouradas.com</a>
         <nav class="menu">
             <a href="painel-vendedor.html">Dashboard</a>
             <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
             <a href="produtos-adicionar.html">Adicionar Produto</a>
-            <a href="../login-cadastro/login.html" onclick="logout()">Sair</a>
+            <button id="btn-logout" class="btn-logout">Sair</button>
         </nav>
     </header>
 
     <main>
-        <h1>📦 Pedidos Finalizados</h1>
-        <div id="lista-pedidos" class="painel-pedidos"></div>
+        <div class="container-pagina">
+            <h1>📦 Pedidos Recebidos</h1>
+            <div id="lista-pedidos">
+                </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -42,6 +45,7 @@
         </div>
     </footer>
 
+    <script src="../../js/auth.js"></script>
     <script src="../../js/gerenciar-pedidos.js"></script>
 </body>
 </html>

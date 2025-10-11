@@ -1,26 +1,47 @@
-document.getElementById("formularioCadastro").addEventListener("submit", function (e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formularioCadastro");
+    if (form) {
+        form.addEventListener("submit", handleCadastroSubmit);
+    }
+});
 
-    const nomeCompleto = document.getElementById("nomeUsuario").value;
-    const email = document.getElementById("emailUsuario").value;
+function handleCadastroSubmit(event) {
+    event.preventDefault();
+
+    const nomeCompleto = document.getElementById("nomeUsuario").value.trim();
+    const email = document.getElementById("emailUsuario").value.trim();
     const senha = document.getElementById("senhaUsuario").value;
-    const tipoUsuario = document.querySelector("input[name='opcaoLoginCadastro']:checked").value;
+    const tipoUsuarioEl = document.querySelector("input[name='opcaoLoginCadastro']:checked");
 
-    if(verificadorDeEmailExistente(email)) {
-        alert('Email já cadastrado,faça o login utilizando outro e-mail');
+    if (!nomeCompleto || !email || !senha) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
         return;
-    }   
+    }
+    if (senha.length < 6) {
+        alert("A senha deve ter no mínimo 6 caracteres.");
+        return;
+    }
+    if (!tipoUsuarioEl) {
+        alert("Por favor, selecione se você é um Cliente ou Vendedor.");
+        return;
+    }
+
+    const tipoUsuario = tipoUsuarioEl.value;
+
+    if (Auth.verificarEmailExistente(email)) {
+        alert('Este e-mail já está cadastrado. Por favor, tente outro ou faça login.');
+        return;
+    }
 
     const novoUsuario = {
         nome: nomeCompleto,
         email: email,
-        senha: senha,
+        senha: senha, 
         tipo: tipoUsuario
     };
 
-    cadastrarUsuario(novoUsuario)
+    Auth.cadastrar(novoUsuario);
 
-   alert('cadastro realizado com sucesso! faça o login agora.');
-window.location.href = "login.html";
-
-}); 
+    alert('Cadastro realizado com sucesso! Você será redirecionado para a página de login.');
+    window.location.href = "login.html";
+}

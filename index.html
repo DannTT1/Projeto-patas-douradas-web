@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Patas Douradas</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Home - Patas Douradas</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body style="background-image: url('./assets/img/fundo.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
-
+<body>
     <header class="cabecalho">
-        <div class="logo">🐾 PatasDouradas.com</div>
-        <div id="saudacaoUsuario" class="saudacao-usuario"></div>
+        <a href="index.html" class="logo" aria-label="Página Inicial da Patas Douradas">🐾 PatasDouradas.com</a>
         <nav class="menu">
             <a href="index.html">Home</a>
             <a href="pages/cliente/produtos-lista.html">Produtos</a>
             <a href="pages/cliente/carrinho.html">Carrinho</a>
             <a href="pages/cliente/pedidos-cliente.html">Pedidos</a>
-            <a href="pages/login-cadastro/login.html" onclick="logout()">Sair</a>
+            <button id="btn-logout" class="btn-logout">Sair</button>
         </nav>
     </header>
 
     <main>
-        <h1>🏠 Bem-vindo à Patas Douradas!</h1>
-
         <section class="banner-home">
             <div>
                 <h2>Aqui seu pet é tratado com amor! 💛</h2>
-                <a href="pages/cliente/produtos-lista.html" class="banner-btn">Ver Produtos</a>
+                <a href="pages/cliente/produtos-lista.html" class="banner-btn">Ver Todos os Produtos</a>
             </div>
         </section>
         
-        <div id="produtosContainer" class="produtos-container"></div>
-
         <section class="produtos-destaque">
             <h2>🐾 Produtos em Destaque</h2>
-            <div class="produtos-container" id="produtosDestaque"></div>
+            <div class="produtos-container" id="produtosDestaque">
+                </div>
         </section>
     </main>
 
@@ -57,8 +52,9 @@
             </div>
         </div>
     </footer>
-    <script src="js/saudacao-usuario.js"></script>
-    <script src="js/produtos.js"></script>
-    <script src="js/Home.js"></script>
+
+    <script src="js/gerenciador-produtos.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>

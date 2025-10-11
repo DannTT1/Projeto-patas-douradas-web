@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adicionar Produto</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto - Painel do Vendedor</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <header class="cabecalho cabecalho-vendedor">
-        <div class="logo">🐾 PatasDouradas.com</div>
+        <a href="painel-vendedor.html" class="logo" aria-label="Dashboard do Vendedor">🐾 PatasDouradas.com</a>
         <nav class="menu">
             <a href="painel-vendedor.html">Dashboard</a>
-            <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
             <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
-            <a href="../login-cadastro/login.html" onclick="logout()">Sair</a>
+            <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
+            <button id="btn-logout" class="btn-logout">Sair</button>
         </nav>
     </header>
 
     <main>
-        <h2>➕ Adicionar Novo Produto</h2>
-        <form id="formProduto" class="login-container">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" required />
+        <div class="container-pagina">
+            <h2>➕ Adicionar Novo Produto</h2>
+            <a href="gerenciar-produtos.html" class="btn-voltar">← Voltar para Gerenciamento</a>
+            
+            <form id="formProduto" class="login-container">
+                <label for="nome">Nome do Produto</label>
+                <input type="text" id="nome" required />
 
-            <label for="preco">Preço:</label>
-            <input type="number" id="preco" step="0.01" required />
+                <label for="preco">Preço (R$)</label>
+                <input type="number" id="preco" step="0.01" min="0" required />
 
-            <label for="estoque">Estoque:</label>
-            <input type="number" id="estoque" required />
+                <label for="estoque">Estoque</label>
+                <input type="number" id="estoque" min="0" required />
 
-            <label for="imagem">URL da Imagem:</label>
-            <input type="text" id="imagem" />
+                <label for="imagem">URL da Imagem</label>
+                <input type="text" id="imagem" required />
 
-            <label for="descricao">Descrição do Produto:</label>
-            <textarea id="descricao" rows="4" required></textarea>
+                <label for="descricao">Descrição do Produto</label>
+                <textarea id="descricao" rows="4" required></textarea>
 
-            <button type="submit">Cadastrar Produto</button>
-        </form>
+                <button type="submit">Cadastrar Produto</button>
+            </form>
+        </div>
     </main>
 
     <footer class="footer">
@@ -59,6 +63,8 @@
         </div>
     </footer>
 
+    <script src="../../js/gerenciador-produtos.js"></script>
+    <script src="../../js/auth.js"></script>
     <script src="../../js/produtos-adicionar.js"></script>
 </body>
 </html>

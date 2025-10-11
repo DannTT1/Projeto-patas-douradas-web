@@ -1,43 +1,55 @@
-function listarPedidos() {
-  const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
-  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-  const container = document.getElementById("lista-pedidos");
-  container.innerHTML = "";
+function exibirPedidosDoCliente() {
+    const container = document.getElementById("lista-pedidos");
+    if (!container) {
+        console.error("Elemento 'lista-pedidos' não foi encontrado.");
+        return;
+    }
 
-  if (!usuarioLogado) {
-    container.innerHTML = "<p>Erro: usuário não está logado.</p>";
-    return;
-  }
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
 
-  // Filtrar apenas os pedidos do usuário logado
-  const pedidosUsuario = pedidos.filter(pedido => {
-    return pedido.cliente && pedido.cliente.email === usuarioLogado.email;
-  });
+    if (!usuarioLogado || !usuarioLogado.email) {
+        container.innerHTML = `
+            <p>Você precisa estar logado para visualizar seus pedidos.</p>
+            <a href="/Projeto-patas-douradas-web/pages/login-cadastro/login.html">Ir para a página de Login</a>
+        `;
+        return;
+    }
 
-  if (pedidosUsuario.length === 0) {
-    container.innerHTML = "<p>Nenhum pedido encontrado para este usuário.</p>";
-    return;
-  }
+    const todosPedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    const meusPedidos = todosPedidos.filter(pedido => pedido.cliente && pedido.cliente.email === usuarioLogado.email);
 
-  pedidosUsuario.forEach(pedido => {
-    const div = document.createElement("div");
-    div.className = "pedido-item";
+    meusPedidos.sort((a, b) => b.id - a.id);
 
-    let produtosHTML = "";
-    pedido.itens.forEach(item => {
-      produtosHTML += `<li>${item.nome} - R$ ${item.preco.toFixed(2)}</li>`;
+    if (meusPedidos.length === 0) {
+        container.innerHTML = "<p>Você ainda não realizou nenhum pedido.</p>";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    meusPedidos.forEach(pedido => {
+        const div = document.createElement("div");
+        div.className = "pedido-card";
+
+        const dataFormatada = new Date(pedido.data).toLocaleString("pt-BR", {
+            dateStyle: "long",
+            timeStyle: "short"
+        });
+
+        const itensHtml = pedido.itens.map(item =>
+            `<li>${item.nome} (x${item.quantidade}) - R$ ${item.preco.toFixed(2)}</li>`
+        ).join("");
+
+        div.innerHTML = `
+            <h3>Pedido #${pedido.id}</h3>
+            <p><strong>Data:</strong> ${dataFormatada}</p>
+            <p><strong>Total:</strong> R$ ${pedido.total.toFixed(2)}</p>
+            <p><strong>Itens:</strong></p>
+            <ul>${itensHtml}</ul>
+        `;
+
+        container.appendChild(div);
     });
-
-    div.innerHTML = `
-      <h3>Pedido #${pedido.id}</h3>
-      <p><strong>Data:</strong> ${new Date(pedido.data).toLocaleString()}</p>
-      <ul>${produtosHTML}</ul>
-      <p><strong>Total:</strong> R$ ${pedido.total.toFixed(2)}</p>
-      <hr>
-    `;
-
-    container.appendChild(div);
-  });
 }
 
-document.addEventListener("DOMContentLoaded", listarPedidos); 
+document.addEventListener("DOMContentLoaded", exibirPedidosDoCliente);

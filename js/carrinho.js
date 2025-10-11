@@ -1,90 +1,151 @@
 function obterCarrinho() {
-  return JSON.parse(localStorage.getItem("carrinho")) || [];
+    return JSON.parse(localStorage.getItem("carrinho")) || [];
 }
 
 function salvarCarrinho(carrinho) {
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
 }
 
-function listarCarrinho() {
-  
-  const carrinho = obterCarrinho();
-  const container = document.getElementById("itens-carrinho");
-  const totalSpan = document.getElementById("total");
-  container.innerHTML = "";
+function aumentarQuantidade(produtoId) {
+    const carrinho = obterCarrinho();
+    const itemNoCarrinho = carrinho.find(p => p.id === produtoId);
+    
+    const produtosDaLoja = carregarProdutos();
+    const produtoNaLoja = produtosDaLoja.find(p => p.id === produtoId);
 
-  if (carrinho.length === 0) {
-    container.innerHTML = "<p>O carrinho está vazio.</p>";
-    totalSpan.textContent = "";
-    return;
-  }
-
-  let total = 0;
-  carrinho.forEach((item, index) => {
-    total += item.preco;
-    const div = document.createElement("div");
-    div.className = "item-carrinho";
-    div.innerHTML = `
-      <p><strong>${item.nome}</strong> - R$ ${item.preco.toFixed(2)}</p>
-      <button onclick="removerItem(${index})">Remover</button>
-    `;
-    container.appendChild(div);
-  });
-
-  totalSpan.textContent = `Total: R$ ${total.toFixed(2)}`;
+    if (itemNoCarrinho && produtoNaLoja) {
+        if (itemNoCarrinho.quantidade < produtoNaLoja.estoque) {
+            itemNoCarrinho.quantidade++;
+            salvarCarrinho(carrinho);
+            renderizarCarrinho();
+        } else {
+            alert(`Você atingiu o limite de estoque para "${produtoNaLoja.nome}".`);
+        }
+    }
 }
 
-function removerItem(index) {
-  const carrinho = obterCarrinho();
-  carrinho.splice(index, 1);
-  salvarCarrinho(carrinho);
-  listarCarrinho();
+function diminuirQuantidade(produtoId) {
+    const carrinho = obterCarrinho();
+    const itemIndex = carrinho.findIndex(p => p.id === produtoId);
+
+    if (itemIndex > -1) {
+        if (carrinho[itemIndex].quantidade > 1) {
+            carrinho[itemIndex].quantidade--;
+        } else {
+            carrinho.splice(itemIndex, 1);
+        }
+        salvarCarrinho(carrinho);
+        renderizarCarrinho();
+    }
+}
+
+function removerItemDoCarrinho(produtoId) {
+    if (confirm("Tem certeza que deseja remover este item do carrinho?")) {
+        let carrinho = obterCarrinho();
+        carrinho = carrinho.filter(p => p.id !== produtoId);
+        salvarCarrinho(carrinho);
+        renderizarCarrinho();
+    }
 }
 
 function finalizarPedido() {
-  const carrinho = obterCarrinho();
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio!");
-    return;
-  }
-
-  const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
-  if (!usuarioLogado) {
-    alert("Erro: você precisa estar logado para finalizar o pedido.");
-    return;
-  }
-
-  const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
-
-  carrinho.forEach(itemCarrinho => {
-    const produtoIndex = produtos.findIndex(p => p.id === itemCarrinho.id);
-    if (produtoIndex !== -1) {
-      produtos[produtoIndex].estoque = Math.max(0, produtos[produtoIndex].estoque - 1);
+    const carrinho = obterCarrinho();
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
     }
-  });
 
-  localStorage.setItem("produtosDisponiveis", JSON.stringify(produtos));
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
+    if (!usuarioLogado) {
+        alert("Você precisa estar logado para finalizar o pedido.");
+        window.location.href = "/Projeto-patas-douradas-web/pages/login-cadastro/login.html";
+        return;
+    }
 
-  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    const produtosDaLoja = carregarProdutos();
+    let estoqueSuficiente = true;
 
-  const novoPedido = {
-    id: Date.now(),
-    data: Date.now(),
-    cliente: usuarioLogado, 
-    itens: carrinho,
-    total: carrinho.reduce((acc, item) => acc + item.preco, 0)
-  };
+    for (const itemCarrinho of carrinho) {
+        const produtoNaLoja = produtosDaLoja.find(p => p.id === itemCarrinho.id);
+        if (!produtoNaLoja || itemCarrinho.quantidade > produtoNaLoja.estoque) {
+            alert(`Estoque insuficiente para "${itemCarrinho.nome}".\nDisponível: ${produtoNaLoja ? produtoNaLoja.estoque : 0}.\nNo seu carrinho: ${itemCarrinho.quantidade}.`);
+            estoqueSuficiente = false;
+            break;
+        }
+    }
 
-  pedidos.push(novoPedido);
-  localStorage.setItem("pedidos", JSON.stringify(pedidos));
-  localStorage.removeItem("carrinho");
+    if (!estoqueSuficiente) {
+        renderizarCarrinho();
+        return;
+    }
 
-  alert("Pedido finalizado com sucesso!");
-  window.location.href = "pedidos-cliente.html";
+    carrinho.forEach(itemCarrinho => {
+        const produtoNaLoja = produtosDaLoja.find(p => p.id === itemCarrinho.id);
+        if (produtoNaLoja) {
+            produtoNaLoja.estoque -= itemCarrinho.quantidade;
+        }
+    });
+
+    salvarProdutos(produtosDaLoja);
+    
+    const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    const novoPedido = {
+        id: Date.now(),
+        data: new Date().toISOString(),
+        cliente: usuarioLogado.nome,
+        itens: carrinho,
+        total: carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0)
+    };
+    pedidos.push(novoPedido);
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+    
+    localStorage.removeItem("carrinho");
+
+    alert("Pedido finalizado com sucesso!");
+    window.location.href = "pedidos-cliente.html";
 }
 
-function voltar() {
-  window.location.href = "produtos-lista.html";
+function renderizarCarrinho() {
+    const carrinho = obterCarrinho();
+    const produtosDaLoja = carregarProdutos();
+    const container = document.getElementById("itens-carrinho");
+    const totalSpan = document.getElementById("total");
+    container.innerHTML = "";
+
+    if (carrinho.length === 0) {
+        container.innerHTML = "<tr><td colspan='5'>O carrinho está vazio.</td></tr>";
+        totalSpan.textContent = "R$ 0,00";
+        return;
+    }
+
+    let totalGeral = 0;
+    carrinho.forEach(item => {
+        const produtoNaLoja = produtosDaLoja.find(p => p.id === item.id);
+        const estoqueDisponivel = produtoNaLoja ? produtoNaLoja.estoque : 0;
+        const subtotal = item.preco * item.quantidade;
+        totalGeral += subtotal;
+
+        const classeErro = item.quantidade > estoqueDisponivel ? 'estoque-insuficiente' : '';
+        
+        const itemHtml = `
+            <tr class="${classeErro}">
+                <td>${item.nome}</td>
+                <td>R$ ${item.preco.toFixed(2)}</td>
+                <td class="quantidade-controls">
+                    <button onclick="diminuirQuantidade(${item.id})">-</button>
+                    <span>${item.quantidade}</span>
+                    <button onclick="aumentarQuantidade(${item.id})">+</button>
+                </td>
+                <td>R$ ${subtotal.toFixed(2)}</td>
+                <td>
+                    <button class="btn-remover" onclick="removerItemDoCarrinho(${item.id})">Remover</button>
+                </td>
+            </tr>
+        `;
+        container.innerHTML += itemHtml;
+    });
+
+    totalSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
 }
 
-document.addEventListener("DOMContentLoaded", listarCarrinho); 
+document.addEventListener("DOMContentLoaded", renderizarCarrinho);

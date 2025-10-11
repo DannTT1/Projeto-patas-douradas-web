@@ -1,74 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro | PetShop Patas Douradas</title>
-    <link rel="stylesheet" href="../../css/style.css">
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Patas Douradas</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="../../index.html" class="logo" aria-label="Página Inicial da Patas Douradas">🐾 PatasDouradas.com</a>
+        <nav class="menu">
+            <a href="../../index.html">Voltar à Loja</a>
+        </nav>
+    </header>
 
-  <body>
-    <h2>Cadastre-se agora no Petshop Patas Douradas!</h2>
+    <main>
+        <div class="login-container">
+            <h2>Cadastre-se agora!</h2>
+            <form id="formularioCadastro">
+                <label for="nomeUsuario">Nome completo</label>
+                <input
+                    type="text"
+                    id="nomeUsuario"
+                    name="nomeUsuario"
+                    placeholder="Insira seu nome completo"
+                    required
+                />
 
-    <div class="login-container">
-      <form id="formularioCadastro">
-        <label for="nomeUsuario">Nome completo</label>
-        <input
-          type="text"
-          id="nomeUsuario"
-          name="nomeUsuario"
-          placeholder="Insira seu nome completo"
-          required
-        />
+                <label for="emailUsuario">E-mail</label>
+                <input
+                    type="email"
+                    id="emailUsuario"
+                    name="emailUsuario"
+                    placeholder="Insira o seu e-mail"
+                    required
+                />
 
-        <label for="emailUsuario">E-mail</label>
-        <input
-          type="email"
-          id="emailUsuario"
-          name="emailUsuario"
-          placeholder="Insira o seu email"
-          required
-        />
+                <label for="senhaUsuario">Senha (mínimo 6 caracteres)</label>
+                <input
+                    type="password"
+                    id="senhaUsuario"
+                    name="senhaUsuario"
+                    placeholder="Crie uma senha segura"
+                    required
+                    minlength="6"
+                />
 
-        <label for="senhaUsuario">Senha</label>
-        <input
-          type="password"
-          id="senhaUsuario"
-          name="senhaUsuario"
-          placeholder="Insira sua senha"
-        />
+                <div class="tipo-usuario">
+                    <p>Selecione o tipo de conta:</p>
+                    <label>
+                        <input
+                            type="radio"
+                            name="opcaoLoginCadastro"
+                            value="cliente"
+                            id="cliente"
+                            checked
+                        />
+                        Cliente
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="opcaoLoginCadastro"
+                            value="vendedor"
+                            id="vendedor"
+                        />
+                        Vendedor
+                    </label>
+                </div>
 
-        <div class="tipo-usuario">
-          <label>
-            <input
-              type="radio"
-              name="opcaoLoginCadastro"
-              value="cliente"
-              id="cliente"
-              checked
-            />
-            Cliente
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="opcaoLoginCadastro"
-              value="vendedor"
-              id="vendedor"
-            />
-            Vendedor
-          </label>
+                <button type="submit">Cadastrar-se</button>
+            </form>
+
+            <p class="cadastro-link">
+                Já possui cadastro? <a href="login.html">Faça login agora</a>
+            </p>
         </div>
-
-        <button type="submit">Cadastrar-se</button>
-      </form>
-
-      <p class="cadastro-link">
-        Já possui cadastro? <a href="login.html">Faça login agora</a>
-      </p>
-    </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sobre a Patas Douradas</h3>
+                <p>Oferecemos os melhores produtos para a saúde e bem-estar do seu pet. Amor e cuidado em cada detalhe.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: contato@patasdouradas.com</p>
+                <p>Telefone: (11) 98765-4321</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <a href="#">Facebook</a> | 
+                <a href="#">Instagram</a> | 
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="../../js/auth.js"></script>
     <script src="../../js/cadastro.js"></script>
-  </body>
+</body>
 </html>

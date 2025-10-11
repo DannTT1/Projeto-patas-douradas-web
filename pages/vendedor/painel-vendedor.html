@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel do Vendedor</title>
-    <link rel="stylesheet" href="../../css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Painel do Vendedor</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <header class="cabecalho cabecalho-vendedor">
-        <div class="logo">🐾 Painel do Vendedor</div>
+        <a href="painel-vendedor.html" class="logo" aria-label="Dashboard do Vendedor">🐾 Painel do Vendedor</a>
         <nav class="menu">
+            <a href="painel-vendedor.html">Dashboard</a>
             <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
+            <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
             <a href="produtos-adicionar.html">Adicionar Produto</a>
-            <a href="#" onclick="alternarRelatorio()">Relatório de Dados</a>
-            <a href="../login-cadastro/login.html" onclick="logout()">Sair</a>
+            <button id="btn-logout" class="btn-logout">Sair</button>
         </nav>
     </header>
 
@@ -29,7 +30,7 @@
                 </div>
                 <div class="card">
                     <h3>💰 Vendas Totais</h3>
-                    <p>R$ <span id="totalVendas">0.00</span></p>
+                    <p id="totalVendas">R$ 0.00</p>
                 </div>
                 <div class="card">
                     <h3>🛍️ Itens em Estoque</h3>
@@ -37,12 +38,10 @@
                 </div>
             </div>
         </section>
-
-        <section class="relatorio-container" id="relatorioContainer">
-            <h2>Ferramentas de Desenvolvedor</h2>
-            <p>Dados salvos no LocalStorage. Use para debug ou para limpar a memória do navegador.</p>
-            <pre id="relatorioDados" class="relatorio-box"></pre>
-            <button class="btn-limpar" onclick="limparDadosLocalStorage()">🧹 Limpar Todos os Dados</button>
+        
+        <section class="dashboard-section">
+            <h2>Ferramentas</h2>
+             <button class="btn-limpar" onclick="limparDadosLocalStorage()">🧹 Limpar Dados do Site (Resetar)</button>
         </section>
     </main>
 
@@ -66,7 +65,8 @@
         </div>
     </footer>
 
+    <script src="../../js/gerenciador-produtos.js"></script>
     <script src="../../js/auth.js"></script>
-    <script src="../../js/dashboard-vendedor.js"></script>
+    <script src="../../js/painel.js"></script>
 </body>
 </html>

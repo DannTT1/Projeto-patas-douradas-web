@@ -1,60 +1,82 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
-  if (usuarioLogado && usuarioLogado.nome) {
-    const saudacao = document.getElementById("saudacaoUsuario");
-    if (saudacao) {
-      saudacao.textContent = `Olá, ${usuarioLogado.nome}!`;
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
+    if (usuarioLogado && usuarioLogado.nome) {
+        const saudacao = document.getElementById("saudacaoUsuario");
+        if (saudacao) {
+            saudacao.textContent = `Olá, ${usuarioLogado.nome}!`;
+        }
     }
-  }
 
-  const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
-  const container = document.getElementById("produtosDestaque");
-
-  if (!container || produtos.length === 0) {
-    console.warn("⚠️ Nenhum produto encontrado para exibir.");
-    return;
-  }
-
-  const destaque = produtos.filter(p => [1, 2, 7].includes(p.id));
-
-  destaque.forEach(produto => {
-    const div = document.createElement("div");
-    div.className = "produto-card"; 
-    
-   
-    div.innerHTML = `
-      <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
-          <img src="${produto.imagem}" alt="${produto.nome}">
-      </div>
-      <div class="produto-info">
-          <h3>${produto.nome}</h3>
-          <p>R$ ${produto.preco.toFixed(2)}</p>
-          <button onclick="adicionarAoCarrinho(${produto.id})">Adicionar ao Carrinho</button>
-      </div>
-    `;
-    container.appendChild(div);
-  });
+    renderizarDestaquesNaHome();
 });
 
+function renderizarDestaquesNaHome() {
+    const container = document.getElementById("produtosDestaque");
+    if (!container) return;
+
+    const todosProdutos = carregarProdutos(); 
+    if (todosProdutos.length === 0) {
+        container.innerHTML = "<p>Nenhum produto para exibir no momento.</p>";
+        return;
+    }
+
+    const idsDestaque = [7, 2, 9]; 
+    const produtosEmDestaque = todosProdutos.filter(p => idsDestaque.includes(p.id));
+    
+    container.innerHTML = "";
+
+    produtosEmDestaque.forEach(produto => {
+        const card = document.createElement("div");
+        card.className = "produto-card"; 
+        card.innerHTML = `
+            <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
+                <img src="${produto.imagem}" alt="${produto.nome}">
+            </div>
+            <div class="produto-info">
+                <h3>${produto.nome}</h3>
+                <p>R$ ${produto.preco.toFixed(2)}</p>
+                <button onclick="adicionarAoCarrinho(${produto.id})" ${produto.estoque <= 0 ? "disabled" : ""}>
+                    ${produto.estoque <= 0 ? "Indisponível" : "Adicionar ao Carrinho"}
+                </button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
 
 
-function adicionarAoCarrinho(id) {
-  const produtos = JSON.parse(localStorage.getItem("produtosDisponiveis")) || [];
-  const produto = produtos.find(p => p.id === id);
+function obterCarrinho() {
+    return JSON.parse(localStorage.getItem("carrinho")) || [];
+}
 
-  if (!produto || produto.estoque <= 0) {
-    alert("Produto indisponível!");
-    return;
-  }
+function salvarCarrinho(carrinho) {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
 
-  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  carrinho.push(produto);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+function adicionarAoCarrinho(produtoId) {
+    const produtos = carregarProdutos();
+    const produtoParaAdicionar = produtos.find(p => p.id === produtoId);
 
-  alert(`${produto.nome} foi adicionado ao carrinho!`);
+    if (!produtoParaAdicionar || produtoParaAdicionar.estoque <= 0) {
+        alert("Produto indisponível no momento!");
+        return;
+    }
+
+    const carrinho = obterCarrinho();
+    const itemExistente = carrinho.find(item => item.id === produtoId);
+
+    if (itemExistente) {
+        itemExistente.quantidade++;
+    } else {
+        carrinho.push({ ...produtoParaAdicionar, quantidade: 1 });
+    }
+
+    salvarCarrinho(carrinho);
+    alert(`"${produtoParaAdicionar.nome}" foi adicionado ao carrinho!`);
 }
 
 function verDetalhes(id) {
-    
-    window.location.href = `pages/cliente/produto-detalhes.html?id=${id}`;
+    window.location.href = `/Projeto-patas-douradas-web/pages/cliente/produto-detalhes.html?id=${id}`;
 }

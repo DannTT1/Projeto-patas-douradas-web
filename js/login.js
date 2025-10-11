@@ -1,23 +1,34 @@
-document.getElementById("formLogin").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-  const tipoUsuario = document.querySelector("input[name='opcaoLogin']:checked").value;
-
-  const logou = login(email, senha, tipoUsuario);
-
-  
-  if (logou) {
-    alert('Login realizado com sucesso!!');
-    
-    if (tipoUsuario === 'cliente') {
-      
-      window.location.href = "../../index.html"; 
-    } else {
-      window.location.href = "../vendedor/painel-vendedor.html"; 
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formLogin");
+    if (form) {
+        form.addEventListener("submit", handleLoginSubmit);
     }
-  } else {
-    alert("Usuário ou senha estão incorretos!.");
-  }
 });
+
+function handleLoginSubmit(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const tipoUsuarioEl = document.querySelector("input[name='opcaoLogin']:checked");
+
+    if (!tipoUsuarioEl) {
+        alert("Por favor, selecione o tipo de usuário (Cliente ou Vendedor).");
+        return;
+    }
+
+    const tipoUsuario = tipoUsuarioEl.value;
+    const isSuccess = Auth.login(email, senha, tipoUsuario);
+
+    if (isSuccess) {
+        alert('Login realizado com sucesso! Redirecionando...');
+        
+        if (tipoUsuario === 'cliente') {
+            window.location.href = "/Projeto-patas-douradas-web/index.html"; 
+        } else {
+            window.location.href = "/Projeto-patas-douradas-web/pages/vendedor/painel-vendedor.html"; 
+        }
+    } else {
+        alert("E-mail, senha ou tipo de usuário incorretos.");
+    }
+}
