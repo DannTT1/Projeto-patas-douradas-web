@@ -4,7 +4,7 @@ const produtosIniciais = [
         id: 1, 
         nome: "Areia Higiênica para Gatos", 
         preco: 29.90, 
-        imagem: "Projeto-patas-douradas-web/assets/img/areiahigienicafelina.png", 
+        imagem: "assets/img/areiahigienicafelina.png", 
         estoque: 24,
         descricao: "Areia sanitária de alta absorção que forma torrões firmes, facilitando a limpeza e controlando odores."
     },
