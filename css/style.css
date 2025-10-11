@@ -363,6 +363,25 @@ h2 {
     line-height: 1;
 }
 
+
+
+.btn-logout {
+    background: none;
+    border: none;
+    font-family: inherit; 
+    color: var(--cor-branca);
+    font-weight: bold;
+    font-size: 1em; 
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.btn-logout:hover {
+    color: #ffeeba;
+}
+
 .btn-remover {
     background-color: var(--cor-erro);
     color: var(--cor-branca);

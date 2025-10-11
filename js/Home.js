@@ -1,23 +1,17 @@
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
-    if (usuarioLogado && usuarioLogado.nome) {
-        const saudacao = document.getElementById("saudacaoUsuario");
-        if (saudacao) {
-            saudacao.textContent = `Olá, ${usuarioLogado.nome}!`;
-        }
-    }
-
     renderizarDestaquesNaHome();
 });
 
 function renderizarDestaquesNaHome() {
     const container = document.getElementById("produtosDestaque");
-    if (!container) return;
+    if (!container) {
+        console.error("Container #produtosDestaque não encontrado!");
+        return;
+    }
 
-    const todosProdutos = carregarProdutos(); 
-    if (todosProdutos.length === 0) {
+    const todosProdutos = carregarProdutos();
+    if (!todosProdutos || todosProdutos.length === 0) {
         container.innerHTML = "<p>Nenhum produto para exibir no momento.</p>";
         return;
     }
@@ -46,37 +40,3 @@ function renderizarDestaquesNaHome() {
     });
 }
 
-
-function obterCarrinho() {
-    return JSON.parse(localStorage.getItem("carrinho")) || [];
-}
-
-function salvarCarrinho(carrinho) {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-}
-
-function adicionarAoCarrinho(produtoId) {
-    const produtos = carregarProdutos();
-    const produtoParaAdicionar = produtos.find(p => p.id === produtoId);
-
-    if (!produtoParaAdicionar || produtoParaAdicionar.estoque <= 0) {
-        alert("Produto indisponível no momento!");
-        return;
-    }
-
-    const carrinho = obterCarrinho();
-    const itemExistente = carrinho.find(item => item.id === produtoId);
-
-    if (itemExistente) {
-        itemExistente.quantidade++;
-    } else {
-        carrinho.push({ ...produtoParaAdicionar, quantidade: 1 });
-    }
-
-    salvarCarrinho(carrinho);
-    alert(`"${produtoParaAdicionar.nome}" foi adicionado ao carrinho!`);
-}
-
-function verDetalhes(id) {
-    window.location.href = `/Projeto-patas-douradas-web/pages/cliente/produto-detalhes.html?id=${id}`;
-}

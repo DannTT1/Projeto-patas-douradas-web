@@ -1,4 +1,3 @@
-// js/gerenciador-produtos.js
 
 const produtosIniciais = [
     { 
