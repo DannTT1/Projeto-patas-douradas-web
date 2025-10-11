@@ -16,7 +16,7 @@ function renderizarDestaquesNaHome() {
         return;
     }
 
-    const idsDestaque = [7, 2, 9]; 
+    const idsDestaque = [3, 5, 4]; 
     const produtosEmDestaque = todosProdutos.filter(p => idsDestaque.includes(p.id));
     
     container.innerHTML = "";
