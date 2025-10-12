@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function atualizarMetricasDoDashboard() {
     const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    
     const produtos = carregarProdutos(); 
 
     const totalPedidosEl = document.getElementById("totalPedidos");
@@ -26,14 +27,3 @@ function atualizarMetricasDoDashboard() {
     totalEstoqueEl.textContent = totalEstoque;
 }
 
-function limparDadosLocalStorage() {
-    const confirmacao = "TEM CERTEZA? Esta ação apagará TODOS os produtos, pedidos e usuários e não pode ser desfeita. Digite 'APAGAR' para confirmar.";
-    
-    if (prompt(confirmacao) === "APAGAR") {
-        localStorage.clear();
-        alert("Todos os dados foram apagados com sucesso!");
-        location.reload();
-    } else {
-        alert("Operação cancelada.");
-    }
-}

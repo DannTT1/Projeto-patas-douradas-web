@@ -1,4 +1,3 @@
-
 protegerPagina(['vendedor']);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,9 +24,12 @@ function renderizarProdutosNoPainel() {
     produtos.forEach((produto) => {
         const card = document.createElement("div");
         card.className = "produto-card"; 
+        
+        const imagePath = produto.imagem;
+
         card.innerHTML = `
             <div class="imagem-container">
-                <img src="../../${produto.imagem}" alt="${produto.nome}">
+                <img src="${imagePath}" alt="${produto.nome}">
             </div>
             <div class="produto-info">
                 <h3>${produto.nome}</h3>
@@ -48,7 +50,7 @@ function editarProduto(id) {
 }
 
 function removerProduto(id) {
-    if (confirm("Tem certeza que deseja remover este produto? Esta ação não pode ser desfeita.")) {
+    if (confirm("Tem certeza que deseja remover este produto?")) {
         let produtos = carregarProdutos();
         produtos = produtos.filter(p => p.id !== id);
         salvarProdutos(produtos);
