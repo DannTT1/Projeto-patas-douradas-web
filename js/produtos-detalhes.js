@@ -1,75 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
-    carregarDetalhesDoProduto();
-});
-
-function carregarDetalhesDoProduto() {
-    const container = document.getElementById("detalhes-produto");
-    if (!container) {
-        console.error("Elemento 'detalhes-produto' não encontrado.");
-        return;
+async function buscarProdutos() {
+    try {
+        const response = await fetch('../../data/produtos.json');
+        const produtos = await response.json();
+        return produtos;
+    } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+        return [];
     }
-
-    const params = new URLSearchParams(window.location.search);
-    const produtoId = parseInt(params.get("id"));
-
-    if (!produtoId || isNaN(produtoId)) {
-        container.innerHTML = "<p>Produto não encontrado ou ID inválido.</p>";
-        return;
-    }
-
-    const todosProdutos = carregarProdutos();
-    const produto = todosProdutos.find(p => p.id === produtoId);
-
-    if (!produto) {
-        container.innerHTML = "<p>Produto não encontrado.</p>";
-        return;
-    }
-
-    container.innerHTML = `
-        <img src="../../${produto.imagem}" alt="${produto.nome}" class="detalhe-produto-imagem">
-        <div class="detalhe-produto-info">
-            <h1>${produto.nome}</h1>
-            <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
-            <p class="estoque"><strong>Estoque disponível:</strong> ${produto.estoque} unidades</p>
-            <p class="descricao">${produto.descricao}</p>
-            <button onclick="adicionarAoCarrinho(${produto.id})" ${produto.estoque <= 0 ? "disabled" : ""}>
-                ${produto.estoque <= 0 ? "Indisponível" : "Adicionar ao Carrinho"}
-            </button>
-        </div>
-    `;
 }
 
-function obterCarrinho() {
-    return JSON.parse(localStorage.getItem("carrinho")) || [];
+async function buscarProdutoPorId(id) {
+    const produtos = await buscarProdutos();
+    return produtos.find(produto => produto.id == id);
 }
 
-function salvarCarrinho(carrinho) {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-}
-
-function adicionarAoCarrinho(produtoId) {
-    const produtos = carregarProdutos();
-    const produtoParaAdicionar = produtos.find(p => p.id === produtoId);
-
-    if (!produtoParaAdicionar || produtoParaAdicionar.estoque <= 0) {
-        alert("Produto indisponível no momento!");
-        return;
-    }
-
-    const carrinho = obterCarrinho();
-    const itemExistente = carrinho.find(item => item.id === produtoId);
-
-    if (itemExistente) {
-        if (itemExistente.quantidade < produtoParaAdicionar.estoque) {
-            itemExistente.quantidade++;
-            salvarCarrinho(carrinho);
-            alert(`Mais uma unidade de "${produtoParaAdicionar.nome}" foi adicionada ao carrinho!`);
-        } else {
-            alert(`Você já atingiu o limite de estoque para "${produtoParaAdicionar.nome}".`);
-        }
+function renderizarDetalhesProduto(produto) {
+    const produtoDetalhesContainer = document.getElementById('produto-detalhes-container');
+    if (produto) {
+        produtoDetalhesContainer.innerHTML = `
+            <div class="produto-detalhes-card">
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <div class="produto-info">
+                    <h2>${produto.nome}</h2>
+                    <p>${produto.descricao}</p>
+                    <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
+                    <button class="adicionar-carrinho-btn" data-id="${produto.id}">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        `;
     } else {
-        carrinho.push({ ...produtoParaAdicionar, quantidade: 1 });
-        salvarCarrinho(carrinho);
-        alert(`"${produtoParaAdicionar.nome}" foi adicionado ao carrinho!`);
+        produtoDetalhesContainer.innerHTML = '<p>Produto não encontrado.</p>';
     }
 }
+
+async function carregarDetalhesProduto() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (productId) {
+        const produto = await buscarProdutoPorId(productId);
+        renderizarDetalhesProduto(produto);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', carregarDetalhesProduto);

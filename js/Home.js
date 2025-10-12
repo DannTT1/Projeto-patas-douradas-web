@@ -1,45 +1,33 @@
-
-document.addEventListener("DOMContentLoaded", function () {
-    renderizarDestaquesNaHome();
-});
-
-function renderizarDestaquesNaHome() {
-    const container = document.getElementById("produtosDestaque");
-    if (!container) {
-        console.error("ERRO: Container #produtosDestaque não foi encontrado!");
-        return;
+async function buscarProdutos() {
+    try {
+        const response = await fetch('../data/produtos.json');
+        const produtos = await response.json();
+        return produtos;
+    } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+        return [];
     }
-
-    const todosProdutos = carregarProdutos();
-    if (!todosProdutos || todosProdutos.length === 0) {
-        container.innerHTML = "<p>Nenhum produto para exibir no momento.</p>";
-        return;
-    }
-
-    const idsDestaque = [7, 5, 9]; 
-    const produtosEmDestaque = todosProdutos.filter(p => idsDestaque.includes(p.id));
-    
-    container.innerHTML = "";
-
-    produtosEmDestaque.forEach(produto => {
-        const card = document.createElement("div");
-        card.className = "produto-card"; 
-        card.innerHTML = `
-            <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
-                <img src="${produto.imagem}" alt="${produto.nome}">
-            </div>
-            <div class="produto-info">
-                <h3>${produto.nome}</h3>
-                <p>R$ ${produto.preco.toFixed(2)}</p>
-                <button onclick="adicionarAoCarrinho(${produto.id})" ${produto.estoque <= 0 ? "disabled" : ""}>
-                    ${produto.estoque <= 0 ? "Indisponível" : "Adicionar ao Carrinho"}
-                </button>
-            </div>
-        `;
-        container.appendChild(card);
-    });
 }
 
-function verDetalhes(id) {
-    window.location.href = `pages/cliente/produto-detalhes.html?id=${id}`;
+async function renderizarProdutosHome() {
+    const produtosDestaqueLista = document.getElementById('produtos-destaque-lista');
+    if (produtosDestaqueLista) {
+        const produtos = await buscarProdutos();
+        const produtosDestaque = produtos.filter(produto => produto.destaque);
+
+        produtosDestaque.forEach(produto => {
+            const produtoDiv = document.createElement('div');
+            produtoDiv.classList.add('produto-card');
+            produtoDiv.innerHTML = `
+                <a href="pages/cliente/produto-detalhes.html?id=${produto.id}">
+                    <img src="${produto.imagem}" alt="${produto.nome}">
+                    <h3>${produto.nome}</h3>
+                    <p>R$ ${produto.preco.toFixed(2)}</p>
+                </a>
+            `;
+            produtosDestaqueLista.appendChild(produtoDiv);
+        });
+    }
 }
+
+document.addEventListener('DOMContentLoaded', renderizarProdutosHome);
