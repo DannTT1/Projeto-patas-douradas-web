@@ -35,6 +35,51 @@ const produtosIniciais = [
         descricao: "Coleira eficaz contra pulgas e carrapatos para cães e gatos.",
         destaque: false
     },
+    { 
+        id: 5, 
+        nome: "Frisbee para Cães", 
+        preco: 25.00, 
+        imagem: "/Projeto-patas-douradas-web/assets/img/frisbeeparacaes.png", 
+        estoque: 40,
+        descricao: "Disco de frisbee flexível e seguro para brincadeiras de arremesso.",
+        destaque: false
+    },
+    { 
+        id: 6, 
+        nome: "Mordedor Pequeno Canino", 
+        preco: 19.90, 
+        imagem: "/Projeto-patas-douradas-web/assets/img/mordedorpequenocanino.png", 
+        estoque: 50,
+        descricao: "Brinquedo mordedor para cães de porte pequeno, ajuda na saúde bucal.",
+        destaque: false
+    },
+    { 
+        id: 7, 
+        nome: "Ração Premium para Cães", 
+        preco: 199.90, 
+        imagem: "/Projeto-patas-douradas-web/assets/img/raçaopremiumcanina15kg.png", 
+        estoque: 18,
+        descricao: "Alimento completo e balanceado para cães de porte médio e grande.",
+        destaque: false
+    },
+    { 
+        id: 8, 
+        nome: "Rosquinha para Gatos", 
+        preco: 15.50, 
+        imagem: "/Projeto-patas-douradas-web/assets/img/rosquinhaparagatos.png", 
+        estoque: 35,
+        descricao: "Brinquedo em formato de rosquinha com catnip para entreter seu gato.",
+        destaque: false
+    },
+    { 
+        id: 9, 
+        nome: "Casinha de Madeira para Cães", 
+        preco: 349.90, 
+        imagem: "/Projeto-patas-douradas-web/assets/img/casinhaparacaes.png", 
+        estoque: 10,
+        descricao: "Casinha de madeira resistente e confortável para seu cão.",
+        destaque: false
+    }
 ];
 
 function carregarProdutos() {
@@ -49,6 +94,7 @@ function carregarProdutos() {
             const pStorage = produtosDoStorage.find(p => p.id === pInicial.id);
             return pStorage ? {...pInicial, ...pStorage} : pInicial;
         });
+        localStorage.setItem("produtosDisponiveis", JSON.stringify(produtosAtualizados));
         return produtosAtualizados;
     } catch (e) {
         console.error("Erro ao ler produtos. Resetando para a lista inicial.", e);
@@ -56,6 +102,7 @@ function carregarProdutos() {
         return produtosIniciais;
     }
 }
+
 function salvarProdutos(listaDeProdutos) {
     localStorage.setItem("produtosDisponiveis", JSON.stringify(listaDeProdutos));
 }
