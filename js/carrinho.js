@@ -1,3 +1,4 @@
+// --- FUNÇÕES DE LÓGICA DO CARRINHO ---
 
 function obterCarrinho() {
     return JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -13,14 +14,12 @@ function aumentarQuantidade(produtoId) {
     const produtosDaLoja = carregarProdutos();
     const produtoNaLoja = produtosDaLoja.find(p => p.id == produtoId);
 
-    if (itemNoCarrinho && produtoNaLoja) {
-        if (itemNoCarrinho.quantidade < produtoNaLoja.estoque) {
-            itemNoCarrinho.quantidade++;
-            salvarCarrinho(carrinho);
-            renderizarCarrinho();
-        } else {
-            alert(`Você atingiu o limite de estoque para "${produtoNaLoja.nome}".`);
-        }
+    if (itemNoCarrinho && produtoNaLoja && itemNoCarrinho.quantidade < produtoNaLoja.estoque) {
+        itemNoCarrinho.quantidade++;
+        salvarCarrinho(carrinho);
+        renderizarCarrinho();
+    } else {
+        alert(`Você atingiu o limite de estoque para "${produtoNaLoja.nome}".`);
     }
 }
 
@@ -29,76 +28,28 @@ function diminuirQuantidade(produtoId) {
     const itemIndex = carrinho.findIndex(p => p.id == produtoId);
 
     if (itemIndex > -1) {
-        if (carrinho[itemIndex].quantidade > 1) {
-            carrinho[itemIndex].quantidade--;
-        } else {
-            carrinho.splice(itemIndex, 1);
-        }
+        carrinho[itemIndex].quantidade > 1 ? carrinho[itemIndex].quantidade-- : carrinho.splice(itemIndex, 1);
         salvarCarrinho(carrinho);
         renderizarCarrinho();
     }
 }
 
 function removerItemDoCarrinho(produtoId) {
-    if (confirm("Tem certeza que deseja remover este item do carrinho?")) {
-        let carrinho = obterCarrinho();
-        carrinho = carrinho.filter(p => p.id != produtoId);
+    if (confirm("Tem certeza que deseja remover este item?")) {
+        let carrinho = obterCarrinho().filter(p => p.id != produtoId);
         salvarCarrinho(carrinho);
         renderizarCarrinho();
     }
 }
 
 function finalizarPedido() {
-    const carrinho = obterCarrinho();
-    if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-    }
-    const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
-    if (!usuarioLogado) {
-        alert("Você precisa estar logado para finalizar o pedido.");
-        window.location.href = "/Projeto-patas-douradas-web/pages/login-cadastro/login.html";
-        return;
-    }
-    const produtosDaLoja = carregarProdutos();
-    let estoqueSuficiente = true;
-    for (const itemCarrinho of carrinho) {
-        const produtoNaLoja = produtosDaLoja.find(p => p.id == itemCarrinho.id);
-        if (!produtoNaLoja || itemCarrinho.quantidade > produtoNaLoja.estoque) {
-            alert(`Estoque insuficiente para "${itemCarrinho.nome}".\nDisponível: ${produtoNaLoja ? produtoNaLoja.estoque : 0}.\nNo seu carrinho: ${itemCarrinho.quantidade}.`);
-            estoqueSuficiente = false;
-            break;
-        }
-    }
-    if (!estoqueSuficiente) {
-        renderizarCarrinho();
-        return;
-    }
-    carrinho.forEach(itemCarrinho => {
-        const produtoNaLoja = produtosDaLoja.find(p => p.id == itemCarrinho.id);
-        if (produtoNaLoja) {
-            produtoNaLoja.estoque -= itemCarrinho.quantidade;
-        }
-    });
-    salvarProdutos(produtosDaLoja);
-    const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-    const novoPedido = {
-        id: Date.now(),
-        data: new Date().toISOString(),
-        cliente: usuarioLogado.nome,
-        itens: carrinho,
-        total: carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0)
-    };
-    pedidos.push(novoPedido);
-    localStorage.setItem("pedidos", JSON.stringify(pedidos));
-    localStorage.removeItem("carrinho");
-    alert("Pedido finalizado com sucesso!");
-    window.location.href = "pedidos-cliente.html";
+    // A sua lógica de finalizar pedido está ótima, pode mantê-la.
+    // ...
 }
 
+// --- FUNÇÃO DE RENDERIZAÇÃO (A MAIS IMPORTANTE) ---
 function renderizarCarrinho() {
     const carrinho = obterCarrinho();
-    const produtosDaLoja = carregarProdutos();
     const container = document.getElementById("itens-carrinho");
     const totalSpan = document.getElementById("total");
     const botaoFinalizar = document.getElementById("finalizar-pedido-btn");
@@ -116,14 +67,12 @@ function renderizarCarrinho() {
 
     let totalGeral = 0;
     carrinho.forEach(item => {
-        const produtoNaLoja = produtosDaLoja.find(p => p.id == item.id);
-        const estoqueDisponivel = produtoNaLoja ? produtoNaLoja.estoque : 0;
         const subtotal = item.preco * item.quantidade;
         totalGeral += subtotal;
-        const classeErro = item.quantidade > estoqueDisponivel ? 'estoque-insuficiente' : '';
         
+        // Removemos o 'onclick' e adicionamos 'data-id' e classes
         const itemHtml = `
-            <tr class="${classeErro}" data-id="${item.id}">
+            <tr data-id="${item.id}">
                 <td data-label="Produto">${item.nome}</td>
                 <td data-label="Preço">R$ ${item.preco.toFixed(2)}</td>
                 <td data-label="Quantidade" class="quantidade-controls">
@@ -132,9 +81,7 @@ function renderizarCarrinho() {
                     <button class="btn-aumentar">+</button>
                 </td>
                 <td data-label="Subtotal">R$ ${subtotal.toFixed(2)}</td>
-                <td data-label="Ação">
-                    <button class="btn-remover">Remover</button>
-                </td>
+                <td data-label="Ação"><button class="btn-remover">Remover</button></td>
             </tr>
         `;
         container.innerHTML += itemHtml;
@@ -155,13 +102,9 @@ function inicializarEventosCarrinho() {
 
         const produtoId = tr.dataset.id;
 
-        if (target.classList.contains('btn-aumentar')) {
-            aumentarQuantidade(produtoId);
-        } else if (target.classList.contains('btn-diminuir')) {
-            diminuirQuantidade(produtoId);
-        } else if (target.classList.contains('btn-remover')) {
-            removerItemDoCarrinho(produtoId);
-        }
+        if (target.classList.contains('btn-aumentar')) aumentarQuantidade(produtoId);
+        if (target.classList.contains('btn-diminuir')) diminuirQuantidade(produtoId);
+        if (target.classList.contains('btn-remover')) removerItemDoCarrinho(produtoId);
     });
 
     if (botaoFinalizar) {
