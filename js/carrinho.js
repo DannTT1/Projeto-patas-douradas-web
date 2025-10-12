@@ -1,4 +1,3 @@
-// --- FUNÇÕES DE LÓGICA DO CARRINHO ---
 
 function obterCarrinho() {
     return JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -7,6 +6,16 @@ function obterCarrinho() {
 function salvarCarrinho(carrinho) {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 }
+
+
+function carregarProdutos() {
+    return JSON.parse(localStorage.getItem("produtos")) || [];
+}
+
+function salvarProdutos(produtos) {
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+}
+
 
 function aumentarQuantidade(produtoId) {
     const carrinho = obterCarrinho();
@@ -43,11 +52,50 @@ function removerItemDoCarrinho(produtoId) {
 }
 
 function finalizarPedido() {
-    // A sua lógica de finalizar pedido está ótima, pode mantê-la.
-    // ...
-}
+    const carrinho = obterCarrinho();
+    const produtosDaLoja = carregarProdutos();
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado")); 
 
-// --- FUNÇÃO DE RENDERIZAÇÃO (A MAIS IMPORTANTE) ---
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    if (!usuarioLogado) {
+        alert("Você precisa estar logado para finalizar a compra.");
+        window.location.href = "login.html"; 
+        return;
+    }
+
+    carrinho.forEach(itemNoCarrinho => {
+        const produtoNaLoja = produtosDaLoja.find(p => p.id == itemNoCarrinho.id);
+        if (produtoNaLoja) {
+            produtoNaLoja.estoque -= itemNoCarrinho.quantidade;
+        }
+    });
+
+    const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    const novoPedido = {
+        id: Date.now(), 
+        data: new Date().toLocaleDateString("pt-BR"),
+        clienteId: usuarioLogado.id, 
+        itens: carrinho,
+        total: carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0)
+    };
+
+    pedidos.push(novoPedido);
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+
+    
+    salvarProdutos(produtosDaLoja);
+
+    
+    salvarCarrinho([]); 
+
+    alert("Pedido finalizado com sucesso! Obrigado por comprar conosco.");
+    renderizarCarrinho(); 
+    
+}
 function renderizarCarrinho() {
     const carrinho = obterCarrinho();
     const container = document.getElementById("itens-carrinho");
@@ -70,7 +118,6 @@ function renderizarCarrinho() {
         const subtotal = item.preco * item.quantidade;
         totalGeral += subtotal;
         
-        // Removemos o 'onclick' e adicionamos 'data-id' e classes
         const itemHtml = `
             <tr data-id="${item.id}">
                 <td data-label="Produto">${item.nome}</td>
@@ -90,7 +137,6 @@ function renderizarCarrinho() {
     totalSpan.textContent = `R$ ${totalGeral.toFixed(2)}`;
 }
 
-// --- INICIALIZAÇÃO E GERENCIADOR DE EVENTOS ---
 function inicializarEventosCarrinho() {
     const container = document.getElementById("itens-carrinho");
     const botaoFinalizar = document.getElementById("finalizar-pedido-btn");
