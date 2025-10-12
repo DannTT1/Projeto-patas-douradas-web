@@ -1,3 +1,14 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formularioCadastro");
+
+    if (form) {
+        form.addEventListener("submit", CadastroDeUsuarios);
+    } else {
+        console.error("Erro: O formulário com id 'formularioCadastro' não foi encontrado na página.");
+    }
+});
+
 function CadastroDeUsuarios(event) {
     event.preventDefault();
 
@@ -27,10 +38,10 @@ function CadastroDeUsuarios(event) {
     }
 
     const novoUsuario = {
-        id: Date.now(), 
+        id: Date.now(),
         nome: nomeCompleto,
         email: email,
-        senha: senha, 
+        senha: senha,
         tipo: tipoUsuario
     };
 
