@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (produtoEncontrado) {
         container.innerHTML = `
             <div class="produto-detalhes-card">
-                <img src="${produtoEncontrado.imagem}" alt="${produtoEncontrado.nome}">
+                <img src="${produtoEncontrado.imagem.replace('/Projeto-patas-douradas-web', '../..')}" alt="${produtoEncontrado.nome}">
                 <div class="produto-info">
                     <h2>${produtoEncontrado.nome}</h2>
                     <p>${produtoEncontrado.descricao}</p>

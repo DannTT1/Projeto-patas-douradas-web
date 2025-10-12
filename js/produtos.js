@@ -16,11 +16,10 @@ function renderizarTodosOsProdutos() {
     produtos.forEach(produto => {
         const card = document.createElement("div");
         card.className = "produto-card";
-
-       
+        
         card.innerHTML = `
             <a href="produto-detalhes.html?id=${produto.id}">
-                <img src="${produto.imagem}" alt="${produto.nome}">
+                <img src="${produto.imagem.replace('/Projeto-patas-douradas-web', '../..')}" alt="${produto.nome}">
                 <h3>${produto.nome}</h3>
                 <p>R$ ${produto.preco.toFixed(2)}</p>
             </a>
