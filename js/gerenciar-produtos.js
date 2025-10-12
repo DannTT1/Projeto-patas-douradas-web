@@ -25,18 +25,17 @@ function renderizarProdutosNoPainel() {
         const card = document.createElement("div");
         card.className = "produto-card"; 
         
-       
-        const imagePath = `../../${produto.imagem}`;
+        const imagePath = produto.imagem;
 
         card.innerHTML = `
-            <div class="imagem-container">
-                <img src="${imagePath}" alt="${produto.nome}">
-            </div>
-            <div class="produto-info">
+            <img src="${imagePath}" alt="${produto.nome}">
+            
+            <div class="info-wrapper">
                 <h3>${produto.nome}</h3>
                 <p>R$ ${produto.preco.toFixed(2)}</p>
                 <p><strong>Estoque:</strong> ${produto.estoque}</p>
             </div>
+            
             <div class="botoes-gerenciamento">
                 <button class="btn-editar" onclick="editarProduto(${produto.id})">Editar</button>
                 <button class="btn-excluir" onclick="removerProduto(${produto.id})">Remover</button>
