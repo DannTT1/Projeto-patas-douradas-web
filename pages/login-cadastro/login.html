@@ -4,90 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Patas Douradas</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css"> 
 </head>
 <body>
     <header class="cabecalho">
-        <a href="../../index.html" class="logo" aria-label="Página Inicial da Patas Douradas">🐾 PatasDouradas.com</a>
-        <nav class="menu">
-            <a href="../../index.html">Voltar à Loja</a>
-        </nav>
-    </header>
+        <a href="../../index.html" class="logo">🐾 PatasDouradas.com</a>
+        </header>
 
     <main>
         <div class="login-container">
-            <h2>Bem-vindo(a) de volta!</h2>
-            <p>Faça o seu login para continuar.</p>
-
+            <h1>Login</h1>
             <form id="formLogin">
-                <div class="tipo-usuario">
-                    <p>Você é:</p>
-                    <label>
-                        <input
-                            type="radio"
-                            name="opcaoLogin"
-                            value="cliente"
-                            id="cliente"
-                            checked
-                        />
-                        Cliente
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            name="opcaoLogin"
-                            value="vendedor"
-                            id="vendedor"
-                        />
-                        Vendedor
-                    </label>
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" required>
+                
+                <div>
+                    <input type="radio" id="cliente" name="opcaoLogin" value="cliente" checked>
+                    <label for="cliente">Cliente</label>
+                </div>
+                <div>
+                    <input type="radio" id="vendedor" name="opcaoLogin" value="vendedor">
+                    <label for="vendedor">Vendedor</label>
                 </div>
 
-                <label for="email">E-mail</label>
-                <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Insira seu e-mail"
-                    required
-                />
-
-                <label for="senha">Senha</label>
-                <input
-                    type="password"
-                    name="senha"
-                    id="senha"
-                    placeholder="Insira sua senha"
-                    required
-                />
-                <button type="submit">Login</button>
+                <button type="submit">Entrar</button>
             </form>
-
-            <p class="cadastro-link">
-                Não possui cadastro? <a href="cadastro.html">Cadastre-se aqui</a>
+            <p style="text-align: center; margin-top: 15px;">
+                Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
             </p>
         </div>
     </main>
-    
+
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Sobre a Patas Douradas</h3>
-                <p>Oferecemos os melhores produtos para a saúde e bem-estar do seu pet. Amor e cuidado em cada detalhe.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <p>Email: contato@patasdouradas.com</p>
-                <p>Telefone: (11) 98765-4321</p>
-            </div>
-            <div class="footer-section">
-                <h3>Redes Sociais</h3>
-                <a href="#">Facebook</a> | 
-                <a href="#">Instagram</a> | 
-                <a href="#">Twitter</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
     <script src="../../js/auth.js"></script>
     <script src="../../js/login.js"></script>

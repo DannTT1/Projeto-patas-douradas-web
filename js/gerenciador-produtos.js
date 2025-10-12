@@ -89,7 +89,12 @@ function carregarProdutos() {
         return produtosIniciais;
     }
     try {
-        return JSON.parse(produtosSalvos);
+        const produtosDoStorage = JSON.parse(produtosSalvos);
+        const produtosAtualizados = produtosIniciais.map(pInicial => {
+            const pStorage = produtosDoStorage.find(p => p.id === pInicial.id);
+            return pStorage ? {...pInicial, ...pStorage} : pInicial;
+        });
+        return produtosAtualizados;
     } catch (e) {
         console.error("Erro ao ler produtos. Resetando para a lista inicial.", e);
         localStorage.setItem("produtosDisponiveis", JSON.stringify(produtosIniciais));
