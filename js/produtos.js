@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     renderizarTodosOsProdutos();
 });
@@ -17,17 +16,16 @@ function renderizarTodosOsProdutos() {
     produtos.forEach(produto => {
         const card = document.createElement("div");
         card.className = "produto-card";
+
+       
         card.innerHTML = `
-            <div class="imagem-container" style="cursor:pointer" onclick="verDetalhes(${produto.id})">
-                <img src="../../${produto.imagem}" alt="${produto.nome}">
-            </div>
-            <div class="produto-info">
-                </div>
+            <a href="produto-detalhes.html?id=${produto.id}">
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <h3>${produto.nome}</h3>
+                <p>R$ ${produto.preco.toFixed(2)}</p>
+            </a>
+            <button class="adicionar-carrinho-btn" data-id="${produto.id}">Adicionar ao Carrinho</button>
         `;
         container.appendChild(card);
     });
-}
-
-function verDetalhes(id) {
-    window.location.href = `produto-detalhes.html?id=${id}`;
 }

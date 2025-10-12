@@ -1,33 +1,27 @@
-async function buscarProdutos() {
-    try {
-        const response = await fetch('../data/produtos.json');
-        const produtos = await response.json();
-        return produtos;
-    } catch (error) {
-        console.error('Erro ao buscar produtos:', error);
-        return [];
-    }
-}
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const produtosDestaqueContainer = document.getElementById('produtos-destaque-lista');
+    
+    if (produtosDestaqueContainer) {
+        
+        const todosOsProdutos = carregarProdutos();
+        
+        const produtosEmDestaque = todosOsProdutos.filter(produto => produto.destaque === true);
 
-async function renderizarProdutosHome() {
-    const produtosDestaqueLista = document.getElementById('produtos-destaque-lista');
-    if (produtosDestaqueLista) {
-        const produtos = await buscarProdutos();
-        const produtosDestaque = produtos.filter(produto => produto.destaque);
+        produtosDestaqueContainer.innerHTML = '';
 
-        produtosDestaque.forEach(produto => {
-            const produtoDiv = document.createElement('div');
-            produtoDiv.classList.add('produto-card');
-            produtoDiv.innerHTML = `
+        produtosEmDestaque.forEach(produto => {
+            const cardDiv = document.createElement('div');
+            cardDiv.classList.add('produto-card');
+            
+            cardDiv.innerHTML = `
                 <a href="pages/cliente/produto-detalhes.html?id=${produto.id}">
                     <img src="${produto.imagem}" alt="${produto.nome}">
                     <h3>${produto.nome}</h3>
                     <p>R$ ${produto.preco.toFixed(2)}</p>
                 </a>
             `;
-            produtosDestaqueLista.appendChild(produtoDiv);
+            produtosDestaqueContainer.appendChild(cardDiv);
         });
     }
-}
-
-document.addEventListener('DOMContentLoaded', renderizarProdutosHome);
+});

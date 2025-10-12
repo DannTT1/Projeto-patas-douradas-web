@@ -22,7 +22,8 @@ const produtosIniciais = [
         preco: 129.50, 
         imagem: "/Projeto-patas-douradas-web/assets/img/caixadetransporteparagatos.png", 
         estoque: 12,
-        descricao: "Caixa de transporte segura e ventilada, ideal para viagens."
+        descricao: "Caixa de transporte segura e ventilada, ideal para viagens.",
+        destaque: true 
     },
     { 
         id: 4, 
@@ -30,7 +31,8 @@ const produtosIniciais = [
         preco: 59.90, 
         imagem: "/Projeto-patas-douradas-web/assets/img/coleiraantipulgascaesegatos.png", 
         estoque: 30,
-        descricao: "Coleira eficaz contra pulgas e carrapatos para cães e gatos."
+        descricao: "Coleira eficaz contra pulgas e carrapatos para cães e gatos.",
+        destaque: true 
     },
     { 
         id: 5, 
@@ -46,7 +48,8 @@ const produtosIniciais = [
         preco: 19.90, 
         imagem: "/Projeto-patas-douradas-web/assets/img/mordedorpequenocanino.png", 
         estoque: 50,
-        descricao: "Brinquedo mordedor para cães de porte pequeno, ajuda na saúde bucal."
+        descricao: "Brinquedo mordedor para cães de porte pequeno, ajuda na saúde bucal.",
+        destaque: true 
     },
     { 
         id: 7, 
