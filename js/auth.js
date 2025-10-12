@@ -1,7 +1,6 @@
-
 const Auth = {
     _USUARIOS_KEY: 'usuarios',
-    _LOGADO_KEY: 'usuario_logado',
+    _LOGADO_KEY: 'usuarioLogado',
 
     _getUsuarios: function() {
         try {
@@ -55,6 +54,8 @@ const Auth = {
         return usuarios.some(u => u.email === email);
     }
 };
+
+
 
 
 function protegerPagina(tiposPermitidos = ['cliente']) {

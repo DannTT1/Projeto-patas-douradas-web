@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Produtos - Painel do Vendedor</title>
+    <title>Gerenciar Pedidos - Painel do Vendedor</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
@@ -11,6 +11,7 @@
         <a href="painel-vendedor.html" class="logo" aria-label="Dashboard do Vendedor">🐾 Painel do Vendedor</a>
         <nav class="menu">
             <a href="painel-vendedor.html">Dashboard</a>
+            <a href="gerenciar-produtos.html">Gerenciar Produtos</a>
             <a href="gerenciar-pedidos.html">Gerenciar Pedidos</a>
             <a href="produtos-adicionar.html">Adicionar Produto</a>
             <button id="btn-logout" class="btn-logout">Sair</button>
@@ -19,9 +20,10 @@
 
     <main>
         <div class="container-pagina">
-            <h1>📦 Gerenciar Produtos Cadastrados</h1>
+            <h1>📄 Gerenciar Pedidos Recebidos</h1>
             <a href="painel-vendedor.html" class="btn-voltar">← Voltar para o Dashboard</a>
-            <div id="lista-produtos" class="produtos-container">
+            
+            <div id="lista-pedidos" class="pedidos-container">
                 </div>
         </div>
     </main>
@@ -46,8 +48,7 @@
         </div>
     </footer>
 
-    <script src="../../js/gerenciador-produtos.js"></script>
     <script src="../../js/auth.js"></script>
-    <script src="../../js/gerenciar-produtos.js"></script>
+    <script src="../../js/gerenciar-pedidos.js"></script>
 </body>
 </html>

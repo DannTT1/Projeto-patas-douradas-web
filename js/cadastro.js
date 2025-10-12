@@ -1,11 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("formularioCadastro");
-    if (form) {
-        form.addEventListener("submit", handleCadastroSubmit);
-    }
-});
-
-function handleCadastroSubmit(event) {
+function CadastroDeUsuarios(event) {
     event.preventDefault();
 
     const nomeCompleto = document.getElementById("nomeUsuario").value.trim();
@@ -34,6 +27,7 @@ function handleCadastroSubmit(event) {
     }
 
     const novoUsuario = {
+        id: Date.now(), 
         nome: nomeCompleto,
         email: email,
         senha: senha, 
