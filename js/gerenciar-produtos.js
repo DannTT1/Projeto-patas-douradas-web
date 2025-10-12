@@ -25,7 +25,8 @@ function renderizarProdutosNoPainel() {
         const card = document.createElement("div");
         card.className = "produto-card"; 
         
-        const imagePath = produto.imagem;
+       
+        const imagePath = `../../${produto.imagem}`;
 
         card.innerHTML = `
             <div class="imagem-container">
@@ -50,7 +51,7 @@ function editarProduto(id) {
 }
 
 function removerProduto(id) {
-    if (confirm("Tem certeza que deseja remover este produto?")) {
+    if (confirm("Tem certeza que deseja remover este produto? Esta ação não pode ser desfeita.")) {
         let produtos = carregarProdutos();
         produtos = produtos.filter(p => p.id !== id);
         salvarProdutos(produtos);
