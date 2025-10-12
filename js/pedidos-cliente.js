@@ -1,3 +1,8 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+    exibirPedidosDoCliente();
+});
+
 function exibirPedidosDoCliente() {
     const container = document.getElementById("lista-pedidos");
     if (!container) {
@@ -5,18 +10,21 @@ function exibirPedidosDoCliente() {
         return;
     }
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("usuario_logado"));
+    const usuarioLogado = Auth.getUsuarioLogado(); 
 
-    if (!usuarioLogado || !usuarioLogado.email) {
+    if (!usuarioLogado || !usuarioLogado.id) {
         container.innerHTML = `
-            <p>Você precisa estar logado para visualizar seus pedidos.</p>
-            <a href="/Projeto-patas-douradas-web/pages/login-cadastro/login.html">Ir para a página de Login</a>
+            <div class="aviso-login">
+                <p>Você precisa estar logado para visualizar seus pedidos.</p>
+                <a href="login.html" class="btn">Ir para a página de Login</a>
+            </div>
         `;
         return;
     }
 
     const todosPedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-    const meusPedidos = todosPedidos.filter(pedido => pedido.cliente && pedido.cliente.email === usuarioLogado.email);
+
+    const meusPedidos = todosPedidos.filter(pedido => pedido.clienteId === usuarioLogado.id);
 
     meusPedidos.sort((a, b) => b.id - a.id);
 
@@ -25,13 +33,13 @@ function exibirPedidosDoCliente() {
         return;
     }
 
-    container.innerHTML = "";
+    container.innerHTML = ""; 
 
     meusPedidos.forEach(pedido => {
         const div = document.createElement("div");
-        div.className = "pedido-card";
+        div.className = "pedido-card"; 
 
-        const dataFormatada = new Date(pedido.data).toLocaleString("pt-BR", {
+        const dataFormatada = new Date(pedido.id).toLocaleString("pt-BR", {
             dateStyle: "long",
             timeStyle: "short"
         });
@@ -43,7 +51,7 @@ function exibirPedidosDoCliente() {
         div.innerHTML = `
             <h3>Pedido #${pedido.id}</h3>
             <p><strong>Data:</strong> ${dataFormatada}</p>
-            <p><strong>Total:</strong> R$ ${pedido.total.toFixed(2)}</p>
+            <p><strong>Total:</strong> R$ ${pedido.total.toFixed(2).replace('.', ',')}</p>
             <p><strong>Itens:</strong></p>
             <ul>${itensHtml}</ul>
         `;
@@ -51,5 +59,3 @@ function exibirPedidosDoCliente() {
         container.appendChild(div);
     });
 }
-
-document.addEventListener("DOMContentLoaded", exibirPedidosDoCliente);
